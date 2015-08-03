@@ -8,11 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		4D05485E1B6EC4630013D031 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D05485D1B6EC4630013D031 /* AppDelegate.swift */; };
-		4D0548601B6EC4630013D031 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D05485F1B6EC4630013D031 /* ViewController.swift */; };
 		4D0548631B6EC4630013D031 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D0548611B6EC4630013D031 /* Main.storyboard */; };
 		4D0548651B6EC4630013D031 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4D0548641B6EC4630013D031 /* Images.xcassets */; };
 		4D0548681B6EC4630013D031 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D0548661B6EC4630013D031 /* LaunchScreen.xib */; };
 		4D0548741B6EC4630013D031 /* PrivatePhotoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0548731B6EC4630013D031 /* PrivatePhotoTests.swift */; };
+		4DA517361B700D3A00C9C99F /* HomeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA517351B700D3A00C9C99F /* HomeTableViewController.swift */; };
+		4DA517381B7014EE00C9C99F /* AlbumTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA517371B7014EE00C9C99F /* AlbumTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,13 +30,14 @@
 		4D0548581B6EC4630013D031 /* PrivatePhoto.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PrivatePhoto.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D05485C1B6EC4630013D031 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4D05485D1B6EC4630013D031 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		4D05485F1B6EC4630013D031 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		4D0548621B6EC4630013D031 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4D0548641B6EC4630013D031 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		4D0548671B6EC4630013D031 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		4D05486D1B6EC4630013D031 /* PrivatePhotoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PrivatePhotoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D0548721B6EC4630013D031 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4D0548731B6EC4630013D031 /* PrivatePhotoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivatePhotoTests.swift; sourceTree = "<group>"; };
+		4DA517351B700D3A00C9C99F /* HomeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeTableViewController.swift; sourceTree = "<group>"; };
+		4DA517371B7014EE00C9C99F /* AlbumTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlbumTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,11 +80,12 @@
 			isa = PBXGroup;
 			children = (
 				4D05485D1B6EC4630013D031 /* AppDelegate.swift */,
-				4D05485F1B6EC4630013D031 /* ViewController.swift */,
 				4D0548611B6EC4630013D031 /* Main.storyboard */,
 				4D0548641B6EC4630013D031 /* Images.xcassets */,
 				4D0548661B6EC4630013D031 /* LaunchScreen.xib */,
 				4D05485B1B6EC4630013D031 /* Supporting Files */,
+				4DA517351B700D3A00C9C99F /* HomeTableViewController.swift */,
+				4DA517371B7014EE00C9C99F /* AlbumTableViewCell.swift */,
 			);
 			path = PrivatePhoto;
 			sourceTree = "<group>";
@@ -212,8 +215,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4D0548601B6EC4630013D031 /* ViewController.swift in Sources */,
+				4DA517361B700D3A00C9C99F /* HomeTableViewController.swift in Sources */,
 				4D05485E1B6EC4630013D031 /* AppDelegate.swift in Sources */,
+				4DA517381B7014EE00C9C99F /* AlbumTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -409,6 +413,7 @@
 				4D0548791B6EC4630013D031 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		4D05487A1B6EC4630013D031 /* Build configuration list for PBXNativeTarget "PrivatePhotoTests" */ = {
 			isa = XCConfigurationList;
@@ -417,6 +422,7 @@
 				4D05487C1B6EC4630013D031 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
