@@ -8,8 +8,9 @@
         <!--Home Table View Controller-->
         <scene sceneID="dKy-Qz-3HY">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="c8m-iW-aaH" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="paY-nA-ryB" customClass="HomeTableViewController" customModule="PrivatePhoto" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="d59-Al-Slb">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" sectionHeaderHeight="22" sectionFooterHeight="22" id="d59-Al-Slb">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -19,7 +20,7 @@
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2pF-c1-Nmw" id="7WL-5y-LN0">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="QHE-zA-jaA">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sample" translatesAutoresizingMaskIntoConstraints="NO" id="QHE-zA-jaA">
                                             <rect key="frame" x="5" y="5" width="70" height="70"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="70" id="KfH-TM-n8P"/>
@@ -64,13 +65,13 @@
                     </tableView>
                     <navigationItem key="navigationItem" id="KCX-gR-Rct"/>
                 </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="c8m-iW-aaH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1493" y="498"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Kke-ZA-aRG">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kw5-e0-abe" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="tkW-nZ-Fhl" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="xNn-sA-ife">
@@ -82,11 +83,13 @@
                         <segue destination="paY-nA-ryB" kind="relationship" relationship="rootViewController" id="6SY-Ck-A9K"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="kw5-e0-abe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="961" y="498"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="sample" width="256" height="256"/>
+    </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
