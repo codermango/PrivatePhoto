@@ -8,7 +8,6 @@
         <!--Home Table View Controller-->
         <scene sceneID="dKy-Qz-3HY">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="c8m-iW-aaH" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="paY-nA-ryB" customClass="HomeTableViewController" customModule="PrivatePhoto" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="80" sectionHeaderHeight="22" sectionFooterHeight="22" id="d59-Al-Slb">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -55,6 +54,7 @@
                                     <outlet property="albumImageView" destination="QHE-zA-jaA" id="dS8-ra-Neq"/>
                                     <outlet property="albumNameLabel" destination="gRS-Eb-IPn" id="UAM-JD-E0t"/>
                                     <outlet property="albumPhotoNumberLabel" destination="NzF-ls-6tt" id="eMc-vt-Edr"/>
+                                    <segue destination="sC6-EF-xBB" kind="push" id="OOv-nE-0Fg"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -71,13 +71,58 @@
                         </barButtonItem>
                     </navigationItem>
                 </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="c8m-iW-aaH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1493" y="498"/>
+        </scene>
+        <!--Album Detail Collection View Controller-->
+        <scene sceneID="Hgt-uQ-zO6">
+            <objects>
+                <collectionViewController id="sC6-EF-xBB" customClass="AlbumDetailCollectionViewController" customModule="PrivatePhoto" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="W1Z-BC-klb">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="4" minimumInteritemSpacing="4" id="KPM-lM-u8S">
+                            <size key="itemSize" width="77" height="77"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PhotoCell" id="Dhb-bP-sax" customClass="AlbumDetailCollectionViewCell" customModule="PrivatePhoto" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="77" height="77"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="sample" translatesAutoresizingMaskIntoConstraints="NO" id="qP1-G2-JO7">
+                                            <rect key="frame" x="0.0" y="0.0" width="77" height="77"/>
+                                        </imageView>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                                <size key="customSize" width="77" height="77"/>
+                                <connections>
+                                    <outlet property="imageView" destination="qP1-G2-JO7" id="fOt-yA-Seu"/>
+                                </connections>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="sC6-EF-xBB" id="Eh8-nx-x5X"/>
+                            <outlet property="delegate" destination="sC6-EF-xBB" id="sS0-21-Ehd"/>
+                        </connections>
+                    </collectionView>
+                    <navigationItem key="navigationItem" id="Rqg-Z9-Rqh"/>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gjo-kP-YCE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1951" y="498"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Kke-ZA-aRG">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="kw5-e0-abe" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="tkW-nZ-Fhl" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="xNn-sA-ife">
@@ -89,6 +134,7 @@
                         <segue destination="paY-nA-ryB" kind="relationship" relationship="rootViewController" id="6SY-Ck-A9K"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kw5-e0-abe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="961" y="498"/>
         </scene>

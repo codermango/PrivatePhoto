@@ -10,7 +10,7 @@ import UIKit
 
 class HomeTableViewController: UITableViewController {
     
-    var albumCellArray: [AlbumTableViewCell] = []
+    var albumArray: [Album] = []
     
     @IBAction func addAlbum(sender: AnyObject) {
         let addAlbumAlertController = UIAlertController(title: "新相册", message: "请输入相册名称", preferredStyle: UIAlertControllerStyle.Alert)
@@ -20,10 +20,10 @@ class HomeTableViewController: UITableViewController {
         
         let cancelAction = UIAlertAction(title: "取消", style: UIAlertActionStyle.Cancel, handler: nil)
         let saveAction = UIAlertAction(title: "保存", style: UIAlertActionStyle.Default) { (action: UIAlertAction!) -> Void in
-            let cell = self.tableView.dequeueReusableCellWithIdentifier("AlbumCell") as! AlbumTableViewCell
             let newAlbumNameTextField = addAlbumAlertController.textFields?.first as! UITextField
-            cell.albumNameLabel.text = newAlbumNameTextField.text
-            self.albumCellArray.append(cell)
+            var album = Album()
+            album.name = newAlbumNameTextField.text
+            self.albumArray.append(album)
             self.tableView.reloadData()
         }
         addAlbumAlertController.addAction(cancelAction)
@@ -55,12 +55,12 @@ class HomeTableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.albumCellArray.count
+        return self.albumArray.count
     }
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = albumCellArray[indexPath.row]
+        let cell = self.tableView.dequeueReusableCellWithIdentifier("AlbumCell", forIndexPath: indexPath) as! AlbumTableViewCell
 
         return cell
     }
