@@ -63,7 +63,13 @@
                             <outlet property="delegate" destination="paY-nA-ryB" id="mWY-On-YBc"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="KCX-gR-Rct"/>
+                    <navigationItem key="navigationItem" id="KCX-gR-Rct">
+                        <barButtonItem key="leftBarButtonItem" systemItem="add" id="rfB-hv-nJR">
+                            <connections>
+                                <action selector="addAlbum:" destination="paY-nA-ryB" id="E85-HO-FqB"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
             </objects>
             <point key="canvasLocation" x="1493" y="498"/>
