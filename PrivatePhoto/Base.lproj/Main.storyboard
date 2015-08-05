@@ -54,7 +54,7 @@
                                     <outlet property="albumImageView" destination="QHE-zA-jaA" id="dS8-ra-Neq"/>
                                     <outlet property="albumNameLabel" destination="gRS-Eb-IPn" id="UAM-JD-E0t"/>
                                     <outlet property="albumPhotoNumberLabel" destination="NzF-ls-6tt" id="eMc-vt-Edr"/>
-                                    <segue destination="sC6-EF-xBB" kind="push" id="OOv-nE-0Fg"/>
+                                    <segue destination="sC6-EF-xBB" kind="push" identifier="toAlbumContent" id="OOv-nE-0Fg"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -75,10 +75,10 @@
             </objects>
             <point key="canvasLocation" x="1493" y="498"/>
         </scene>
-        <!--Album Detail Collection View Controller-->
+        <!--Album Content Collection View Controller-->
         <scene sceneID="Hgt-uQ-zO6">
             <objects>
-                <collectionViewController id="sC6-EF-xBB" customClass="AlbumDetailCollectionViewController" customModule="PrivatePhoto" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController id="sC6-EF-xBB" customClass="AlbumContentCollectionViewController" customModule="PrivatePhoto" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="W1Z-BC-klb">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

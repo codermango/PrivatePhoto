@@ -20,11 +20,20 @@ class HomeTableViewController: UITableViewController {
         
         let cancelAction = UIAlertAction(title: "取消", style: UIAlertActionStyle.Cancel, handler: nil)
         let saveAction = UIAlertAction(title: "保存", style: UIAlertActionStyle.Default) { (action: UIAlertAction!) -> Void in
+            // 点击保存之后新建一个相册，并存到albumArray中
             let newAlbumNameTextField = addAlbumAlertController.textFields?.first as! UITextField
             var album = Album()
             album.name = newAlbumNameTextField.text
             self.albumArray.append(album)
             self.tableView.reloadData()
+            
+            // 在沙盒NSHomeDirectory中的Documents文件夹中新建Albums文件夹，用于存放相册
+            let homeDirectory = NSHomeDirectory() as String // 沙盒根路径
+            let documentsDirectory = homeDirectory.stringByAppendingPathComponent("Documents") // Documents路径
+            let albumsDirectory = documentsDirectory.stringByAppendingPathComponent("Albums") // Albums文件夹
+            let fileManager = NSFileManager.defaultManager()
+            let albumDirector = albumsDirectory.stringByAppendingPathComponent(album.name)
+            fileManager.createDirectoryAtPath(albumDirector, withIntermediateDirectories: false, attributes: nil, error: nil)
         }
         addAlbumAlertController.addAction(cancelAction)
         addAlbumAlertController.addAction(saveAction)
@@ -41,6 +50,8 @@ class HomeTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        createAlbumsFolder() // 新建Albums文件夹
+        getAllAlbums() //获取所有相册，显示在首页
     }
 
     override func didReceiveMemoryWarning() {
@@ -61,6 +72,9 @@ class HomeTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = self.tableView.dequeueReusableCellWithIdentifier("AlbumCell", forIndexPath: indexPath) as! AlbumTableViewCell
+        let album = albumArray[indexPath.row]
+        cell.albumNameLabel.text = album.name
+        cell.albumPhotoNumberLabel.text = String(album.photoArray.count)
 
         return cell
     }
@@ -101,14 +115,50 @@ class HomeTableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using [segue destinationViewController].
         // Pass the selected object to the new view controller.
+        if segue.identifier == "toAlbumContent" {
+            if let indexPath = self.tableView.indexPathForSelectedRow() {
+                let destinationViewController = segue.destinationViewController as! AlbumContentCollectionViewController
+                destinationViewController.album = albumArray[indexPath.row]
+            }
+            
+        }
+        
     }
-    */
+    
+    
+    // 自定义函数
+    
+    func createAlbumsFolder() {
+        let homeDirectory = NSHomeDirectory() as String // 沙盒根路径
+        let documentsDirectory = homeDirectory.stringByAppendingPathComponent("Documents") // Documents路径
+        let albumsDirectory = documentsDirectory.stringByAppendingPathComponent("Albums") // Albums文件夹
+        let fileManager = NSFileManager.defaultManager()
+        if !fileManager.fileExistsAtPath(albumsDirectory) {
+            // Albums文件夹不存在，则新建Albums文件夹
+            fileManager.createDirectoryAtPath(albumsDirectory, withIntermediateDirectories: false, attributes: nil, error: nil)
+        }
+    }
+    
+    func getAllAlbums() {
+        let homeDirectory = NSHomeDirectory() as String // 沙盒根路径
+        let documentsDirectory = homeDirectory.stringByAppendingPathComponent("Documents") // Documents路径
+        let albumsDirectory = documentsDirectory.stringByAppendingPathComponent("Albums") // Albums文件夹
+        let fileManager = NSFileManager.defaultManager()
+
+        var albumsContent = fileManager.contentsOfDirectoryAtPath(albumsDirectory, error: nil)!
+        for name in albumsContent {
+            var album = Album()
+            album.name = name as! String
+            albumArray.append(album)
+        }
+    }
+    
 
 }

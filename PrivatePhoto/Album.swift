@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 class Album {
-    var photoArray: [UIImage]!
+    var photoArray: [UIImage] = []
     var name: String!
     
     init() {

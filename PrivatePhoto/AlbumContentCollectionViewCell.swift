@@ -8,6 +8,6 @@
 
 import UIKit
 
-class AlbumDetailCollectionViewCell: UICollectionViewCell {
+class AlbumContentCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var imageView: UIImageView!
 }

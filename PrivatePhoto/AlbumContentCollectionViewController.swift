@@ -10,7 +10,9 @@ import UIKit
 
 let reuseIdentifier = "PhotoCell"
 
-class AlbumDetailCollectionViewController: UICollectionViewController {
+class AlbumContentCollectionViewController: UICollectionViewController {
+    
+    var album: Album!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,15 +31,15 @@ class AlbumDetailCollectionViewController: UICollectionViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
-    }
-    */
+//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+//        // Get the new view controller using [segue destinationViewController].
+//        // Pass the selected object to the new view controller.
+//    }
+    
 
     // MARK: UICollectionViewDataSource
 
@@ -49,11 +51,11 @@ class AlbumDetailCollectionViewController: UICollectionViewController {
 
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         //#warning Incomplete method implementation -- Return the number of items in the section
-        return 50
+        return album.photoArray.count
     }
 
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! AlbumDetailCollectionViewCell
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! AlbumContentCollectionViewCell
     
         cell.imageView.image = UIImage(named: "sample")
     
