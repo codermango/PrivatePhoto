@@ -90,7 +90,7 @@
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PhotoCell" id="Dhb-bP-sax" customClass="AlbumDetailCollectionViewCell" customModule="PrivatePhoto" customModuleProvider="target">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PhotoCell" id="Dhb-bP-sax" customClass="AlbumContentCollectionViewCell" customModule="PrivatePhoto" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -114,7 +114,15 @@
                             <outlet property="delegate" destination="sC6-EF-xBB" id="sS0-21-Ehd"/>
                         </connections>
                     </collectionView>
+                    <toolbarItems>
+                        <barButtonItem title="添加" id="IFQ-4t-TF9">
+                            <connections>
+                                <action selector="addPhotos:" destination="sC6-EF-xBB" id="fMb-wI-RFs"/>
+                            </connections>
+                        </barButtonItem>
+                    </toolbarItems>
                     <navigationItem key="navigationItem" id="Rqg-Z9-Rqh"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gjo-kP-YCE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

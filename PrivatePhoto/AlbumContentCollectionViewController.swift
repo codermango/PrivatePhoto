@@ -10,10 +10,21 @@ import UIKit
 
 let reuseIdentifier = "PhotoCell"
 
-class AlbumContentCollectionViewController: UICollectionViewController {
+class AlbumContentCollectionViewController: UICollectionViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     var album: Album!
 
+    @IBAction func addPhotos(sender: AnyObject) {
+        if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.PhotoLibrary) {
+            let imagePickerController = UIImagePickerController()
+            imagePickerController.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
+            imagePickerController.delegate = self
+            self.presentViewController(imagePickerController, animated: true, completion: nil)
+        }
+        
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -21,14 +32,24 @@ class AlbumContentCollectionViewController: UICollectionViewController {
         // self.clearsSelectionOnViewWillAppear = false
 
         // Register cell classes
-        self.collectionView!.registerClass(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        self.collectionView!.registerClass(UICollectionViewCell.self, forCellWithReuseIdentifier: "Cell")
 
         // Do any additional setup after loading the view.
+        
+        // 提取此相册里的所有照片
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        self.navigationController?.setToolbarHidden(false, animated: true)
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        self.navigationController?.setToolbarHidden(true, animated: true)
     }
 
     
@@ -57,7 +78,7 @@ class AlbumContentCollectionViewController: UICollectionViewController {
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! AlbumContentCollectionViewCell
     
-        cell.imageView.image = UIImage(named: "sample")
+        cell.imageView.image = album.photoArray[indexPath.row]
     
         return cell
     }
@@ -92,5 +113,39 @@ class AlbumContentCollectionViewController: UICollectionViewController {
     
     }
     */
+    
+    
+    // UIImagePickerControllerDelegate
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
+        let photo = info[UIImagePickerControllerOriginalImage]! as! UIImage
+        let photoName = info[UIImagePickerControllerReferenceURL]!.absoluteString!!
+        album.photoArray.append(photo)
+        picker.dismissViewControllerAnimated(true, completion: nil)
+        self.collectionView?.reloadData()
+        
+        //把选择的图片存到文件系统Album
+        let photoPath = NSHomeDirectory().stringByAppendingPathComponent("Documents/Albums/\(album.name)/\(photoName).png")
+        
+        let aa = UIImagePNGRepresentation(photo).writeToFile(photoPath, atomically: true)
+        
+    }
+
+    
+    
+    // 自定义函数
+    func getAllPhotos() {
+        let albumDirectory = NSHomeDirectory().stringByAppendingPathComponent("Documents/Albums/\(album.name)") // Album文件夹
+        
+        let fileManager = NSFileManager.defaultManager()
+        
+        var albumContent = fileManager.contentsOfDirectoryAtPath(albumDirectory, error: nil)!
+        for name in albumContent {
+            var image: UIImage!
+            
+            
+        }
+    }
+    
+    
 
 }
