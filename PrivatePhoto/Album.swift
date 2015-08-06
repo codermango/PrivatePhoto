@@ -12,6 +12,7 @@ import UIKit
 class Album {
     var photoArray: [UIImage] = []
     var name: String!
+    var photoNumber: NSNumber!
     
     init() {
         

@@ -37,6 +37,8 @@ class AlbumContentCollectionViewController: UICollectionViewController, UIImageP
         // Do any additional setup after loading the view.
         
         // 提取此相册里的所有照片
+//        getAllPhotos()
+//        println(album.photoArray.count)
     }
 
     override func didReceiveMemoryWarning() {
@@ -78,6 +80,7 @@ class AlbumContentCollectionViewController: UICollectionViewController, UIImageP
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! AlbumContentCollectionViewCell
     
+//        println(album.photoArray.count)
         cell.imageView.image = album.photoArray[indexPath.row]
     
         return cell
@@ -118,15 +121,19 @@ class AlbumContentCollectionViewController: UICollectionViewController, UIImageP
     // UIImagePickerControllerDelegate
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
         let photo = info[UIImagePickerControllerOriginalImage]! as! UIImage
-        let photoName = info[UIImagePickerControllerReferenceURL]!.absoluteString!!
+        let nowDate = NSDate()
+        let formatter = NSDateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd-HH-mm-ss"
+        let dateString = formatter.stringFromDate(nowDate)
+        let photoName = dateString
         album.photoArray.append(photo)
         picker.dismissViewControllerAnimated(true, completion: nil)
         self.collectionView?.reloadData()
         
         //把选择的图片存到文件系统Album
         let photoPath = NSHomeDirectory().stringByAppendingPathComponent("Documents/Albums/\(album.name)/\(photoName).png")
-        
-        let aa = UIImagePNGRepresentation(photo).writeToFile(photoPath, atomically: true)
+        let pngData = UIImagePNGRepresentation(photo)
+        pngData.writeToFile(photoPath, atomically: true)
         
     }
 
@@ -140,9 +147,10 @@ class AlbumContentCollectionViewController: UICollectionViewController, UIImageP
         
         var albumContent = fileManager.contentsOfDirectoryAtPath(albumDirectory, error: nil)!
         for name in albumContent {
-            var image: UIImage!
-            
-            
+            let photoPath = albumDirectory.stringByAppendingPathComponent(name as! String)
+            let image = UIImage(contentsOfFile: photoPath)
+            album.photoArray.append(image!)
+           
         }
     }
     

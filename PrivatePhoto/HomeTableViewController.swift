@@ -52,6 +52,7 @@ class HomeTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         createAlbumsFolder() // 新建Albums文件夹
         getAllAlbums() //获取所有相册，显示在首页
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -78,7 +79,7 @@ class HomeTableViewController: UITableViewController {
         let cell = self.tableView.dequeueReusableCellWithIdentifier("AlbumCell", forIndexPath: indexPath) as! AlbumTableViewCell
         let album = albumArray[indexPath.row]
         cell.albumNameLabel.text = album.name
-        cell.albumPhotoNumberLabel.text = String(album.photoArray.count)
+        cell.albumPhotoNumberLabel.text = album.photoNumber.stringValue
 
         return cell
     }
@@ -129,7 +130,22 @@ class HomeTableViewController: UITableViewController {
         if segue.identifier == "toAlbumContent" {
             if let indexPath = self.tableView.indexPathForSelectedRow() {
                 let destinationViewController = segue.destinationViewController as! AlbumContentCollectionViewController
-                destinationViewController.album = albumArray[indexPath.row]
+                // 获取点击的相册中所有照片，存入albumArray中对应的album
+                let album = albumArray[indexPath.row]
+                album.photoArray = []
+                let albumName = album.name
+                
+                let albumDirectory = NSHomeDirectory().stringByAppendingPathComponent("Documents/Albums/\(albumName)") // Albums文件夹
+                let fileManager = NSFileManager.defaultManager()
+                let photos = fileManager.contentsOfDirectoryAtPath(albumDirectory, error: nil)!
+                
+                for photo in photos {
+                    var photoPath = albumDirectory.stringByAppendingPathComponent(photo as! String)
+                    var image = UIImage(contentsOfFile: photoPath)
+                    album.photoArray.append(image!)
+                }
+                println(album.photoArray.count)
+                destinationViewController.album = album
             }
             
         }
@@ -150,6 +166,7 @@ class HomeTableViewController: UITableViewController {
         }
     }
     
+    // 首页出现时运行
     func getAllAlbums() {
         let homeDirectory = NSHomeDirectory() as String // 沙盒根路径
         let documentsDirectory = homeDirectory.stringByAppendingPathComponent("Documents") // Documents路径
@@ -157,9 +174,13 @@ class HomeTableViewController: UITableViewController {
         let fileManager = NSFileManager.defaultManager()
 
         var albumsContent = fileManager.contentsOfDirectoryAtPath(albumsDirectory, error: nil)!
-        for name in albumsContent {
+        for albumName in albumsContent {
+            var albumPath = albumsDirectory.stringByAppendingPathComponent(albumName as! String)
+            var content = fileManager.contentsOfDirectoryAtPath(albumPath, error: nil)!
+            var photoNumber = content.count
             var album = Album()
-            album.name = name as! String
+            album.name = albumName as! String
+            album.photoNumber = photoNumber
             albumArray.append(album)
         }
     }
