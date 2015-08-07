@@ -131,7 +131,7 @@ class AlbumContentCollectionViewController: UICollectionViewController, UIImageP
         self.collectionView?.reloadData()
         
         //把选择的图片存到文件系统Album
-        let photoPath = NSHomeDirectory().stringByAppendingPathComponent("Documents/Albums/\(album.name)/\(photoName).png")
+        let photoPath = NSHomeDirectory().stringByAppendingPathComponent("Documents/Albums/\(album.photoName)/\(photoName).png")
         let pngData = UIImagePNGRepresentation(photo)
         pngData.writeToFile(photoPath, atomically: true)
         
@@ -141,7 +141,7 @@ class AlbumContentCollectionViewController: UICollectionViewController, UIImageP
     
     // 自定义函数
     func getAllPhotos() {
-        let albumDirectory = NSHomeDirectory().stringByAppendingPathComponent("Documents/Albums/\(album.name)") // Album文件夹
+        let albumDirectory = NSHomeDirectory().stringByAppendingPathComponent("Documents/Albums/\(album.photoName)") // Album文件夹
         
         let fileManager = NSFileManager.defaultManager()
         

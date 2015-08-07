@@ -10,11 +10,13 @@ import Foundation
 import UIKit
 
 class Album {
-    var photoArray: [UIImage] = []
-    var name: String!
-    var photoNumber: NSNumber!
+    var photoArray: [UIImage]!
+    var photoName: String!
+//    var photoNumber: NSNumber!
     
-    init() {
-        
+    init(name: String, photos: [UIImage]) {
+        self.photoName = name
+        self.photoArray = photos
     }
+    
 }

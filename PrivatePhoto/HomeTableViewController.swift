@@ -10,7 +10,13 @@ import UIKit
 
 class HomeTableViewController: UITableViewController {
     
-    var albumArray: [Album] = []
+    struct AlbumForShow {
+        var name: String!
+        var number: Int!
+        var picture: UIImage!
+    }
+    
+    var albumForShowArray: [AlbumForShow] = []
     
     @IBAction func addAlbum(sender: AnyObject) {
         let addAlbumAlertController = UIAlertController(title: "新相册", message: "请输入相册名称", preferredStyle: UIAlertControllerStyle.Alert)
@@ -22,18 +28,15 @@ class HomeTableViewController: UITableViewController {
         let saveAction = UIAlertAction(title: "保存", style: UIAlertActionStyle.Default) { (action: UIAlertAction!) -> Void in
             // 点击保存之后新建一个相册，并存到albumArray中
             let newAlbumNameTextField = addAlbumAlertController.textFields?.first as! UITextField
-            var album = Album()
-            album.name = newAlbumNameTextField.text
-            self.albumArray.append(album)
+            var albumForShow = AlbumForShow()
+            albumForShow.name = newAlbumNameTextField.text
+            self.albumForShowArray.append(albumForShow)
             self.tableView.reloadData()
             
-            // 在沙盒NSHomeDirectory中的Documents文件夹中新建Albums文件夹，用于存放相册
-            let homeDirectory = NSHomeDirectory() as String // 沙盒根路径
-            let documentsDirectory = homeDirectory.stringByAppendingPathComponent("Documents") // Documents路径
-            let albumsDirectory = documentsDirectory.stringByAppendingPathComponent("Albums") // Albums文件夹
+            // 在沙盒NSHomeDirectory中的Documents文件夹中新建用户新建的文件夹
+            let albumPath = NSHomeDirectory().stringByAppendingPathComponent("Documents/Albums/\(albumForShow.name)")
             let fileManager = NSFileManager.defaultManager()
-            let albumDirector = albumsDirectory.stringByAppendingPathComponent(album.name)
-            fileManager.createDirectoryAtPath(albumDirector, withIntermediateDirectories: false, attributes: nil, error: nil)
+            fileManager.createDirectoryAtPath(albumPath, withIntermediateDirectories: false, attributes: nil, error: nil)
         }
         addAlbumAlertController.addAction(cancelAction)
         addAlbumAlertController.addAction(saveAction)
@@ -71,15 +74,15 @@ class HomeTableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.albumArray.count
+        return self.albumForShowArray.count
     }
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = self.tableView.dequeueReusableCellWithIdentifier("AlbumCell", forIndexPath: indexPath) as! AlbumTableViewCell
-        let album = albumArray[indexPath.row]
-        cell.albumNameLabel.text = album.name
-        cell.albumPhotoNumberLabel.text = album.photoNumber.stringValue
+        let albumForShow = albumForShowArray[indexPath.row]
+        cell.albumNameLabel.text = albumForShow.name
+        cell.albumPhotoNumberLabel.text = String(albumForShow.number)
 
         return cell
     }
@@ -131,20 +134,23 @@ class HomeTableViewController: UITableViewController {
             if let indexPath = self.tableView.indexPathForSelectedRow() {
                 let destinationViewController = segue.destinationViewController as! AlbumContentCollectionViewController
                 // 获取点击的相册中所有照片，存入albumArray中对应的album
-                let album = albumArray[indexPath.row]
-                album.photoArray = []
-                let albumName = album.name
+                let albumForShow = albumForShowArray[indexPath.row]
                 
-                let albumDirectory = NSHomeDirectory().stringByAppendingPathComponent("Documents/Albums/\(albumName)") // Albums文件夹
+                let albumName = albumForShow.name
+                var albumPhotos: [UIImage] = []
+                
+                let albumPath = NSHomeDirectory().stringByAppendingPathComponent("Documents/Albums/\(albumName)")
                 let fileManager = NSFileManager.defaultManager()
-                let photos = fileManager.contentsOfDirectoryAtPath(albumDirectory, error: nil)!
+                let photos = fileManager.contentsOfDirectoryAtPath(albumPath, error: nil)!
                 
                 for photo in photos {
-                    var photoPath = albumDirectory.stringByAppendingPathComponent(photo as! String)
+                    var photoPath = albumPath.stringByAppendingPathComponent(photo as! String)
                     var image = UIImage(contentsOfFile: photoPath)
-                    album.photoArray.append(image!)
+                    if (image != nil) {
+                        albumPhotos.append(image!)
+                    }
                 }
-                println(album.photoArray.count)
+                let album = Album(name: albumName, photos: albumPhotos)
                 destinationViewController.album = album
             }
             
@@ -156,9 +162,7 @@ class HomeTableViewController: UITableViewController {
     // 自定义函数
     
     func createAlbumsFolder() {
-        let homeDirectory = NSHomeDirectory() as String // 沙盒根路径
-        let documentsDirectory = homeDirectory.stringByAppendingPathComponent("Documents") // Documents路径
-        let albumsDirectory = documentsDirectory.stringByAppendingPathComponent("Albums") // Albums文件夹
+        let albumsDirectory = NSHomeDirectory().stringByAppendingPathComponent("Documents/Albums") // Albums文件夹
         let fileManager = NSFileManager.defaultManager()
         if !fileManager.fileExistsAtPath(albumsDirectory) {
             // Albums文件夹不存在，则新建Albums文件夹
@@ -168,20 +172,18 @@ class HomeTableViewController: UITableViewController {
     
     // 首页出现时运行
     func getAllAlbums() {
-        let homeDirectory = NSHomeDirectory() as String // 沙盒根路径
-        let documentsDirectory = homeDirectory.stringByAppendingPathComponent("Documents") // Documents路径
-        let albumsDirectory = documentsDirectory.stringByAppendingPathComponent("Albums") // Albums文件夹
+        let albumsDirectory = NSHomeDirectory().stringByAppendingPathComponent("Documents/Albums") // Albums文件夹
         let fileManager = NSFileManager.defaultManager()
-
-        var albumsContent = fileManager.contentsOfDirectoryAtPath(albumsDirectory, error: nil)!
+        let albumsContent = fileManager.contentsOfDirectoryAtPath(albumsDirectory, error: nil)!
+        
         for albumName in albumsContent {
             var albumPath = albumsDirectory.stringByAppendingPathComponent(albumName as! String)
             var content = fileManager.contentsOfDirectoryAtPath(albumPath, error: nil)!
             var photoNumber = content.count
-            var album = Album()
-            album.name = albumName as! String
-            album.photoNumber = photoNumber
-            albumArray.append(album)
+            var albumForShow = AlbumForShow()
+            albumForShow.name = albumName as! String
+            albumForShow.number = photoNumber
+            albumForShowArray.append(albumForShow)
         }
     }
     
