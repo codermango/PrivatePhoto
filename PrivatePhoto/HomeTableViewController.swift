@@ -53,6 +53,7 @@ class HomeTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        
         createAlbumsFolder() // 新建Albums文件夹
         getAllAlbums() //获取所有相册，显示在首页
 
@@ -64,7 +65,7 @@ class HomeTableViewController: UITableViewController {
     }
     
     override func viewWillAppear(animated: Bool) {
-        self.tableView.reloadData()
+        super.viewWillAppear(animated)
     }
 
     // MARK: - Table view data source
