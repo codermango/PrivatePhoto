@@ -8,7 +8,7 @@
 
 import UIKit
 
-class HomeTableViewController: UITableViewController {
+class HomeTableViewController: UITableViewController, UpdatePhotoNumberDelegate {
     
     struct AlbumForShow {
         var name: String!
@@ -66,6 +66,7 @@ class HomeTableViewController: UITableViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        self.tableView.reloadData()
     }
 
     // MARK: - Table view data source
@@ -153,6 +154,8 @@ class HomeTableViewController: UITableViewController {
                 }
                 let album = Album(name: albumName, photos: albumPhotos)
                 destinationViewController.album = album
+                destinationViewController.albumIndex = indexPath.row
+                destinationViewController.delegate = self
             }
             
         }
@@ -187,6 +190,11 @@ class HomeTableViewController: UITableViewController {
             albumForShowArray.append(albumForShow)
         }
     }
+    
+    func updatePhotoNumber(number: Int, index: Int) {
+        self.albumForShowArray[index].number = number
+    }
+
     
 
 }

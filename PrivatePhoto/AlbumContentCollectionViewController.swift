@@ -10,9 +10,15 @@ import UIKit
 
 let reuseIdentifier = "PhotoCell"
 
+protocol UpdatePhotoNumberDelegate {
+    func updatePhotoNumber(number: Int, index: Int)
+}
+
 class AlbumContentCollectionViewController: UICollectionViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     var album: Album!
+    var albumIndex: Int!
+    var delegate: UpdatePhotoNumberDelegate!
 
     @IBAction func addPhotos(sender: AnyObject) {
         if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.PhotoLibrary) {
@@ -35,10 +41,6 @@ class AlbumContentCollectionViewController: UICollectionViewController, UIImageP
         self.collectionView!.registerClass(UICollectionViewCell.self, forCellWithReuseIdentifier: "Cell")
 
         // Do any additional setup after loading the view.
-        
-        // 提取此相册里的所有照片
-//        getAllPhotos()
-//        println(album.photoArray.count)
     }
 
     override func didReceiveMemoryWarning() {
@@ -134,7 +136,7 @@ class AlbumContentCollectionViewController: UICollectionViewController, UIImageP
         let photoPath = NSHomeDirectory().stringByAppendingPathComponent("Documents/Albums/\(album.photoName)/\(photoName).png")
         let pngData = UIImagePNGRepresentation(photo)
         pngData.writeToFile(photoPath, atomically: true)
-        
+        self.delegate.updatePhotoNumber(album.photoArray.count, index: albumIndex)
     }
 
     
