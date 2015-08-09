@@ -30,6 +30,10 @@ class AlbumContentCollectionViewController: UICollectionViewController, UIImageP
         
     }
     
+    @IBAction func backToAlbumContentCollectionView(segue: UIStoryboardSegue) {
+        
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()

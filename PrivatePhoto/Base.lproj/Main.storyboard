@@ -106,7 +106,7 @@
                                 <size key="customSize" width="77" height="77"/>
                                 <connections>
                                     <outlet property="imageView" destination="qP1-G2-JO7" id="fOt-yA-Seu"/>
-                                    <segue destination="CB6-l0-7Ik" kind="push" id="1Ul-xI-tBG"/>
+                                    <segue destination="Pgd-Td-4IQ" kind="modal" modalPresentationStyle="currentContext" modalTransitionStyle="crossDissolve" id="1Ul-xI-tBG"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -152,11 +152,18 @@
                             <outlet property="delegate" destination="CB6-l0-7Ik" id="ZuA-RG-gZw"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="4IC-Je-Puy"/>
+                    <navigationItem key="navigationItem" id="k3Z-ao-uga">
+                        <barButtonItem key="leftBarButtonItem" systemItem="stop" id="Ima-bc-Wei">
+                            <connections>
+                                <segue destination="JSw-qW-eew" kind="unwind" unwindAction="backToAlbumContentCollectionView:" id="5oa-on-9zI"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aCJ-9E-KnT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="JSw-qW-eew" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2408" y="498"/>
+            <point key="canvasLocation" x="2940" y="498"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Kke-ZA-aRG">
@@ -175,6 +182,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kw5-e0-abe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="961" y="498"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="ODl-HN-0Ga">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Pgd-Td-4IQ" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Zcj-3P-4ak">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="CB6-l0-7Ik" kind="relationship" relationship="rootViewController" id="JIS-5F-Moq"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7Ab-yB-qLl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2408" y="498"/>
         </scene>
     </scenes>
     <resources>
