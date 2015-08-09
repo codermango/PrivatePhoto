@@ -41,6 +41,8 @@ class AlbumContentCollectionViewController: UICollectionViewController, UIImageP
         self.collectionView!.registerClass(UICollectionViewCell.self, forCellWithReuseIdentifier: "Cell")
 
         // Do any additional setup after loading the view.
+        // 给导航栏添加title
+        self.navigationItem.title = album.photoName
     }
 
     override func didReceiveMemoryWarning() {
