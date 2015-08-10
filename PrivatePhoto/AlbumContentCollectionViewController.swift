@@ -66,10 +66,15 @@ class AlbumContentCollectionViewController: UICollectionViewController, UIImageP
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-//        // Get the new view controller using [segue destinationViewController].
-//        // Pass the selected object to the new view controller.
-//    }
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "toPhotoView" {
+            if let indexPaths = self.collectionView?.indexPathsForSelectedItems() {
+                let nav = segue.destinationViewController as! UINavigationController
+                let destinationViewController = nav.topViewController as! PhotoViewController
+                destinationViewController.photoImage = album.photoArray[indexPaths[0].row]
+            }
+        }
+    }
     
 
     // MARK: UICollectionViewDataSource
