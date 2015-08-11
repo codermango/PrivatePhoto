@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="tkW-nZ-Fhl">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="J9X-Oy-pUh">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -73,12 +73,12 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c8m-iW-aaH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1493" y="498"/>
+            <point key="canvasLocation" x="2025" y="498"/>
         </scene>
         <!--Album Content Collection View Controller-->
         <scene sceneID="Hgt-uQ-zO6">
             <objects>
-                <collectionViewController id="sC6-EF-xBB" customClass="AlbumContentCollectionViewController" customModule="PrivatePhoto" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController hidesBottomBarWhenPushed="YES" id="sC6-EF-xBB" customClass="AlbumContentCollectionViewController" customModule="PrivatePhoto" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="W1Z-BC-klb">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -129,7 +129,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gjo-kP-YCE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1951" y="498"/>
+            <point key="canvasLocation" x="2483" y="498"/>
         </scene>
         <!--Photo View Controller-->
         <scene sceneID="yIj-Id-Yjb">
@@ -167,12 +167,13 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="2790" y="498"/>
+            <point key="canvasLocation" x="3322" y="498"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--相册-->
         <scene sceneID="Kke-ZA-aRG">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="tkW-nZ-Fhl" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="相册" id="Z4I-6T-bMv"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="xNn-sA-ife">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -185,7 +186,60 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kw5-e0-abe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="961" y="498"/>
+            <point key="canvasLocation" x="1493" y="498"/>
+        </scene>
+        <!--设置-->
+        <scene sceneID="sFs-Xb-Tgn">
+            <objects>
+                <tableViewController id="Lzv-1u-A8q" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="5lT-bb-0Cs">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <sections>
+                            <tableViewSection headerTitle="安全" id="eHm-Px-GT7">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationLevel="1" indentationWidth="10" textLabel="7qD-3M-c2U" style="IBUITableViewCellStyleDefault" id="zD9-hD-5Li">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zD9-hD-5Li" id="WQ4-DO-a1j">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="设置密码" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="7qD-3M-c2U">
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationLevel="1" indentationWidth="10" textLabel="ARR-AJ-jvX" style="IBUITableViewCellStyleDefault" id="Uaf-Ps-46U">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Uaf-Ps-46U" id="oLg-5w-ylc">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="禁用密码" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ARR-AJ-jvX">
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="Lzv-1u-A8q" id="qnU-0b-oky"/>
+                            <outlet property="delegate" destination="Lzv-1u-A8q" id="c6n-RJ-7Ia"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="设置" id="x7M-70-cl5"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ppg-oH-J2M" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2025" y="1260"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Okr-am-TVN">
@@ -203,7 +257,45 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lfn-J2-21x" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2367" y="498"/>
+            <point key="canvasLocation" x="2899" y="498"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="a9u-rW-ezX">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="J9X-Oy-pUh" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="5l2-Nb-trE">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="tkW-nZ-Fhl" kind="relationship" relationship="viewControllers" id="Acp-ya-zyW"/>
+                        <segue destination="pW5-Su-LtX" kind="relationship" relationship="viewControllers" id="DBz-Mc-vEC"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dwZ-a2-P6O" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="947" y="872"/>
+        </scene>
+        <!--设置-->
+        <scene sceneID="HNU-bj-2Qf">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="pW5-Su-LtX" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="设置" id="ZsA-mJ-IX2"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ltH-sL-Eys">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Lzv-1u-A8q" kind="relationship" relationship="rootViewController" id="uGj-Mz-Ld4"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2GZ-OC-6QM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1493" y="1260"/>
         </scene>
     </scenes>
     <resources>
