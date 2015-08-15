@@ -12,6 +12,9 @@ class PhotoViewController: UIViewController, UIGestureRecognizerDelegate {
     
     var isNavigationAndToolBarHidden = false
     var photoImage: UIImage!
+    var photoIndex: Int!
+
+    
     @IBOutlet weak var photoImageView: UIImageView!
     
     @IBAction func handleTapPhotoView(sender: AnyObject) {
@@ -36,6 +39,7 @@ class PhotoViewController: UIViewController, UIGestureRecognizerDelegate {
         
         self.navigationController?.setToolbarHidden(false, animated: true)
         self.view.backgroundColor = UIColor.whiteColor()
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -53,5 +57,24 @@ class PhotoViewController: UIViewController, UIGestureRecognizerDelegate {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    
+
+    
+    // 自定义函数
+    
+//    func generateAllPhotoViewControllers() -> [PhotoViewController] {
+//        var photoViewControllers: [PhotoViewController] = []
+//        
+//        for photoImage in album.photoArray {
+//            var vc = self.storyboard?.instantiateViewControllerWithIdentifier("PhotoViewController") as! PhotoViewController
+//            vc.photoImage = photoImage
+//            photoViewControllers.append(vc)
+//        }
+//        
+//        return photoViewControllers
+//    }
+    
+
 
 }

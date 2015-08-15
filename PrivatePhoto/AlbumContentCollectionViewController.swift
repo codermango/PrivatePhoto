@@ -19,6 +19,8 @@ class AlbumContentCollectionViewController: UICollectionViewController, UIImageP
     var album: Album!
     var albumIndex: Int!
     var delegate: UpdatePhotoNumberDelegate!
+    
+    var pageViewController: UIPageViewController!
 
     @IBAction func addPhotos(sender: AnyObject) {
         if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.PhotoLibrary) {
@@ -47,6 +49,11 @@ class AlbumContentCollectionViewController: UICollectionViewController, UIImageP
         // Do any additional setup after loading the view.
         // 给导航栏添加title
         self.navigationItem.title = album.photoName
+        
+        
+        
+        
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -65,13 +72,13 @@ class AlbumContentCollectionViewController: UICollectionViewController, UIImageP
     
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "toPhotoView" {
+        if segue.identifier == "toPhotoPage" {
             if let indexPaths = self.collectionView?.indexPathsForSelectedItems() {
                 let nav = segue.destinationViewController as! UINavigationController
-                let destinationViewController = nav.topViewController as! PhotoViewController
-                destinationViewController.photoImage = album.photoArray[indexPaths[0].row]
+                let destinationViewController = nav.topViewController as! PhotoPageViewController
+                destinationViewController.photoIndex = indexPaths[0].row
+                destinationViewController.albumPhotos = album.photoArray
             }
         }
     }
@@ -80,20 +87,17 @@ class AlbumContentCollectionViewController: UICollectionViewController, UIImageP
     // MARK: UICollectionViewDataSource
 
     override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
-        //#warning Incomplete method implementation -- Return the number of sections
         return 1
     }
 
 
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        //#warning Incomplete method implementation -- Return the number of items in the section
         return album.photoArray.count
     }
 
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! AlbumContentCollectionViewCell
     
-//        println(album.photoArray.count)
         cell.imageView.image = album.photoArray[indexPath.row]
     
         return cell
@@ -120,22 +124,40 @@ class AlbumContentCollectionViewController: UICollectionViewController, UIImageP
     }
 
     
+
     
-    // 自定义函数
-    func getAllPhotos() {
-        let albumDirectory = NSHomeDirectory().stringByAppendingPathComponent("Documents/Albums/\(album.photoName)") // Album文件夹
-        
-        let fileManager = NSFileManager.defaultManager()
-        
-        var albumContent = fileManager.contentsOfDirectoryAtPath(albumDirectory, error: nil)!
-        for name in albumContent {
-            let photoPath = albumDirectory.stringByAppendingPathComponent(name as! String)
-            let image = UIImage(contentsOfFile: photoPath)
-            album.photoArray.append(image!)
-           
-        }
-    }
+    
+//    // 自定义函数
+//    func getAllPhotos() {
+//        let albumDirectory = NSHomeDirectory().stringByAppendingPathComponent("Documents/Albums/\(album.photoName)") // Album文件夹
+//        
+//        let fileManager = NSFileManager.defaultManager()
+//        
+//        var albumContent = fileManager.contentsOfDirectoryAtPath(albumDirectory, error: nil)!
+//        for name in albumContent {
+//            let photoPath = albumDirectory.stringByAppendingPathComponent(name as! String)
+//            let image = UIImage(contentsOfFile: photoPath)
+//            album.photoArray.append(image!)
+//           
+//        }
+//    }
+    
+
     
     
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
