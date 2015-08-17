@@ -14,8 +14,8 @@ class PhotoViewController: UIViewController, UIGestureRecognizerDelegate {
     var photoImage: UIImage!
     var photoIndex: Int!
 
-    
     @IBOutlet weak var photoImageView: UIImageView!
+    
     
     @IBAction func handleTapPhotoView(sender: AnyObject) {
         if isNavigationAndToolBarHidden {
@@ -29,7 +29,9 @@ class PhotoViewController: UIViewController, UIGestureRecognizerDelegate {
         }
         isNavigationAndToolBarHidden = !isNavigationAndToolBarHidden
         
+
     }
+
 
     override func viewDidLoad() {
         super.viewDidLoad()

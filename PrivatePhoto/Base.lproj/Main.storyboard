@@ -73,7 +73,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c8m-iW-aaH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2025" y="498"/>
+            <point key="canvasLocation" x="1993" y="-2510"/>
         </scene>
         <!--Album Content Collection View Controller-->
         <scene sceneID="Hgt-uQ-zO6">
@@ -106,7 +106,7 @@
                                 <size key="customSize" width="77" height="77"/>
                                 <connections>
                                     <outlet property="imageView" destination="qP1-G2-JO7" id="fOt-yA-Seu"/>
-                                    <segue destination="9Nw-m7-xrS" kind="modal" identifier="toPhotoPage" id="shz-od-6cL"/>
+                                    <segue destination="9Nw-m7-xrS" kind="modal" identifier="toPhotoPage" modalTransitionStyle="crossDissolve" id="shz-od-6cL"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -129,44 +129,71 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gjo-kP-YCE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2483" y="498"/>
+            <point key="canvasLocation" x="2451" y="-2510"/>
         </scene>
-        <!--Photo View Controller-->
+        <!--View Controller-->
         <scene sceneID="yIj-Id-Yjb">
             <objects>
-                <viewController storyboardIdentifier="PhotoViewController" id="VX8-5C-zP1" customClass="PhotoViewController" customModule="PrivatePhoto" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="VX8-5C-zP1" sceneMemberID="viewController">
                     <imageView key="view" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="Mjg-Jr-5sy">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <gestureRecognizers/>
-                        <connections>
-                            <outletCollection property="gestureRecognizers" destination="P9u-4s-cQ1" appends="YES" id="UvD-vY-zos"/>
-                        </connections>
                     </imageView>
-                    <toolbarItems>
-                        <barButtonItem style="plain" systemItem="flexibleSpace" id="RHT-Y7-oWI"/>
-                        <barButtonItem systemItem="trash" id="K3J-Ej-et5"/>
-                    </toolbarItems>
-                    <navigationItem key="navigationItem" id="scG-0v-WAl">
-                        <barButtonItem key="leftBarButtonItem" systemItem="stop" id="lrl-fS-6bO">
-                            <connections>
-                                <segue destination="gkC-4a-mpH" kind="unwind" unwindAction="backToAlbumContentCollectionView:" id="6yK-Mt-ty9"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <toolbarItems/>
                     <connections>
                         <outlet property="photoImageView" destination="Mjg-Jr-5sy" id="j3V-WK-2aD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vKJ-7F-QlW" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="gkC-4a-mpH" userLabel="Exit" sceneMemberID="exit"/>
                 <tapGestureRecognizer id="P9u-4s-cQ1">
                     <connections>
                         <action selector="handleTapPhotoView:" destination="VX8-5C-zP1" id="4fS-WK-6cW"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="3689" y="498"/>
+            <point key="canvasLocation" x="3657" y="-2481"/>
+        </scene>
+        <!--Photo View Controller-->
+        <scene sceneID="D97-eE-WzO">
+            <objects>
+                <viewController storyboardIdentifier="PhotoViewController" id="qRw-f8-xwS" customClass="PhotoViewController" customModule="PrivatePhoto" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="jbK-6h-sM9"/>
+                        <viewControllerLayoutGuide type="bottom" id="E25-Qm-vUm"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="5Tp-Ud-kCP">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="T7A-F6-mlK">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="6dN-3i-TEB" appends="YES" id="dxW-kH-jDb"/>
+                                </connections>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="T7A-F6-mlK" firstAttribute="top" secondItem="5Tp-Ud-kCP" secondAttribute="top" id="1h6-6w-wGE"/>
+                            <constraint firstItem="T7A-F6-mlK" firstAttribute="leading" secondItem="5Tp-Ud-kCP" secondAttribute="leading" id="Clh-0w-GZz"/>
+                            <constraint firstItem="E25-Qm-vUm" firstAttribute="top" secondItem="T7A-F6-mlK" secondAttribute="bottom" id="DAa-zU-cwM"/>
+                            <constraint firstAttribute="trailing" secondItem="T7A-F6-mlK" secondAttribute="trailing" id="Ll7-od-FP9"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="photoImageView" destination="T7A-F6-mlK" id="Bxd-b2-TqG"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="96F-pG-vU3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="6dN-3i-TEB">
+                    <connections>
+                        <action selector="handleTapPhotoView:" destination="qRw-f8-xwS" id="1UJ-Nv-DOu"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="3660" y="-1873"/>
         </scene>
         <!--相册-->
         <scene sceneID="Kke-ZA-aRG">
@@ -185,7 +212,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kw5-e0-abe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1493" y="498"/>
+            <point key="canvasLocation" x="1461" y="-2510"/>
         </scene>
         <!--设置-->
         <scene sceneID="sFs-Xb-Tgn">
@@ -238,7 +265,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ppg-oH-J2M" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2025" y="1260"/>
+            <point key="canvasLocation" x="1993" y="-1748"/>
         </scene>
         <!--Photo Page View Controller-->
         <scene sceneID="ng8-8Q-iHG">
@@ -260,7 +287,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cJD-V5-YnP" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="BPv-zi-bp2" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="3300" y="498"/>
+            <point key="canvasLocation" x="3268" y="-2510"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="a9u-rW-ezX">
@@ -279,7 +306,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dwZ-a2-P6O" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="947" y="872"/>
+            <point key="canvasLocation" x="915" y="-2136"/>
         </scene>
         <!--设置-->
         <scene sceneID="HNU-bj-2Qf">
@@ -298,7 +325,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2GZ-OC-6QM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1493" y="1260"/>
+            <point key="canvasLocation" x="1461" y="-1748"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="s6X-GJ-mwf">
@@ -316,7 +343,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iwz-AL-t8X" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2891" y="498"/>
+            <point key="canvasLocation" x="2859" y="-2510"/>
         </scene>
     </scenes>
     <resources>
