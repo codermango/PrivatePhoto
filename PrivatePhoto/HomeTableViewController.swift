@@ -12,7 +12,7 @@ class HomeTableViewController: UITableViewController, UpdatePhotoNumberDelegate 
     
     struct AlbumForShow {
         var name: String!
-        var number: Int!
+        var number: Int = 0
         var picture: UIImage!
     }
     
@@ -20,7 +20,7 @@ class HomeTableViewController: UITableViewController, UpdatePhotoNumberDelegate 
     
     @IBAction func addAlbum(sender: AnyObject) {
         let addAlbumAlertController = UIAlertController(title: "新相册", message: "请输入相册名称", preferredStyle: UIAlertControllerStyle.Alert)
-        addAlbumAlertController.addTextFieldWithConfigurationHandler { (textField: UITextField!) -> Void in
+            addAlbumAlertController.addTextFieldWithConfigurationHandler { (textField: UITextField!) -> Void in
             textField.placeholder = "相册名"
         }
         
@@ -31,12 +31,12 @@ class HomeTableViewController: UITableViewController, UpdatePhotoNumberDelegate 
             var albumForShow = AlbumForShow()
             albumForShow.name = newAlbumNameTextField.text
             self.albumForShowArray.append(albumForShow)
-            self.tableView.reloadData()
             
             // 在沙盒NSHomeDirectory中的Documents文件夹中新建用户新建的文件夹
             let albumPath = NSHomeDirectory().stringByAppendingPathComponent("Documents/Albums/\(albumForShow.name)")
             let fileManager = NSFileManager.defaultManager()
             fileManager.createDirectoryAtPath(albumPath, withIntermediateDirectories: false, attributes: nil, error: nil)
+            self.tableView.reloadData()
         }
         addAlbumAlertController.addAction(cancelAction)
         addAlbumAlertController.addAction(saveAction)
@@ -98,17 +98,32 @@ class HomeTableViewController: UITableViewController, UpdatePhotoNumberDelegate 
     }
     */
 
-    /*
+    
     // Override to support editing the table view.
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+            // 弹出对话框询问是否删除
+            let confirmAlertController = UIAlertController(title: "", message: "删除相册后相册内所有照片将要被删除！", preferredStyle: UIAlertControllerStyle.Alert)
+            let okAction = UIAlertAction(title: "确定", style: UIAlertActionStyle.Default, handler: { (action: UIAlertAction!) -> Void in
+                // 删除该相册内所有照片
+                let albumsDirectory = NSHomeDirectory().stringByAppendingPathComponent("Documents/Albums")
+                let fileManager = NSFileManager.defaultManager()
+                let albumName = fileManager.contentsOfDirectoryAtPath(albumsDirectory, error: nil)![indexPath.row] as! String
+                let albumPath = albumsDirectory.stringByAppendingPathComponent(albumName)
+                fileManager.removeItemAtPath(albumPath, error: nil)
+                
+                
+                self.albumForShowArray.removeAtIndex(indexPath.row)
+                tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+            })
+            let cancelAction = UIAlertAction(title: "取消", style: UIAlertActionStyle.Cancel, handler: nil)
+            confirmAlertController.addAction(okAction)
+            confirmAlertController.addAction(cancelAction)
+            self.presentViewController(confirmAlertController, animated: true, completion: nil)
+            
+        }
     }
-    */
+
 
     /*
     // Override to support rearranging the table view.
@@ -173,6 +188,7 @@ class HomeTableViewController: UITableViewController, UpdatePhotoNumberDelegate 
             fileManager.createDirectoryAtPath(albumsDirectory, withIntermediateDirectories: false, attributes: nil, error: nil)
         }
     }
+
     
     // 首页出现时运行
     func getAllAlbums() {
