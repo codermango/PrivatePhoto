@@ -21,10 +21,16 @@ class PhotoPageViewController: UIPageViewController, UIPageViewControllerDataSou
         
         // 尝试开始使用UIPageViewController
         var currentVC = viewControllerAtIndex(photoIndex) as UIViewController
+        
+//        var imageView = UIImageView(frame: self.view.frame)
+//        imageView.image = albumPhotos[photoIndex]
+//        currentVC.view.addSubview(imageView)
+        
         var viewControllers = [currentVC]
         self.dataSource = self
         self.setViewControllers(viewControllers, direction: UIPageViewControllerNavigationDirection.Forward, animated: true, completion: nil)
-        self.view.frame = CGRectMake(0, 30, self.view.frame.width, self.view.frame.size.height - 60)
+        
+        self.view.frame = CGRectMake(0, 0, self.view.frame.width, self.view.frame.size.height)
         self.didMoveToParentViewController(self)
 
     }

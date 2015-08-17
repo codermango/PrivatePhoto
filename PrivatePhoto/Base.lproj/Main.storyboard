@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="J9X-Oy-pUh">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--相册-->
@@ -19,36 +18,22 @@
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2pF-c1-Nmw" id="7WL-5y-LN0">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sample" translatesAutoresizingMaskIntoConstraints="NO" id="QHE-zA-jaA">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="sample" translatesAutoresizingMaskIntoConstraints="NO" id="QHE-zA-jaA">
                                             <rect key="frame" x="5" y="5" width="70" height="70"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="70" id="KfH-TM-n8P"/>
-                                                <constraint firstAttribute="width" constant="70" id="elB-gg-FNw"/>
-                                            </constraints>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Instagram" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gRS-Eb-IPn">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Instagram" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gRS-Eb-IPn">
                                             <rect key="frame" x="83" y="13" width="183" height="24"/>
                                             <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1024" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NzF-ls-6tt">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="1024" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NzF-ls-6tt">
                                             <rect key="frame" x="83" y="38" width="183" height="17"/>
                                             <fontDescription key="fontDescription" name="AvenirNextCondensed-Regular" family="Avenir Next Condensed" pointSize="12"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
-                                    <constraints>
-                                        <constraint firstItem="NzF-ls-6tt" firstAttribute="top" secondItem="gRS-Eb-IPn" secondAttribute="bottom" constant="1" id="0LH-Db-pYm"/>
-                                        <constraint firstItem="gRS-Eb-IPn" firstAttribute="top" secondItem="7WL-5y-LN0" secondAttribute="topMargin" constant="5" id="6Ok-Sw-h04"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="NzF-ls-6tt" secondAttribute="trailing" constant="13" id="BCs-nq-XF9"/>
-                                        <constraint firstItem="NzF-ls-6tt" firstAttribute="leading" secondItem="QHE-zA-jaA" secondAttribute="trailing" constant="8" id="S7j-QX-gr3"/>
-                                        <constraint firstItem="QHE-zA-jaA" firstAttribute="top" secondItem="7WL-5y-LN0" secondAttribute="topMargin" constant="-3" id="Yve-hW-bA9"/>
-                                        <constraint firstItem="gRS-Eb-IPn" firstAttribute="leading" secondItem="QHE-zA-jaA" secondAttribute="trailing" constant="8" id="p4F-7E-qqZ"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="gRS-Eb-IPn" secondAttribute="trailing" constant="13" id="pg6-pJ-ait"/>
-                                        <constraint firstItem="QHE-zA-jaA" firstAttribute="leading" secondItem="7WL-5y-LN0" secondAttribute="leadingMargin" constant="-3" id="v3F-H3-hob"/>
-                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="albumImageView" destination="QHE-zA-jaA" id="dS8-ra-Neq"/>
@@ -106,7 +91,7 @@
                                 <size key="customSize" width="77" height="77"/>
                                 <connections>
                                     <outlet property="imageView" destination="qP1-G2-JO7" id="fOt-yA-Seu"/>
-                                    <segue destination="9Nw-m7-xrS" kind="modal" identifier="toPhotoPage" modalTransitionStyle="crossDissolve" id="shz-od-6cL"/>
+                                    <segue destination="hPL-99-efS" kind="modal" identifier="toPhotoPage" id="zZD-Cl-zlr"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -131,36 +116,13 @@
             </objects>
             <point key="canvasLocation" x="2451" y="-2510"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="yIj-Id-Yjb">
-            <objects>
-                <viewController id="VX8-5C-zP1" sceneMemberID="viewController">
-                    <imageView key="view" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="Mjg-Jr-5sy">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <gestureRecognizers/>
-                    </imageView>
-                    <toolbarItems/>
-                    <connections>
-                        <outlet property="photoImageView" destination="Mjg-Jr-5sy" id="j3V-WK-2aD"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="vKJ-7F-QlW" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="P9u-4s-cQ1">
-                    <connections>
-                        <action selector="handleTapPhotoView:" destination="VX8-5C-zP1" id="4fS-WK-6cW"/>
-                    </connections>
-                </tapGestureRecognizer>
-            </objects>
-            <point key="canvasLocation" x="3657" y="-2481"/>
-        </scene>
         <!--Photo View Controller-->
         <scene sceneID="D97-eE-WzO">
             <objects>
                 <viewController storyboardIdentifier="PhotoViewController" id="qRw-f8-xwS" customClass="PhotoViewController" customModule="PrivatePhoto" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="jbK-6h-sM9"/>
-                        <viewControllerLayoutGuide type="bottom" id="E25-Qm-vUm"/>
+                        <viewControllerLayoutGuide type="top" id="0UJ-Ql-rAZ"/>
+                        <viewControllerLayoutGuide type="bottom" id="Rxo-Qb-fwJ"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="5Tp-Ud-kCP">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -170,37 +132,46 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <gestureRecognizers/>
                                 <connections>
-                                    <outletCollection property="gestureRecognizers" destination="6dN-3i-TEB" appends="YES" id="dxW-kH-jDb"/>
+                                    <outletCollection property="gestureRecognizers" destination="6dN-3i-TEB" appends="YES" id="xcU-2t-V5n"/>
                                 </connections>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eI8-Y4-Cw4">
+                                <rect key="frame" x="16" y="20" width="46" height="30"/>
+                                <state key="normal" title="取消"/>
+                                <connections>
+                                    <segue destination="CLw-ch-N88" kind="unwind" unwindAction="backToAlbumContentCollectionView:" id="76Z-Sb-hAN"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="T7A-F6-mlK" firstAttribute="top" secondItem="5Tp-Ud-kCP" secondAttribute="top" id="1h6-6w-wGE"/>
-                            <constraint firstItem="T7A-F6-mlK" firstAttribute="leading" secondItem="5Tp-Ud-kCP" secondAttribute="leading" id="Clh-0w-GZz"/>
-                            <constraint firstItem="E25-Qm-vUm" firstAttribute="top" secondItem="T7A-F6-mlK" secondAttribute="bottom" id="DAa-zU-cwM"/>
-                            <constraint firstAttribute="trailing" secondItem="T7A-F6-mlK" secondAttribute="trailing" id="Ll7-od-FP9"/>
+                            <constraint firstItem="T7A-F6-mlK" firstAttribute="leading" secondItem="5Tp-Ud-kCP" secondAttribute="leading" id="SQE-nq-BXj"/>
+                            <constraint firstAttribute="trailing" secondItem="T7A-F6-mlK" secondAttribute="trailing" id="efn-CA-43n"/>
+                            <constraint firstItem="T7A-F6-mlK" firstAttribute="top" secondItem="5Tp-Ud-kCP" secondAttribute="top" id="lYZ-4I-kuk"/>
+                            <constraint firstItem="Rxo-Qb-fwJ" firstAttribute="top" secondItem="T7A-F6-mlK" secondAttribute="bottom" id="lym-sU-pD2"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="photoImageView" destination="T7A-F6-mlK" id="Bxd-b2-TqG"/>
+                        <outlet property="photoImageView" destination="T7A-F6-mlK" id="rMB-ww-7ut"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="96F-pG-vU3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="CLw-ch-N88" userLabel="Exit" sceneMemberID="exit"/>
                 <tapGestureRecognizer id="6dN-3i-TEB">
                     <connections>
-                        <action selector="handleTapPhotoView:" destination="qRw-f8-xwS" id="1UJ-Nv-DOu"/>
+                        <action selector="handleTapPhotoView:" destination="qRw-f8-xwS" id="sKT-ox-0qA"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="3660" y="-1873"/>
+            <point key="canvasLocation" x="3313" y="-2510"/>
         </scene>
         <!--相册-->
         <scene sceneID="Kke-ZA-aRG">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="tkW-nZ-Fhl" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="相册" id="Z4I-6T-bMv"/>
+                    <tabBarItem key="tabBarItem" title="相册" image="photos" id="Z4I-6T-bMv"/>
                     <toolbarItems/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="xNn-sA-ife">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -287,14 +258,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cJD-V5-YnP" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="BPv-zi-bp2" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="3268" y="-2510"/>
+            <point key="canvasLocation" x="2864" y="-2510"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="a9u-rW-ezX">
             <objects>
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="J9X-Oy-pUh" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <nil key="simulatedBottomBarMetrics"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="5l2-Nb-trE">
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -312,8 +283,9 @@
         <scene sceneID="HNU-bj-2Qf">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="pW5-Su-LtX" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="设置" id="ZsA-mJ-IX2"/>
+                    <tabBarItem key="tabBarItem" title="设置" image="gear" id="ZsA-mJ-IX2"/>
                     <toolbarItems/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="ltH-sL-Eys">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -327,26 +299,10 @@
             </objects>
             <point key="canvasLocation" x="1461" y="-1748"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="s6X-GJ-mwf">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="9Nw-m7-xrS" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Vep-jW-OJm">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="hPL-99-efS" kind="relationship" relationship="rootViewController" id="Tqh-AU-PdH"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="iwz-AL-t8X" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2859" y="-2510"/>
-        </scene>
     </scenes>
     <resources>
+        <image name="gear" width="26" height="26"/>
+        <image name="photos" width="22" height="24"/>
         <image name="sample" width="256" height="256"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

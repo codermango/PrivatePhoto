@@ -72,11 +72,21 @@ class AlbumContentCollectionViewController: UICollectionViewController, UIImageP
     
     // MARK: - Navigation
 
+//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+//        if segue.identifier == "toPhotoPage" {
+//            if let indexPaths = self.collectionView?.indexPathsForSelectedItems() {
+//                let nav = segue.destinationViewController as! UINavigationController
+//                let destinationViewController = nav.topViewController as! PhotoPageViewController
+//                destinationViewController.photoIndex = indexPaths[0].row
+//                destinationViewController.albumPhotos = album.photoArray
+//            }
+//        }
+//    }
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "toPhotoPage" {
             if let indexPaths = self.collectionView?.indexPathsForSelectedItems() {
-                let nav = segue.destinationViewController as! UINavigationController
-                let destinationViewController = nav.topViewController as! PhotoPageViewController
+                let destinationViewController = segue.destinationViewController as! PhotoPageViewController
                 destinationViewController.photoIndex = indexPaths[0].row
                 destinationViewController.albumPhotos = album.photoArray
             }
