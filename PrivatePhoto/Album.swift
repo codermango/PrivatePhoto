@@ -11,12 +11,12 @@ import UIKit
 
 class Album {
     var photoArray: [UIImage]!
-    var photoName: String!
-//    var photoNumber: NSNumber!
+    var albumName: String!
     
     init(name: String, photos: [UIImage]) {
-        self.photoName = name
+        self.albumName = name
         self.photoArray = photos
     }
+    
     
 }

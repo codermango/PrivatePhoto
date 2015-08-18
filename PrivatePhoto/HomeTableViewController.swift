@@ -10,6 +10,8 @@ import UIKit
 
 class HomeTableViewController: UITableViewController, UpdatePhotoNumberDelegate {
     
+    var privatePhoto: Privatephoto!
+    
     struct AlbumForShow {
         var name: String!
         var number: Int = 0
@@ -54,9 +56,7 @@ class HomeTableViewController: UITableViewController, UpdatePhotoNumberDelegate 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         
-        createAlbumsFolder() // 新建Albums文件夹
-        getAllAlbums() //获取所有相册，显示在首页
-
+        privatePhoto = Privatephoto()
     }
 
     override func didReceiveMemoryWarning() {
@@ -76,16 +76,17 @@ class HomeTableViewController: UITableViewController, UpdatePhotoNumberDelegate 
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.albumForShowArray.count
+        return self.privatePhoto.albumArray.count
     }
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = self.tableView.dequeueReusableCellWithIdentifier("AlbumCell", forIndexPath: indexPath) as! AlbumTableViewCell
-        let albumForShow = albumForShowArray[indexPath.row]
-        cell.albumNameLabel.text = albumForShow.name
-        cell.albumPhotoNumberLabel.text = String(albumForShow.number)
-
+//        let albumForShow = albumForShowArray[indexPath.row]
+//        cell.albumNameLabel.text = albumForShow.name
+//        cell.albumPhotoNumberLabel.text = String(albumForShow.number)
+        cell.albumNameLabel.text = privatePhoto.albumArray[indexPath.row].albumName
+        cell.albumPhotoNumberLabel.text = String(privatePhoto.albumArray[indexPath.row].photoArray.count)
         return cell
     }
     
@@ -177,35 +178,7 @@ class HomeTableViewController: UITableViewController, UpdatePhotoNumberDelegate 
         
     }
     
-    
-    // 自定义函数
-    
-    func createAlbumsFolder() {
-        let albumsDirectory = NSHomeDirectory().stringByAppendingPathComponent("Documents/Albums") // Albums文件夹
-        let fileManager = NSFileManager.defaultManager()
-        if !fileManager.fileExistsAtPath(albumsDirectory) {
-            // Albums文件夹不存在，则新建Albums文件夹
-            fileManager.createDirectoryAtPath(albumsDirectory, withIntermediateDirectories: false, attributes: nil, error: nil)
-        }
-    }
-
-    
-    // 首页出现时运行
-    func getAllAlbums() {
-        let albumsDirectory = NSHomeDirectory().stringByAppendingPathComponent("Documents/Albums") // Albums文件夹
-        let fileManager = NSFileManager.defaultManager()
-        let albumsContent = fileManager.contentsOfDirectoryAtPath(albumsDirectory, error: nil)!
-        
-        for albumName in albumsContent {
-            var albumPath = albumsDirectory.stringByAppendingPathComponent(albumName as! String)
-            var content = fileManager.contentsOfDirectoryAtPath(albumPath, error: nil)!
-            var photoNumber = content.count
-            var albumForShow = AlbumForShow()
-            albumForShow.name = albumName as! String
-            albumForShow.number = photoNumber
-            albumForShowArray.append(albumForShow)
-        }
-    }
+    // MARK: UpdatePhotoNumberDelegate
     
     func updatePhotoNumber(number: Int, index: Int) {
         self.albumForShowArray[index].number = number

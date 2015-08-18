@@ -48,11 +48,7 @@ class AlbumContentCollectionViewController: UICollectionViewController, UIImageP
 
         // Do any additional setup after loading the view.
         // 给导航栏添加title
-        self.navigationItem.title = album.photoName
-        
-        
-        
-        
+//        self.navigationItem.title = album.photoName
         
     }
 
@@ -115,23 +111,23 @@ class AlbumContentCollectionViewController: UICollectionViewController, UIImageP
 
     // MARK: UICollectionViewDelegate
     
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
-        let photo = info[UIImagePickerControllerOriginalImage]! as! UIImage
-        let nowDate = NSDate()
-        let formatter = NSDateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd-HH-mm-ss"
-        let dateString = formatter.stringFromDate(nowDate)
-        let photoName = dateString
-        album.photoArray.append(photo)
-        picker.dismissViewControllerAnimated(true, completion: nil)
-        self.collectionView?.reloadData()
-        
-        //把选择的图片存到文件系统Album
-        let photoPath = NSHomeDirectory().stringByAppendingPathComponent("Documents/Albums/\(album.photoName)/\(photoName).png")
-        let pngData = UIImagePNGRepresentation(photo)
-        pngData.writeToFile(photoPath, atomically: true)
-        self.delegate.updatePhotoNumber(album.photoArray.count, index: albumIndex)
-    }
+//    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
+//        let photo = info[UIImagePickerControllerOriginalImage]! as! UIImage
+//        let nowDate = NSDate()
+//        let formatter = NSDateFormatter()
+//        formatter.dateFormat = "yyyy-MM-dd-HH-mm-ss"
+//        let dateString = formatter.stringFromDate(nowDate)
+//        let photoName = dateString
+//        album.photoArray.append(photo)
+//        picker.dismissViewControllerAnimated(true, completion: nil)
+//        self.collectionView?.reloadData()
+//        
+//        //把选择的图片存到文件系统Album
+//        let photoPath = NSHomeDirectory().stringByAppendingPathComponent("Documents/Albums/\(album.photoName)/\(photoName).png")
+//        let pngData = UIImagePNGRepresentation(photo)
+//        pngData.writeToFile(photoPath, atomically: true)
+//        self.delegate.updatePhotoNumber(album.photoArray.count, index: albumIndex)
+//    }
 
     
 
