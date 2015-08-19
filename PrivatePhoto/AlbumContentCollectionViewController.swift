@@ -17,7 +17,7 @@ protocol UpdatePhotoNumberDelegate {
 class AlbumContentCollectionViewController: UICollectionViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     var album: Album!
-    var albumIndex: Int!
+//    var albumIndex: Int!
     var delegate: UpdatePhotoNumberDelegate!
     
     var pageViewController: UIPageViewController!

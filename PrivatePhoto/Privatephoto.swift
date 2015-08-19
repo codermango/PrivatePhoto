@@ -15,13 +15,11 @@ class Privatephoto {
     init () {
         // 首先新建Albums文件夹，如果存在就跳过
         createAlbumsFolder()
-        
         let albumsDirectory = NSHomeDirectory().stringByAppendingPathComponent("Documents/Albums")
-        let fileManger = NSFileManager.defaultManager()
-        let albumNameArray = fileManger.contentsOfDirectoryAtPath(albumsDirectory, error: nil) as! [String]
-        for albumName in albumNameArray {
-            var albumPath = albumsDirectory.stringByAppendingPathComponent(albumName)
-            var photosPath = filePathsInFolderByCreationDate(albumPath) // 升序的Array
+        let albumNamePathArray = sortedFileOrFolderPathsByCreationDate(albumsDirectory)
+        for albumNamePath in albumNamePathArray {
+            var albumName = getNameOfPath(albumNamePath)
+            var photosPath = sortedFileOrFolderPathsByCreationDate(albumNamePath) // 升序的Array
             
             var photoArray: [UIImage] = []
             for photoPath in photosPath {
@@ -43,12 +41,12 @@ class Privatephoto {
     }
     
     // 取出文件夹中所有文件路径，按创建日期升序放到Array中返回，返回的是完整路径
-    private func filePathsInFolderByCreationDate(folderPath: String) -> [String] {
+    private func sortedFileOrFolderPathsByCreationDate(path: String) -> [String] {
         var filePathArray: [String] = []
         let fileManager = NSFileManager.defaultManager()
-        let contents = fileManager.contentsOfDirectoryAtPath(folderPath, error: nil) as! [String]
+        let contents = fileManager.contentsOfDirectoryAtPath(path, error: nil) as! [String]
         for item in contents {
-            var filePath = folderPath + "/" + item;
+            var filePath = path + "/" + item
             filePathArray.append(filePath)
         }
         
@@ -66,15 +64,54 @@ class Privatephoto {
         }
         return sortedFilesArray
     }
-
+    
+    // 根据一个路径获取一个文件或文件夹的名字
+    private func getNameOfPath(path: String) -> String {
+        var index = path.rangeOfString("/", options: NSStringCompareOptions.BackwardsSearch, range: nil, locale: nil)!
+        var name = path.substringFromIndex(index.endIndex)
+        return name
+    }
 
 
     
-    func createAlbum(name: String) {
+    func createAlbumWithName(name: String) {
+        let albumDirectory = NSHomeDirectory().stringByAppendingPathComponent("Documents/Albums/\(name)")
+        let fileManager = NSFileManager.defaultManager()
+        if fileManager.fileExistsAtPath(albumDirectory) { // 如果有同名album，则不创建
+            return
+        }
+        if fileManager.createDirectoryAtPath(albumDirectory, withIntermediateDirectories: true, attributes: nil, error: nil) {
+            let album = Album(name: name, photos: [])
+            albumArray.append(album)
+        } else {
+            println("创建失败")
+        }
         
     }
     
-    func deleteAlbum(index: Int) {
-        
+    func deleteAlbumByIndex(index: Int) {
+        let deleteAlbumName = albumArray[index].albumName
+        let albumDirectory = NSHomeDirectory().stringByAppendingPathComponent("Documents/Albums/\(deleteAlbumName)")
+        let fileManager = NSFileManager.defaultManager()
+        if fileManager.fileExistsAtPath(albumDirectory) { // 如果存在就删除，实际上没必要判断，理论上都是对应好的
+            fileManager.removeItemAtPath(albumDirectory, error: nil)
+            albumArray.removeAtIndex(index)
+        }
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

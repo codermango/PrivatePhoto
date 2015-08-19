@@ -8,17 +8,10 @@
 
 import UIKit
 
-class HomeTableViewController: UITableViewController, UpdatePhotoNumberDelegate {
+class HomeTableViewController: UITableViewController {
     
     var privatePhoto: Privatephoto!
     
-    struct AlbumForShow {
-        var name: String!
-        var number: Int = 0
-        var picture: UIImage!
-    }
-    
-    var albumForShowArray: [AlbumForShow] = []
     
     @IBAction func addAlbum(sender: AnyObject) {
         let addAlbumAlertController = UIAlertController(title: "新相册", message: "请输入相册名称", preferredStyle: UIAlertControllerStyle.Alert)
@@ -30,14 +23,9 @@ class HomeTableViewController: UITableViewController, UpdatePhotoNumberDelegate 
         let saveAction = UIAlertAction(title: "保存", style: UIAlertActionStyle.Default) { (action: UIAlertAction!) -> Void in
             // 点击保存之后新建一个相册，并存到albumArray中
             let newAlbumNameTextField = addAlbumAlertController.textFields?.first as! UITextField
-            var albumForShow = AlbumForShow()
-            albumForShow.name = newAlbumNameTextField.text
-            self.albumForShowArray.append(albumForShow)
+            let newAlbumName = newAlbumNameTextField.text
             
-            // 在沙盒NSHomeDirectory中的Documents文件夹中新建用户新建的文件夹
-            let albumPath = NSHomeDirectory().stringByAppendingPathComponent("Documents/Albums/\(albumForShow.name)")
-            let fileManager = NSFileManager.defaultManager()
-            fileManager.createDirectoryAtPath(albumPath, withIntermediateDirectories: false, attributes: nil, error: nil)
+            self.privatePhoto.createAlbumWithName(newAlbumName)
             self.tableView.reloadData()
         }
         addAlbumAlertController.addAction(cancelAction)
@@ -106,15 +94,7 @@ class HomeTableViewController: UITableViewController, UpdatePhotoNumberDelegate 
             // 弹出对话框询问是否删除
             let confirmAlertController = UIAlertController(title: "", message: "删除相册后相册内所有照片将要被删除！", preferredStyle: UIAlertControllerStyle.Alert)
             let okAction = UIAlertAction(title: "确定", style: UIAlertActionStyle.Default, handler: { (action: UIAlertAction!) -> Void in
-                // 删除该相册内所有照片
-                let albumsDirectory = NSHomeDirectory().stringByAppendingPathComponent("Documents/Albums")
-                let fileManager = NSFileManager.defaultManager()
-                let albumName = fileManager.contentsOfDirectoryAtPath(albumsDirectory, error: nil)![indexPath.row] as! String
-                let albumPath = albumsDirectory.stringByAppendingPathComponent(albumName)
-                fileManager.removeItemAtPath(albumPath, error: nil)
-                
-                
-                self.albumForShowArray.removeAtIndex(indexPath.row)
+                self.privatePhoto.deleteAlbumByIndex(indexPath.row)
                 tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
             })
             let cancelAction = UIAlertAction(title: "取消", style: UIAlertActionStyle.Cancel, handler: nil)
@@ -152,26 +132,9 @@ class HomeTableViewController: UITableViewController, UpdatePhotoNumberDelegate 
             if let indexPath = self.tableView.indexPathForSelectedRow() {
                 let destinationViewController = segue.destinationViewController as! AlbumContentCollectionViewController
                 // 获取点击的相册中所有照片，存入albumArray中对应的album
-                let albumForShow = albumForShowArray[indexPath.row]
+                let tappedAlbum = privatePhoto.albumArray[indexPath.row]
                 
-                let albumName = albumForShow.name
-                var albumPhotos: [UIImage] = []
-                
-                let albumPath = NSHomeDirectory().stringByAppendingPathComponent("Documents/Albums/\(albumName)")
-                let fileManager = NSFileManager.defaultManager()
-                let photos = fileManager.contentsOfDirectoryAtPath(albumPath, error: nil)!
-                
-                for photo in photos {
-                    var photoPath = albumPath.stringByAppendingPathComponent(photo as! String)
-                    var image = UIImage(contentsOfFile: photoPath)
-                    if (image != nil) {
-                        albumPhotos.append(image!)
-                    }
-                }
-                let album = Album(name: albumName, photos: albumPhotos)
-                destinationViewController.album = album
-                destinationViewController.albumIndex = indexPath.row
-                destinationViewController.delegate = self
+                destinationViewController.album = tappedAlbum
             }
             
         }
@@ -180,9 +143,9 @@ class HomeTableViewController: UITableViewController, UpdatePhotoNumberDelegate 
     
     // MARK: UpdatePhotoNumberDelegate
     
-    func updatePhotoNumber(number: Int, index: Int) {
-        self.albumForShowArray[index].number = number
-    }
+//    func updatePhotoNumber(number: Int, index: Int) {
+//        self.albumForShowArray[index].number = number
+//    }
 
     
 
