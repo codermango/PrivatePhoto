@@ -35,5 +35,42 @@ class Album {
 
     }
     
+    func deletePhotoByIndex(index: Int) {
+        photoArray.removeAtIndex(index)
+        let albumPath = NSHomeDirectory().stringByAppendingPathComponent("Documents/Albums/\(albumName)")
+        let sortedPhotoPath = sortedFileOrFolderPathsByCreationDate(albumPath)
+        let deletePhotoPath = sortedPhotoPath[index]
+        let fileManager = NSFileManager.defaultManager()
+        if !fileManager.removeItemAtPath(deletePhotoPath, error: nil) {
+            println("删除照片失败")
+        }
+    }
+    
+    
+    
+    // 取出文件夹中所有文件路径，按创建日期升序放到Array中返回，返回的是完整路径
+    private func sortedFileOrFolderPathsByCreationDate(path: String) -> [String] {
+        var filePathArray: [String] = []
+        let fileManager = NSFileManager.defaultManager()
+        let contents = fileManager.contentsOfDirectoryAtPath(path, error: nil) as! [String]
+        for item in contents {
+            var filePath = path + "/" + item
+            filePathArray.append(filePath)
+        }
+        
+        // 排序 升序
+        var sortedFilesArray = filePathArray.sorted { (file1: String, file2: String) -> Bool in
+            var attr1 = fileManager.attributesOfItemAtPath(file1, error: nil)!
+            var attr2 = fileManager.attributesOfItemAtPath(file2, error: nil)!
+            var date1 = attr1[NSFileCreationDate]! as! NSDate
+            var date2 = attr2[NSFileCreationDate]! as! NSDate
+            if date1.timeIntervalSinceDate(date2) < 0 {
+                return true
+            } else {
+                return false
+            }
+        }
+        return sortedFilesArray
+    }
     
 }

@@ -10,28 +10,11 @@ import UIKit
 
 class PhotoViewController: UIViewController, UIGestureRecognizerDelegate {
     
-    var isNavigationBarHidden = false
-    var isToolBarHidden = false
     var photoImage: UIImage!
     var photoIndex: Int!
 
     @IBOutlet weak var photoImageView: UIImageView!
     
-    
-    @IBAction func handleTapPhotoView(sender: AnyObject) {
-        if isNavigationBarHidden && isToolBarHidden {
-            self.navigationController?.setNavigationBarHidden(false, animated: true)
-            self.navigationController?.setToolbarHidden(false, animated: true)
-            self.view.backgroundColor = UIColor.whiteColor()
-        } else if !isNavigationBarHidden && !isToolBarHidden {
-            self.navigationController?.setNavigationBarHidden(true, animated: true)
-            self.navigationController?.setToolbarHidden(true, animated: true)
-            self.view.backgroundColor = UIColor.blackColor()
-        }
-        isNavigationBarHidden = !isNavigationBarHidden
-        isToolBarHidden = !isToolBarHidden
-
-    }
 
 
     override func viewDidLoad() {
@@ -41,7 +24,6 @@ class PhotoViewController: UIViewController, UIGestureRecognizerDelegate {
         photoImageView.image = photoImage
         
         self.navigationController?.setToolbarHidden(false, animated: true)
-        self.navigationController?.setNavigationBarHidden(false, animated: true)
         self.view.backgroundColor = UIColor.whiteColor()
         
     }
@@ -51,12 +33,6 @@ class PhotoViewController: UIViewController, UIGestureRecognizerDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-    override func viewDidAppear(animated: Bool) {
-        self.navigationController?.setNavigationBarHidden(!isNavigationBarHidden, animated: true)
-        self.navigationController?.setToolbarHidden(!isToolBarHidden, animated: true)
-    }
-    
-
     /*
     // MARK: - Navigation
 
@@ -66,23 +42,6 @@ class PhotoViewController: UIViewController, UIGestureRecognizerDelegate {
         // Pass the selected object to the new view controller.
     }
     */
-    
-    
-
-    
-    // 自定义函数
-    
-//    func generateAllPhotoViewControllers() -> [PhotoViewController] {
-//        var photoViewControllers: [PhotoViewController] = []
-//        
-//        for photoImage in album.photoArray {
-//            var vc = self.storyboard?.instantiateViewControllerWithIdentifier("PhotoViewController") as! PhotoViewController
-//            vc.photoImage = photoImage
-//            photoViewControllers.append(vc)
-//        }
-//        
-//        return photoViewControllers
-//    }
     
 
 

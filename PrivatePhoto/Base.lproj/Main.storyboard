@@ -91,7 +91,7 @@
                                 <size key="customSize" width="77" height="77"/>
                                 <connections>
                                     <outlet property="imageView" destination="qP1-G2-JO7" id="fOt-yA-Seu"/>
-                                    <segue destination="hPL-99-efS" kind="modal" identifier="toPhotoPage" id="zZD-Cl-zlr"/>
+                                    <segue destination="2E2-XJ-Cbt" kind="modal" identifier="toPhotoPage" id="zZD-Cl-zlr"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -131,17 +131,7 @@
                             <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="T7A-F6-mlK">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <gestureRecognizers/>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="6dN-3i-TEB" appends="YES" id="xcU-2t-V5n"/>
-                                </connections>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eI8-Y4-Cw4">
-                                <rect key="frame" x="16" y="20" width="46" height="30"/>
-                                <state key="normal" title="取消"/>
-                                <connections>
-                                    <segue destination="CLw-ch-N88" kind="unwind" unwindAction="backToAlbumContentCollectionView:" id="76Z-Sb-hAN"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -156,14 +146,8 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="96F-pG-vU3" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="CLw-ch-N88" userLabel="Exit" sceneMemberID="exit"/>
-                <tapGestureRecognizer id="6dN-3i-TEB">
-                    <connections>
-                        <action selector="handleTapPhotoView:" destination="qRw-f8-xwS" id="sKT-ox-0qA"/>
-                    </connections>
-                </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="3313" y="-2510"/>
+            <point key="canvasLocation" x="3735" y="-2510"/>
         </scene>
         <!--相册-->
         <scene sceneID="Kke-ZA-aRG">
@@ -244,7 +228,11 @@
                 <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="hPL-99-efS" customClass="PhotoPageViewController" customModule="PrivatePhoto" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="4Vd-l0-eZX"/>
-                        <barButtonItem systemItem="trash" id="fBi-ga-9KL"/>
+                        <barButtonItem systemItem="trash" id="fBi-ga-9KL">
+                            <connections>
+                                <action selector="deletePhoto:" destination="hPL-99-efS" id="PNv-7a-u56"/>
+                            </connections>
+                        </barButtonItem>
                     </toolbarItems>
                     <navigationItem key="navigationItem" id="2hc-5S-w9v">
                         <barButtonItem key="leftBarButtonItem" systemItem="stop" id="Phu-q9-vhy">
@@ -258,14 +246,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cJD-V5-YnP" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="BPv-zi-bp2" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2864" y="-2510"/>
+            <point key="canvasLocation" x="3328" y="-2510"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="a9u-rW-ezX">
             <objects>
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="J9X-Oy-pUh" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="5l2-Nb-trE">
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -298,6 +286,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2GZ-OC-6QM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1461" y="-1748"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Ndl-d7-BoG">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="2E2-XJ-Cbt" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="yQx-d0-eTy">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="hPL-99-efS" kind="relationship" relationship="rootViewController" id="3sN-P2-da2"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="V5l-ZN-wb2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2864" y="-2510"/>
         </scene>
     </scenes>
     <resources>

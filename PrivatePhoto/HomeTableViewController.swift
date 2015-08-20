@@ -138,12 +138,6 @@ class HomeTableViewController: UITableViewController {
         }
         
     }
-    
-    // MARK: UpdatePhotoNumberDelegate
-    
-//    func updatePhotoNumber(number: Int, index: Int) {
-//        self.albumForShowArray[index].number = number
-//    }
 
     
 

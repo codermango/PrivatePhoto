@@ -10,14 +10,10 @@ import UIKit
 
 let reuseIdentifier = "PhotoCell"
 
-protocol UpdatePhotoNumberDelegate {
-    func updatePhotoNumber(number: Int, index: Int)
-}
 
 class AlbumContentCollectionViewController: UICollectionViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     var album: Album!
-    var delegate: UpdatePhotoNumberDelegate!
     
     var pageViewController: UIPageViewController!
 
@@ -58,6 +54,7 @@ class AlbumContentCollectionViewController: UICollectionViewController, UIImageP
     
     override func viewWillAppear(animated: Bool) {
         self.navigationController?.setToolbarHidden(false, animated: true)
+        self.collectionView?.reloadData()
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -67,26 +64,26 @@ class AlbumContentCollectionViewController: UICollectionViewController, UIImageP
     
     // MARK: - Navigation
 
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "toPhotoPage" {
+            if let indexPaths = self.collectionView?.indexPathsForSelectedItems() {
+                let nav = segue.destinationViewController as! UINavigationController
+                let destinationViewController = nav.topViewController as! PhotoPageViewController
+                destinationViewController.photoIndex = indexPaths[0].row
+                destinationViewController.album = album
+            }
+        }
+    }
+    
 //    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
 //        if segue.identifier == "toPhotoPage" {
 //            if let indexPaths = self.collectionView?.indexPathsForSelectedItems() {
-//                let nav = segue.destinationViewController as! UINavigationController
-//                let destinationViewController = nav.topViewController as! PhotoPageViewController
+//                let destinationViewController = segue.destinationViewController as! PhotoPageViewController
 //                destinationViewController.photoIndex = indexPaths[0].row
 //                destinationViewController.albumPhotos = album.photoArray
 //            }
 //        }
 //    }
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "toPhotoPage" {
-            if let indexPaths = self.collectionView?.indexPathsForSelectedItems() {
-                let destinationViewController = segue.destinationViewController as! PhotoPageViewController
-                destinationViewController.photoIndex = indexPaths[0].row
-                destinationViewController.albumPhotos = album.photoArray
-            }
-        }
-    }
     
 
     // MARK: UICollectionViewDataSource
@@ -115,30 +112,7 @@ class AlbumContentCollectionViewController: UICollectionViewController, UIImageP
         album.addPhotoByImage(photo)
         picker.dismissViewControllerAnimated(true, completion: nil)
         self.collectionView?.reloadData()
-//        self.delegate.updatePhotoNumber(album.photoArray.count, index: albumIndex)
     }
-
-    
-
-    
-    
-//    // 自定义函数
-//    func getAllPhotos() {
-//        let albumDirectory = NSHomeDirectory().stringByAppendingPathComponent("Documents/Albums/\(album.photoName)") // Album文件夹
-//        
-//        let fileManager = NSFileManager.defaultManager()
-//        
-//        var albumContent = fileManager.contentsOfDirectoryAtPath(albumDirectory, error: nil)!
-//        for name in albumContent {
-//            let photoPath = albumDirectory.stringByAppendingPathComponent(name as! String)
-//            let image = UIImage(contentsOfFile: photoPath)
-//            album.photoArray.append(image!)
-//           
-//        }
-//    }
-    
-
-    
     
 
 }
