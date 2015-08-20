@@ -53,7 +53,6 @@ class HomeTableViewController: UITableViewController {
     }
     
     override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
         self.tableView.reloadData()
     }
 
@@ -133,7 +132,6 @@ class HomeTableViewController: UITableViewController {
                 let destinationViewController = segue.destinationViewController as! AlbumContentCollectionViewController
                 // 获取点击的相册中所有照片，存入albumArray中对应的album
                 let tappedAlbum = privatePhoto.albumArray[indexPath.row]
-                
                 destinationViewController.album = tappedAlbum
             }
             

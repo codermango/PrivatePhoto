@@ -100,9 +100,9 @@
 				4DA517371B7014EE00C9C99F /* AlbumTableViewCell.swift */,
 				4D0852F21B714DBD003876AA /* AlbumContentCollectionViewController.swift */,
 				4D0852F41B714E45003876AA /* AlbumContentCollectionViewCell.swift */,
-				4D0852F61B715E25003876AA /* Album.swift */,
 				4D3177041B7912A300588AC3 /* PhotoViewController.swift */,
 				4D40D9C71B7FDF340061B1D3 /* PhotoPageViewController.swift */,
+				4D0852F61B715E25003876AA /* Album.swift */,
 				4D0711331B83AA5F00D58424 /* Privatephoto.swift */,
 			);
 			path = PrivatePhoto;

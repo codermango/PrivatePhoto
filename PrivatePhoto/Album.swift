@@ -19,4 +19,21 @@ class Album {
     }
     
     
+    func addPhotoByImage(image: UIImage) {
+        let nowDate = NSDate()
+        let formatter = NSDateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd-HH-mm-ss"
+        let dateString = formatter.stringFromDate(nowDate)
+        let photoName = dateString
+        photoArray.append(image) // 把图片加入到当前的相册Array中，接下来存到手机中
+        
+        let photoPath = NSHomeDirectory().stringByAppendingPathComponent("Documents/Albums/\(albumName)/\(photoName).png")
+        let pngData = UIImagePNGRepresentation(image)
+        if !pngData.writeToFile(photoPath, atomically: true) {
+            println("新增图片保存失败！")
+        }
+
+    }
+    
+    
 }

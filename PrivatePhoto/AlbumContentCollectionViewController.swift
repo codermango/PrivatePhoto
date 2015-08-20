@@ -17,7 +17,6 @@ protocol UpdatePhotoNumberDelegate {
 class AlbumContentCollectionViewController: UICollectionViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     var album: Album!
-//    var albumIndex: Int!
     var delegate: UpdatePhotoNumberDelegate!
     
     var pageViewController: UIPageViewController!
@@ -111,23 +110,13 @@ class AlbumContentCollectionViewController: UICollectionViewController, UIImageP
 
     // MARK: UICollectionViewDelegate
     
-//    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
-//        let photo = info[UIImagePickerControllerOriginalImage]! as! UIImage
-//        let nowDate = NSDate()
-//        let formatter = NSDateFormatter()
-//        formatter.dateFormat = "yyyy-MM-dd-HH-mm-ss"
-//        let dateString = formatter.stringFromDate(nowDate)
-//        let photoName = dateString
-//        album.photoArray.append(photo)
-//        picker.dismissViewControllerAnimated(true, completion: nil)
-//        self.collectionView?.reloadData()
-//        
-//        //把选择的图片存到文件系统Album
-//        let photoPath = NSHomeDirectory().stringByAppendingPathComponent("Documents/Albums/\(album.photoName)/\(photoName).png")
-//        let pngData = UIImagePNGRepresentation(photo)
-//        pngData.writeToFile(photoPath, atomically: true)
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
+        let photo = info[UIImagePickerControllerOriginalImage]! as! UIImage
+        album.addPhotoByImage(photo)
+        picker.dismissViewControllerAnimated(true, completion: nil)
+        self.collectionView?.reloadData()
 //        self.delegate.updatePhotoNumber(album.photoArray.count, index: albumIndex)
-//    }
+    }
 
     
 
