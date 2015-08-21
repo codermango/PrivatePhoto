@@ -17,6 +17,9 @@
 		4D0852F51B714E45003876AA /* AlbumContentCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0852F41B714E45003876AA /* AlbumContentCollectionViewCell.swift */; };
 		4D0852F71B715E25003876AA /* Album.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0852F61B715E25003876AA /* Album.swift */; };
 		4D3177051B7912A300588AC3 /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D3177041B7912A300588AC3 /* PhotoViewController.swift */; };
+		4D3A14671B87C7BF007002B4 /* setting.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4D3A14661B87C7BF007002B4 /* setting.plist */; };
+		4D3A14691B87C8E0007002B4 /* Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D3A14681B87C8E0007002B4 /* Setting.swift */; };
+		4D3A146B1B87C968007002B4 /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D3A146A1B87C968007002B4 /* LaunchViewController.swift */; };
 		4D40D9C81B7FDF340061B1D3 /* PhotoPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D40D9C71B7FDF340061B1D3 /* PhotoPageViewController.swift */; };
 		4DA517361B700D3A00C9C99F /* HomeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA517351B700D3A00C9C99F /* HomeTableViewController.swift */; };
 		4DA517381B7014EE00C9C99F /* AlbumTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA517371B7014EE00C9C99F /* AlbumTableViewCell.swift */; };
@@ -47,6 +50,9 @@
 		4D0852F41B714E45003876AA /* AlbumContentCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlbumContentCollectionViewCell.swift; sourceTree = "<group>"; };
 		4D0852F61B715E25003876AA /* Album.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Album.swift; sourceTree = "<group>"; };
 		4D3177041B7912A300588AC3 /* PhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
+		4D3A14661B87C7BF007002B4 /* setting.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = setting.plist; sourceTree = "<group>"; };
+		4D3A14681B87C8E0007002B4 /* Setting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Setting.swift; sourceTree = "<group>"; };
+		4D3A146A1B87C968007002B4 /* LaunchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaunchViewController.swift; sourceTree = "<group>"; };
 		4D40D9C71B7FDF340061B1D3 /* PhotoPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoPageViewController.swift; sourceTree = "<group>"; };
 		4DA517351B700D3A00C9C99F /* HomeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeTableViewController.swift; sourceTree = "<group>"; };
 		4DA517371B7014EE00C9C99F /* AlbumTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlbumTableViewCell.swift; sourceTree = "<group>"; };
@@ -104,6 +110,9 @@
 				4D40D9C71B7FDF340061B1D3 /* PhotoPageViewController.swift */,
 				4D0852F61B715E25003876AA /* Album.swift */,
 				4D0711331B83AA5F00D58424 /* Privatephoto.swift */,
+				4D3A14661B87C7BF007002B4 /* setting.plist */,
+				4D3A14681B87C8E0007002B4 /* Setting.swift */,
+				4D3A146A1B87C968007002B4 /* LaunchViewController.swift */,
 			);
 			path = PrivatePhoto;
 			sourceTree = "<group>";
@@ -214,6 +223,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4D0548631B6EC4630013D031 /* Main.storyboard in Resources */,
+				4D3A14671B87C7BF007002B4 /* setting.plist in Resources */,
 				4D0548681B6EC4630013D031 /* LaunchScreen.xib in Resources */,
 				4D0548651B6EC4630013D031 /* Images.xcassets in Resources */,
 			);
@@ -233,6 +243,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4D3A14691B87C8E0007002B4 /* Setting.swift in Sources */,
 				4D0852F51B714E45003876AA /* AlbumContentCollectionViewCell.swift in Sources */,
 				4D0711341B83AA5F00D58424 /* Privatephoto.swift in Sources */,
 				4DA517361B700D3A00C9C99F /* HomeTableViewController.swift in Sources */,
@@ -240,6 +251,7 @@
 				4DA517381B7014EE00C9C99F /* AlbumTableViewCell.swift in Sources */,
 				4D3177051B7912A300588AC3 /* PhotoViewController.swift in Sources */,
 				4D0852F31B714DBD003876AA /* AlbumContentCollectionViewController.swift in Sources */,
+				4D3A146B1B87C968007002B4 /* LaunchViewController.swift in Sources */,
 				4D40D9C81B7FDF340061B1D3 /* PhotoPageViewController.swift in Sources */,
 				4D0852F71B715E25003876AA /* Album.swift in Sources */,
 			);
