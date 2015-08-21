@@ -17,20 +17,8 @@ class PhotoPageViewController: UIPageViewController, UIPageViewControllerDataSou
         // 先获取要删除的照片，分别从privatePhoto和文件夹中将其删除
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.ActionSheet)
         let deleteAction = UIAlertAction(title: "删除照片", style: UIAlertActionStyle.Default) { (action: UIAlertAction!) -> Void in
-            
-            var currentVC: PhotoViewController!
-            if self.photoIndex == self.album.photoArray.count - 1 { // 如果是最后一张，删除后向前移动一张，否则都向后移动一张
-                currentVC = self.viewControllerAtIndex(self.photoIndex - 1)
-                self.album.deletePhotoByIndex(self.photoIndex)
-                self.setViewControllers([currentVC], direction: UIPageViewControllerNavigationDirection.Reverse, animated: true, completion: nil)
-                
-            } else {
-                currentVC = self.viewControllerAtIndex(self.photoIndex + 1)
-                currentVC.photoIndex = currentVC.photoIndex - 1
-                self.album.deletePhotoByIndex(self.photoIndex)
-                self.setViewControllers([currentVC], direction: UIPageViewControllerNavigationDirection.Forward, animated: true, completion: nil)
-            }
-
+            self.album.deletePhotoByIndex(self.photoIndex)
+            self.dismissViewControllerAnimated(true, completion: nil)
         }
         let cancelAction = UIAlertAction(title: "取消", style: UIAlertActionStyle.Cancel, handler: nil)
         alertController.addAction(deleteAction)
@@ -45,14 +33,12 @@ class PhotoPageViewController: UIPageViewController, UIPageViewControllerDataSou
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        
+        self.automaticallyAdjustsScrollViewInsets = false;
         // 尝试开始使用UIPageViewController
         var currentVC = viewControllerAtIndex(photoIndex) as UIViewController
         var viewControllers = [currentVC]
         self.dataSource = self
         self.setViewControllers(viewControllers, direction: UIPageViewControllerNavigationDirection.Forward, animated: true, completion: nil)
-        
-
         self.didMoveToParentViewController(self)
 
     }
@@ -67,25 +53,25 @@ class PhotoPageViewController: UIPageViewController, UIPageViewControllerDataSou
     
     func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {
         var vc = viewController as! PhotoViewController
-        var index = vc.photoIndex
-        if index == 0 || index == NSNotFound {
+        self.photoIndex = vc.photoIndex
+        if self.photoIndex == 0 || self.photoIndex == NSNotFound {
             return nil
         }
-        index!--
-        return self.viewControllerAtIndex(index)
+        self.photoIndex!--
+        return self.viewControllerAtIndex(self.photoIndex)
     }
     
     func pageViewController(pageViewController: UIPageViewController, viewControllerAfterViewController viewController: UIViewController) -> UIViewController? {
         var vc = viewController as! PhotoViewController
-        var index = vc.photoIndex
-        if index == NSNotFound {
+        self.photoIndex = vc.photoIndex
+        if self.photoIndex == NSNotFound {
             return nil
         }
-        index!++
-        if index == self.album.photoArray.count {
+        self.photoIndex!++
+        if self.photoIndex == self.album.photoArray.count {
             return nil
         }
-        return self.viewControllerAtIndex(index)
+        return self.viewControllerAtIndex(self.photoIndex)
     }
     
     

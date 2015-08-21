@@ -24,6 +24,7 @@ class PhotoViewController: UIViewController, UIGestureRecognizerDelegate {
         photoImageView.image = photoImage
         
         self.navigationController?.setToolbarHidden(false, animated: true)
+        self.navigationController?.navigationBar.translucent = true
         self.view.backgroundColor = UIColor.whiteColor()
         
     }

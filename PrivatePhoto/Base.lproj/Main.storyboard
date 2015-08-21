@@ -136,11 +136,12 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="T7A-F6-mlK" firstAttribute="leading" secondItem="5Tp-Ud-kCP" secondAttribute="leading" id="SQE-nq-BXj"/>
+                            <constraint firstItem="T7A-F6-mlK" firstAttribute="bottom" secondItem="Rxo-Qb-fwJ" secondAttribute="bottom" id="X5Q-1L-WG3"/>
                             <constraint firstAttribute="trailing" secondItem="T7A-F6-mlK" secondAttribute="trailing" id="efn-CA-43n"/>
-                            <constraint firstItem="T7A-F6-mlK" firstAttribute="top" secondItem="5Tp-Ud-kCP" secondAttribute="top" id="lYZ-4I-kuk"/>
-                            <constraint firstItem="Rxo-Qb-fwJ" firstAttribute="top" secondItem="T7A-F6-mlK" secondAttribute="bottom" id="lym-sU-pD2"/>
+                            <constraint firstItem="T7A-F6-mlK" firstAttribute="top" secondItem="5Tp-Ud-kCP" secondAttribute="top" id="et6-gL-kGg"/>
                         </constraints>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout"/>
                     <connections>
                         <outlet property="photoImageView" destination="T7A-F6-mlK" id="rMB-ww-7ut"/>
                     </connections>
