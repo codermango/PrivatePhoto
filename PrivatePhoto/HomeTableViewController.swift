@@ -69,9 +69,6 @@ class HomeTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = self.tableView.dequeueReusableCellWithIdentifier("AlbumCell", forIndexPath: indexPath) as! AlbumTableViewCell
-//        let albumForShow = albumForShowArray[indexPath.row]
-//        cell.albumNameLabel.text = albumForShow.name
-//        cell.albumPhotoNumberLabel.text = String(albumForShow.number)
         cell.albumNameLabel.text = privatePhoto.albumArray[indexPath.row].albumName
         cell.albumPhotoNumberLabel.text = String(privatePhoto.albumArray[indexPath.row].photoArray.count)
         return cell
