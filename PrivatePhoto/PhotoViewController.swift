@@ -15,6 +15,17 @@ class PhotoViewController: UIViewController, UIGestureRecognizerDelegate {
 
     @IBOutlet weak var photoImageView: UIImageView!
     
+    @IBAction func tapImage(sender: AnyObject) {
+        if self.navigationController?.navigationBarHidden == true && self.navigationController?.toolbarHidden == true {
+            self.navigationController?.setNavigationBarHidden(false, animated: true)
+            self.navigationController?.setToolbarHidden(false, animated: true)
+            self.view.backgroundColor = UIColor.whiteColor()
+        } else if self.navigationController?.navigationBarHidden == false && self.navigationController?.toolbarHidden == false {
+            self.navigationController?.setNavigationBarHidden(true, animated: true)
+            self.navigationController?.setToolbarHidden(true, animated: true)
+            self.view.backgroundColor = UIColor.blackColor()
+        }
+    }
 
 
     override func viewDidLoad() {
@@ -24,7 +35,6 @@ class PhotoViewController: UIViewController, UIGestureRecognizerDelegate {
         photoImageView.image = photoImage
         
         self.navigationController?.setToolbarHidden(false, animated: true)
-        self.navigationController?.navigationBar.translucent = true
         self.view.backgroundColor = UIColor.whiteColor()
         
     }

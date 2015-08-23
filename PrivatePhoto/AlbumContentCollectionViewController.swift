@@ -27,6 +27,16 @@ class AlbumContentCollectionViewController: UICollectionViewController, UIImageP
         
     }
     
+    @IBAction func clickSelect(sender: AnyObject) {
+        self.collectionView?.userInteractionEnabled = true
+        
+    }
+    
+    @IBAction func selectPhotos(sender: AnyObject) {
+        println(sender)
+    }
+    
+    
     @IBAction func backToAlbumContentCollectionView(segue: UIStoryboardSegue) {
         
     }
@@ -42,8 +52,8 @@ class AlbumContentCollectionViewController: UICollectionViewController, UIImageP
         self.collectionView!.registerClass(UICollectionViewCell.self, forCellWithReuseIdentifier: "Cell")
 
         // Do any additional setup after loading the view.
-        // 给导航栏添加title
-//        self.navigationItem.title = album.photoName
+
+        self.navigationItem.title = album.albumName
         
     }
 
@@ -75,16 +85,6 @@ class AlbumContentCollectionViewController: UICollectionViewController, UIImageP
         }
     }
     
-//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-//        if segue.identifier == "toPhotoPage" {
-//            if let indexPaths = self.collectionView?.indexPathsForSelectedItems() {
-//                let destinationViewController = segue.destinationViewController as! PhotoPageViewController
-//                destinationViewController.photoIndex = indexPaths[0].row
-//                destinationViewController.albumPhotos = album.photoArray
-//            }
-//        }
-//    }
-    
 
     // MARK: UICollectionViewDataSource
 
@@ -99,9 +99,7 @@ class AlbumContentCollectionViewController: UICollectionViewController, UIImageP
 
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! AlbumContentCollectionViewCell
-    
         cell.imageView.image = album.photoArray[indexPath.row]
-    
         return cell
     }
 

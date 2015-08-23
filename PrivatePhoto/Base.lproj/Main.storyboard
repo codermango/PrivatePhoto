@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="UOa-8z-jJO">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="J9X-Oy-pUh">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -85,6 +85,10 @@
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="sample" translatesAutoresizingMaskIntoConstraints="NO" id="qP1-G2-JO7">
                                             <rect key="frame" x="0.0" y="0.0" width="77" height="77"/>
+                                            <gestureRecognizers/>
+                                            <connections>
+                                                <outletCollection property="gestureRecognizers" destination="cq9-oc-spA" appends="YES" id="XZ9-rW-qZc"/>
+                                            </connections>
                                         </imageView>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -110,10 +114,21 @@
                         </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="Tfp-1u-8N6"/>
                     </toolbarItems>
-                    <navigationItem key="navigationItem" id="Rqg-Z9-Rqh"/>
+                    <navigationItem key="navigationItem" id="Rqg-Z9-Rqh">
+                        <barButtonItem key="rightBarButtonItem" title="选择" id="4dJ-3W-Aun">
+                            <connections>
+                                <action selector="clickSelect:" destination="sC6-EF-xBB" id="Cr5-2b-1IM"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gjo-kP-YCE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="cq9-oc-spA">
+                    <connections>
+                        <action selector="selectPhotos:" destination="sC6-EF-xBB" id="lpo-QU-arr"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="2451" y="-2510"/>
         </scene>
@@ -132,6 +147,9 @@
                             <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="T7A-F6-mlK">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="pM0-hc-jo8" appends="YES" id="Uqi-It-7KP"/>
+                                </connections>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -148,6 +166,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="96F-pG-vU3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="pM0-hc-jo8">
+                    <connections>
+                        <action selector="tapImage:" destination="qRw-f8-xwS" id="0Fm-fI-6wn"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="3735" y="-2510"/>
         </scene>
@@ -326,12 +349,11 @@
                         <outlet property="forthNumberTextField" destination="7OK-ta-dnY" id="Blp-cA-7jK"/>
                         <outlet property="secondNumberTextField" destination="7Iq-2z-yXU" id="5xb-Vn-4VQ"/>
                         <outlet property="thirdNumberTextField" destination="LoA-lt-iox" id="DDd-DT-ET6"/>
-                        <segue destination="J9X-Oy-pUh" kind="modal" identifier="toHome" modalTransitionStyle="flipHorizontal" id="nYu-ao-FTP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="I1f-Al-DGl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="525" y="-2136"/>
+            <point key="canvasLocation" x="437" y="-2136"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="a9u-rW-ezX">
