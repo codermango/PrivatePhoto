@@ -21,6 +21,7 @@
 		4D3A14691B87C8E0007002B4 /* Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D3A14681B87C8E0007002B4 /* Setting.swift */; };
 		4D3A146B1B87C968007002B4 /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D3A146A1B87C968007002B4 /* LaunchViewController.swift */; };
 		4D40D9C81B7FDF340061B1D3 /* PhotoPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D40D9C71B7FDF340061B1D3 /* PhotoPageViewController.swift */; };
+		4D8FBE6E1B8BB9F30060A804 /* CheckmarkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8FBE6D1B8BB9F30060A804 /* CheckmarkView.swift */; };
 		4DA517361B700D3A00C9C99F /* HomeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA517351B700D3A00C9C99F /* HomeTableViewController.swift */; };
 		4DA517381B7014EE00C9C99F /* AlbumTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA517371B7014EE00C9C99F /* AlbumTableViewCell.swift */; };
 /* End PBXBuildFile section */
@@ -54,6 +55,7 @@
 		4D3A14681B87C8E0007002B4 /* Setting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Setting.swift; sourceTree = "<group>"; };
 		4D3A146A1B87C968007002B4 /* LaunchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaunchViewController.swift; sourceTree = "<group>"; };
 		4D40D9C71B7FDF340061B1D3 /* PhotoPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoPageViewController.swift; sourceTree = "<group>"; };
+		4D8FBE6D1B8BB9F30060A804 /* CheckmarkView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckmarkView.swift; sourceTree = "<group>"; };
 		4DA517351B700D3A00C9C99F /* HomeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeTableViewController.swift; sourceTree = "<group>"; };
 		4DA517371B7014EE00C9C99F /* AlbumTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlbumTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -113,6 +115,7 @@
 				4D3A14661B87C7BF007002B4 /* setting.plist */,
 				4D3A14681B87C8E0007002B4 /* Setting.swift */,
 				4D3A146A1B87C968007002B4 /* LaunchViewController.swift */,
+				4D8FBE6D1B8BB9F30060A804 /* CheckmarkView.swift */,
 			);
 			path = PrivatePhoto;
 			sourceTree = "<group>";
@@ -253,6 +256,7 @@
 				4D0852F31B714DBD003876AA /* AlbumContentCollectionViewController.swift in Sources */,
 				4D3A146B1B87C968007002B4 /* LaunchViewController.swift in Sources */,
 				4D40D9C81B7FDF340061B1D3 /* PhotoPageViewController.swift in Sources */,
+				4D8FBE6E1B8BB9F30060A804 /* CheckmarkView.swift in Sources */,
 				4D0852F71B715E25003876AA /* Album.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

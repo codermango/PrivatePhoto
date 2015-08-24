@@ -17,6 +17,7 @@ class AlbumContentCollectionViewController: UICollectionViewController, UIImageP
     var selectedPhotos = []
     var selectEnabled = false
     var pageViewController: UIPageViewController!
+    var checkmarkView = CheckmarkView()
 
     @IBAction func addPhotos(sender: AnyObject) {
         if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.PhotoLibrary) {
@@ -31,7 +32,6 @@ class AlbumContentCollectionViewController: UICollectionViewController, UIImageP
     @IBAction func clickSelect(sender: AnyObject) {
         self.selectEnabled  = true
     }
-    
     
     
     @IBAction func backToAlbumContentCollectionView(segue: UIStoryboardSegue) {
@@ -110,7 +110,10 @@ class AlbumContentCollectionViewController: UICollectionViewController, UIImageP
     
     override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         if selectEnabled {
-            
+            let selectedCell = collectionView.cellForItemAtIndexPath(indexPath) as! AlbumContentCollectionViewCell
+            selectedCell.imageView.image = nil
+            selectedCell.imageView.addSubview(CheckmarkView())
+            println(selectedCell)
         }
     }
     
