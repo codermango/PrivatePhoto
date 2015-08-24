@@ -86,9 +86,6 @@
                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="sample" translatesAutoresizingMaskIntoConstraints="NO" id="qP1-G2-JO7">
                                             <rect key="frame" x="0.0" y="0.0" width="77" height="77"/>
                                             <gestureRecognizers/>
-                                            <connections>
-                                                <outletCollection property="gestureRecognizers" destination="cq9-oc-spA" appends="YES" id="XZ9-rW-qZc"/>
-                                            </connections>
                                         </imageView>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -124,11 +121,6 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gjo-kP-YCE" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="cq9-oc-spA">
-                    <connections>
-                        <action selector="selectPhotos:" destination="sC6-EF-xBB" id="lpo-QU-arr"/>
-                    </connections>
-                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="2451" y="-2510"/>
         </scene>

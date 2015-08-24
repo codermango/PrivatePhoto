@@ -14,7 +14,8 @@ let reuseIdentifier = "PhotoCell"
 class AlbumContentCollectionViewController: UICollectionViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     var album: Album!
-    
+    var selectedPhotos = []
+    var selectEnabled = false
     var pageViewController: UIPageViewController!
 
     @IBAction func addPhotos(sender: AnyObject) {
@@ -28,13 +29,9 @@ class AlbumContentCollectionViewController: UICollectionViewController, UIImageP
     }
     
     @IBAction func clickSelect(sender: AnyObject) {
-        self.collectionView?.userInteractionEnabled = true
-        
+        self.selectEnabled  = true
     }
     
-    @IBAction func selectPhotos(sender: AnyObject) {
-        println(sender)
-    }
     
     
     @IBAction func backToAlbumContentCollectionView(segue: UIStoryboardSegue) {
@@ -85,6 +82,14 @@ class AlbumContentCollectionViewController: UICollectionViewController, UIImageP
         }
     }
     
+    override func shouldPerformSegueWithIdentifier(identifier: String?, sender: AnyObject?) -> Bool {
+        if selectEnabled {
+            return false
+        } else {
+            return true
+        }
+    }
+    
 
     // MARK: UICollectionViewDataSource
 
@@ -102,6 +107,14 @@ class AlbumContentCollectionViewController: UICollectionViewController, UIImageP
         cell.imageView.image = album.photoArray[indexPath.row]
         return cell
     }
+    
+    override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        if selectEnabled {
+            
+        }
+    }
+    
+    
 
     // MARK: UICollectionViewDelegate
     
