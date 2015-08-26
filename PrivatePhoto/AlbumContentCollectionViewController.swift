@@ -105,21 +105,30 @@ class AlbumContentCollectionViewController: UICollectionViewController, UIImageP
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! AlbumContentCollectionViewCell
         cell.imageView.image = album.photoArray[indexPath.row]
+        
         return cell
     }
+    
+
+    // MARK: UICollectionViewDelegate
     
     override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         if selectEnabled {
             let selectedCell = collectionView.cellForItemAtIndexPath(indexPath) as! AlbumContentCollectionViewCell
-            selectedCell.imageView.image = nil
-            selectedCell.imageView.addSubview(CheckmarkView())
-            println(selectedCell)
+            if selectedCell.alpha == 1.0 {
+                selectedCell.alpha = 0.5
+            } else {
+                selectedCell.alpha = 1.0
+            }
+            
         }
     }
     
     
-
-    // MARK: UICollectionViewDelegate
+    
+    
+    
+    // MARK: UIImagePickerControllerDelegate
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
         let photo = info[UIImagePickerControllerOriginalImage]! as! UIImage
@@ -127,8 +136,9 @@ class AlbumContentCollectionViewController: UICollectionViewController, UIImageP
         picker.dismissViewControllerAnimated(true, completion: nil)
         self.collectionView?.reloadData()
     }
-    
 
+    
+    
 }
 
 
