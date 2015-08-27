@@ -14,10 +14,10 @@ let reuseIdentifier = "PhotoCell"
 class AlbumContentCollectionViewController: UICollectionViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     var album: Album!
-    var selectedPhotos = []
+    var selectedPhotoIndex: [Int] = []
     var selectEnabled = false
     var pageViewController: UIPageViewController!
-    var checkmarkView = CheckmarkView()
+    var toolbar: UIToolbar!
 
     @IBAction func addPhotos(sender: AnyObject) {
         if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.PhotoLibrary) {
@@ -31,6 +31,8 @@ class AlbumContentCollectionViewController: UICollectionViewController, UIImageP
     
     @IBAction func clickSelect(sender: AnyObject) {
         self.selectEnabled  = true
+        // 把选择变成取消，同时改变toolbar
+        
     }
     
     
@@ -51,7 +53,8 @@ class AlbumContentCollectionViewController: UICollectionViewController, UIImageP
         // Do any additional setup after loading the view.
 
         self.navigationItem.title = album.albumName
-        
+        toolbar = createToolBar()
+        self.view.addSubview(toolbar)
     }
 
     override func didReceiveMemoryWarning() {
@@ -59,14 +62,6 @@ class AlbumContentCollectionViewController: UICollectionViewController, UIImageP
         // Dispose of any resources that can be recreated.
     }
     
-    override func viewWillAppear(animated: Bool) {
-        self.navigationController?.setToolbarHidden(false, animated: true)
-        self.collectionView?.reloadData()
-    }
-    
-    override func viewWillDisappear(animated: Bool) {
-        self.navigationController?.setToolbarHidden(true, animated: true)
-    }
 
     
     // MARK: - Navigation
@@ -117,10 +112,13 @@ class AlbumContentCollectionViewController: UICollectionViewController, UIImageP
             let selectedCell = collectionView.cellForItemAtIndexPath(indexPath) as! AlbumContentCollectionViewCell
             if selectedCell.alpha == 1.0 {
                 selectedCell.alpha = 0.5
+                self.selectedPhotoIndex.append(indexPath.row)
             } else {
                 selectedCell.alpha = 1.0
+                let index = find(self.selectedPhotoIndex, indexPath.row)
+                self.selectedPhotoIndex.removeAtIndex(index!)
             }
-            
+            println(self.selectedPhotoIndex)
         }
     }
     
@@ -137,6 +135,17 @@ class AlbumContentCollectionViewController: UICollectionViewController, UIImageP
         self.collectionView?.reloadData()
     }
 
+    
+    
+    // 自定义
+    
+    func createToolBar() -> UIToolbar {
+        let toolbar = UIToolbar(frame: CGRectMake(0, UIScreen.mainScreen().bounds.size.height - 44, self.view.frame.width, 44))
+        let flexibleSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FlexibleSpace, target: nil, action: nil)
+        let deleteItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Trash, target: self, action: nil)
+        toolbar.setItems([flexibleSpace, deleteItem], animated: true)
+        return toolbar
+    }
     
     
 }
