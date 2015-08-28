@@ -110,6 +110,7 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gjo-kP-YCE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

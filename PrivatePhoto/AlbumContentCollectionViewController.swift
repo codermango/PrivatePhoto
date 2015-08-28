@@ -19,20 +19,24 @@ class AlbumContentCollectionViewController: UICollectionViewController, UIImageP
     var pageViewController: UIPageViewController!
     var toolbar: UIToolbar!
 
-    @IBAction func addPhotos(sender: AnyObject) {
-        if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.PhotoLibrary) {
-            let imagePickerController = UIImagePickerController()
-            imagePickerController.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
-            imagePickerController.delegate = self
-            self.presentViewController(imagePickerController, animated: true, completion: nil)
-        }
-        
-    }
+
     
     @IBAction func clickSelect(sender: AnyObject) {
-        self.selectEnabled  = true
-        // 把选择变成取消，同时改变toolbar
         
+        if self.selectEnabled { // 为选择界面，则切换回正常界面
+            self.selectEnabled = false
+            toolbar = createToolBarByStatus("normal")
+            self.view.addSubview(toolbar)
+            self.navigationItem.rightBarButtonItem?.title = "选择"
+            self.selectedPhotoIndex = []
+            
+        } else {
+            self.selectEnabled = true
+            toolbar = createToolBarByStatus("select")
+            self.view.addSubview(toolbar)
+            self.navigationItem.rightBarButtonItem?.title = "取消"
+        }
+    
     }
     
     
@@ -53,7 +57,7 @@ class AlbumContentCollectionViewController: UICollectionViewController, UIImageP
         // Do any additional setup after loading the view.
 
         self.navigationItem.title = album.albumName
-        toolbar = createToolBar()
+        toolbar = createToolBarByStatus("normal")
         self.view.addSubview(toolbar)
     }
 
@@ -100,7 +104,6 @@ class AlbumContentCollectionViewController: UICollectionViewController, UIImageP
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! AlbumContentCollectionViewCell
         cell.imageView.image = album.photoArray[indexPath.row]
-        
         return cell
     }
     
@@ -110,13 +113,15 @@ class AlbumContentCollectionViewController: UICollectionViewController, UIImageP
     override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         if selectEnabled {
             let selectedCell = collectionView.cellForItemAtIndexPath(indexPath) as! AlbumContentCollectionViewCell
-            if selectedCell.alpha == 1.0 {
-                selectedCell.alpha = 0.5
-                self.selectedPhotoIndex.append(indexPath.row)
-            } else {
-                selectedCell.alpha = 1.0
+            
+            // 如果点击的cell在selectedPhotoIndex中，则删除掉，切变成未选择状态
+            if contains(self.selectedPhotoIndex, indexPath.row) {
                 let index = find(self.selectedPhotoIndex, indexPath.row)
                 self.selectedPhotoIndex.removeAtIndex(index!)
+                selectedCell.alpha = 1.0
+            } else {
+                self.selectedPhotoIndex.append(indexPath.row)
+                selectedCell.alpha = 0.3
             }
             println(self.selectedPhotoIndex)
         }
@@ -139,13 +144,31 @@ class AlbumContentCollectionViewController: UICollectionViewController, UIImageP
     
     // 自定义
     
-    func createToolBar() -> UIToolbar {
+    func createToolBarByStatus(status: String) -> UIToolbar {
         let toolbar = UIToolbar(frame: CGRectMake(0, UIScreen.mainScreen().bounds.size.height - 44, self.view.frame.width, 44))
         let flexibleSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FlexibleSpace, target: nil, action: nil)
-        let deleteItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Trash, target: self, action: nil)
-        toolbar.setItems([flexibleSpace, deleteItem], animated: true)
+        if status == "normal" {
+            let addPhotoItem = UIBarButtonItem(title: "添加", style: UIBarButtonItemStyle.Plain, target: self, action: "addPhotos")
+            toolbar.setItems([flexibleSpace, addPhotoItem, flexibleSpace], animated: true)
+        } else if status == "select" {
+            let deletePhotoItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Trash, target: self, action: nil)
+            toolbar.setItems([flexibleSpace, deletePhotoItem], animated: true)
+        }
         return toolbar
     }
+    
+    func addPhotos() {
+        if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.PhotoLibrary) {
+            let imagePickerController = UIImagePickerController()
+            imagePickerController.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
+            imagePickerController.delegate = self
+            self.presentViewController(imagePickerController, animated: true, completion: nil)
+        }
+        
+    }
+    
+    
+    
     
     
 }
