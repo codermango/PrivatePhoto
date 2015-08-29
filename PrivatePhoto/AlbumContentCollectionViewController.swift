@@ -14,7 +14,7 @@ let reuseIdentifier = "PhotoCell"
 class AlbumContentCollectionViewController: UICollectionViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     var album: Album!
-    var selectedPhotoIndex: [Int] = []
+    var selectedPhotoIndexArray: [Int] = []
     var selectEnabled = false
     var pageViewController: UIPageViewController!
     var toolbar: UIToolbar!
@@ -28,7 +28,8 @@ class AlbumContentCollectionViewController: UICollectionViewController, UIImageP
             toolbar = createToolBarByStatus("normal")
             self.view.addSubview(toolbar)
             self.navigationItem.rightBarButtonItem?.title = "选择"
-            self.selectedPhotoIndex = []
+            self.selectedPhotoIndexArray = []
+            self.collectionView?.reloadData()
             
         } else {
             self.selectEnabled = true
@@ -104,6 +105,9 @@ class AlbumContentCollectionViewController: UICollectionViewController, UIImageP
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! AlbumContentCollectionViewCell
         cell.imageView.image = album.photoArray[indexPath.row].photoImage
+        if contains(self.selectedPhotoIndexArray, indexPath.row) {
+            cell.imageView.alpha = 0.3
+        }
         return cell
     }
     
@@ -115,15 +119,15 @@ class AlbumContentCollectionViewController: UICollectionViewController, UIImageP
             let selectedCell = collectionView.cellForItemAtIndexPath(indexPath) as! AlbumContentCollectionViewCell
             
             // 如果点击的cell在selectedPhotoIndex中，则删除掉，切变成未选择状态
-            if contains(self.selectedPhotoIndex, indexPath.row) {
-                let index = find(self.selectedPhotoIndex, indexPath.row)
-                self.selectedPhotoIndex.removeAtIndex(index!)
+            if contains(self.selectedPhotoIndexArray, indexPath.row) {
+                let index = find(self.selectedPhotoIndexArray, indexPath.row)
+                self.selectedPhotoIndexArray.removeAtIndex(index!)
                 selectedCell.alpha = 1.0
             } else {
-                self.selectedPhotoIndex.append(indexPath.row)
+                self.selectedPhotoIndexArray.append(indexPath.row)
                 selectedCell.alpha = 0.3
             }
-            println(self.selectedPhotoIndex)
+            println(self.selectedPhotoIndexArray)
         }
     }
     
@@ -134,8 +138,8 @@ class AlbumContentCollectionViewController: UICollectionViewController, UIImageP
     // MARK: UIImagePickerControllerDelegate
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
-        let photo = info[UIImagePickerControllerOriginalImage]! as! UIImage
-        album.addPhotoByImage(photo)
+        let image = info[UIImagePickerControllerOriginalImage]! as! UIImage
+        album.addPhotoByImage(image)
         picker.dismissViewControllerAnimated(true, completion: nil)
         self.collectionView?.reloadData()
     }
