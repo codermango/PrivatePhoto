@@ -103,7 +103,7 @@ class AlbumContentCollectionViewController: UICollectionViewController, UIImageP
 
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! AlbumContentCollectionViewCell
-        cell.imageView.image = album.photoArray[indexPath.row]
+        cell.imageView.image = album.photoArray[indexPath.row].photoImage
         return cell
     }
     

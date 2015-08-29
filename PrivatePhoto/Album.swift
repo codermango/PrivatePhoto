@@ -10,10 +10,10 @@ import Foundation
 import UIKit
 
 class Album {
-    var photoArray: [UIImage]!
+    var photoArray: [Photo]!
     var albumName: String!
     
-    init(name: String, photos: [UIImage]) {
+    init(name: String, photos: [Photo]) {
         self.albumName = name
         self.photoArray = photos
     }
@@ -25,7 +25,8 @@ class Album {
         formatter.dateFormat = "yyyy-MM-dd-HH-mm-ss"
         let dateString = formatter.stringFromDate(nowDate)
         let photoName = dateString
-        photoArray.append(image) // 把图片加入到当前的相册Array中，接下来存到手机中
+        let photo = Photo(name: photoName, image: image, isSelected: false)
+        photoArray.append(photo) // 把图片加入到当前的相册Array中，接下来存到手机中
         
         let photoPath = NSHomeDirectory().stringByAppendingPathComponent("Documents/Albums/\(albumName)/\(photoName).png")
         let pngData = UIImagePNGRepresentation(image)

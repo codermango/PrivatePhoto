@@ -21,10 +21,12 @@ class Privatephoto {
             var albumName = getNameOfPath(albumNamePath)
             var photosPath = sortedFileOrFolderPathsByCreationDate(albumNamePath) // 升序的Array
             
-            var photoArray: [UIImage] = []
+            var photoArray: [Photo] = []
             for photoPath in photosPath {
                 var image = UIImage(contentsOfFile: photoPath)
-                photoArray.append(image!)
+                var name = getNameOfPath(photoPath)
+                var photo = Photo(name: name, image: image!, isSelected: false)
+                photoArray.append(photo)
             }
             var album = Album(name: albumName, photos: photoArray)
             albumArray.append(album)

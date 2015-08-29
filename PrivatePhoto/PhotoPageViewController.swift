@@ -89,7 +89,7 @@ class PhotoPageViewController: UIPageViewController, UIPageViewControllerDataSou
     
     func viewControllerAtIndex(index: Int) -> PhotoViewController {
         var vc = self.storyboard?.instantiateViewControllerWithIdentifier("PhotoViewController") as! PhotoViewController
-        vc.photoImage = self.album.photoArray[index]
+        vc.photoImage = self.album.photoArray[index].photoImage
         vc.photoIndex = index
         return vc
     }
