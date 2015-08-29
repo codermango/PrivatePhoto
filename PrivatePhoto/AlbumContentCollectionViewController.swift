@@ -34,6 +34,8 @@ class AlbumContentCollectionViewController: UICollectionViewController, UIImageP
         } else {
             self.selectEnabled = true
             toolbar = createToolBarByStatus("select")
+            let items = toolbar.items as! [UIBarButtonItem]
+            items.map({$0.enabled = false})
             self.view.addSubview(toolbar)
             self.navigationItem.rightBarButtonItem?.title = "取消"
         }
@@ -127,6 +129,14 @@ class AlbumContentCollectionViewController: UICollectionViewController, UIImageP
                 self.selectedPhotoIndexArray.append(indexPath.row)
                 selectedCell.alpha = 0.3
             }
+            
+            let items = toolbar.items as! [UIBarButtonItem]
+            if self.selectedPhotoIndexArray.isEmpty {
+                items.map({$0.enabled = false})
+            } else {
+                items.map({$0.enabled = true})
+            }
+
             println(self.selectedPhotoIndexArray)
         }
     }
@@ -155,7 +165,7 @@ class AlbumContentCollectionViewController: UICollectionViewController, UIImageP
             let addPhotoItem = UIBarButtonItem(title: "添加", style: UIBarButtonItemStyle.Plain, target: self, action: "addPhotos")
             toolbar.setItems([flexibleSpace, addPhotoItem, flexibleSpace], animated: true)
         } else if status == "select" {
-            let deletePhotoItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Trash, target: self, action: nil)
+            let deletePhotoItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Trash, target: self, action: "deletePhotos")
             toolbar.setItems([flexibleSpace, deletePhotoItem], animated: true)
         }
         return toolbar
@@ -171,7 +181,23 @@ class AlbumContentCollectionViewController: UICollectionViewController, UIImageP
         
     }
     
-    
+    func deletePhotos() {
+        self.selectedPhotoIndexArray.sort({$0 > $1})
+        let numOfDeletePhotos = self.selectedPhotoIndexArray.count
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.ActionSheet)
+        let cancelActioin = UIAlertAction(title: "取消", style: UIAlertActionStyle.Cancel, handler: nil)
+        let deleteAction = UIAlertAction(title: "删除\(numOfDeletePhotos)张图片", style: UIAlertActionStyle.Destructive) { (action: UIAlertAction!) -> Void in
+            for index in self.selectedPhotoIndexArray {
+                self.album.deletePhotoByIndex(index)
+            }
+            self.collectionView?.reloadData()
+            self.selectedPhotoIndexArray = []
+        }
+        
+        alertController.addAction(deleteAction)
+        alertController.addAction(cancelActioin)
+        self.presentViewController(alertController, animated: true, completion: nil)
+    }
     
     
     
