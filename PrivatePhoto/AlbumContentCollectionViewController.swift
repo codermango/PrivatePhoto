@@ -182,7 +182,7 @@ class AlbumContentCollectionViewController: UICollectionViewController, UIImageP
     }
     
     func deletePhotos() {
-        self.selectedPhotoIndexArray.sort({$0 > $1})
+        self.selectedPhotoIndexArray.sort({$0 > $1}) // 排序是为了删除时不会产生索引错误
         let numOfDeletePhotos = self.selectedPhotoIndexArray.count
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.ActionSheet)
         let cancelActioin = UIAlertAction(title: "取消", style: UIAlertActionStyle.Cancel, handler: nil)

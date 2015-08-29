@@ -12,19 +12,24 @@ class PhotoViewController: UIViewController, UIGestureRecognizerDelegate {
     
     var photoImage: UIImage!
     var photoIndex: Int!
+    var navigationBarHidden: Bool!
+    var toolbarHidden: Bool!
+    var bgColor: UIColor!
 
     @IBOutlet weak var photoImageView: UIImageView!
     
     @IBAction func tapImage(sender: AnyObject) {
-        if self.navigationController?.navigationBarHidden == true && self.navigationController?.toolbarHidden == true {
-            self.navigationController?.setNavigationBarHidden(false, animated: true)
-            self.navigationController?.setToolbarHidden(false, animated: true)
-            self.view.backgroundColor = UIColor.whiteColor()
-        } else if self.navigationController?.navigationBarHidden == false && self.navigationController?.toolbarHidden == false {
-            self.navigationController?.setNavigationBarHidden(true, animated: true)
-            self.navigationController?.setToolbarHidden(true, animated: true)
+        if navigationBarHidden == false {
             self.view.backgroundColor = UIColor.blackColor()
+            bgColor = UIColor.blackColor()
+        } else if navigationBarHidden == true {
+            self.view.backgroundColor = UIColor.whiteColor()
+            bgColor = UIColor.whiteColor()
         }
+        navigationBarHidden = !navigationBarHidden
+        toolbarHidden = !toolbarHidden
+        self.navigationController?.setNavigationBarHidden(navigationBarHidden, animated: true)
+        self.navigationController?.setToolbarHidden(toolbarHidden, animated: true)
     }
 
 
@@ -34,10 +39,12 @@ class PhotoViewController: UIViewController, UIGestureRecognizerDelegate {
         // Do any additional setup after loading the view.
         photoImageView.image = photoImage
         
-        self.navigationController?.setToolbarHidden(false, animated: true)
-        self.view.backgroundColor = UIColor.whiteColor()
+        self.navigationController?.setToolbarHidden(toolbarHidden, animated: true)
+        self.navigationController?.setNavigationBarHidden(navigationBarHidden, animated: true)
+        self.view.backgroundColor = bgColor
         
     }
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

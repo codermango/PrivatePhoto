@@ -12,6 +12,9 @@ class PhotoPageViewController: UIPageViewController, UIPageViewControllerDataSou
 
     var photoIndex: Int!
     var album: Album!
+    var navigationBarHidden = false
+    var toolbarHidden = false
+    var bgColor = UIColor.whiteColor()
     
     @IBAction func deletePhoto(sender: AnyObject) {
         // 先获取要删除的照片，分别从privatePhoto和文件夹中将其删除
@@ -24,10 +27,8 @@ class PhotoPageViewController: UIPageViewController, UIPageViewControllerDataSou
         alertController.addAction(deleteAction)
         alertController.addAction(cancelAction)
         self.presentViewController(alertController, animated: true, completion: nil)
-        
-        
-
     }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,6 +55,9 @@ class PhotoPageViewController: UIPageViewController, UIPageViewControllerDataSou
     func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {
         var vc = viewController as! PhotoViewController
         self.photoIndex = vc.photoIndex
+        self.navigationBarHidden = vc.navigationBarHidden
+        self.toolbarHidden = vc.toolbarHidden
+        self.bgColor = vc.bgColor
         if self.photoIndex == 0 || self.photoIndex == NSNotFound {
             return nil
         }
@@ -64,6 +68,9 @@ class PhotoPageViewController: UIPageViewController, UIPageViewControllerDataSou
     func pageViewController(pageViewController: UIPageViewController, viewControllerAfterViewController viewController: UIViewController) -> UIViewController? {
         var vc = viewController as! PhotoViewController
         self.photoIndex = vc.photoIndex
+        self.navigationBarHidden = vc.navigationBarHidden
+        self.toolbarHidden = vc.toolbarHidden
+        self.bgColor = vc.bgColor
         if self.photoIndex == NSNotFound {
             return nil
         }
@@ -91,6 +98,9 @@ class PhotoPageViewController: UIPageViewController, UIPageViewControllerDataSou
         var vc = self.storyboard?.instantiateViewControllerWithIdentifier("PhotoViewController") as! PhotoViewController
         vc.photoImage = self.album.photoArray[index].photoImage
         vc.photoIndex = index
+        vc.toolbarHidden = self.toolbarHidden
+        vc.navigationBarHidden = self.navigationBarHidden
+        vc.bgColor = self.bgColor
         return vc
     }
     
