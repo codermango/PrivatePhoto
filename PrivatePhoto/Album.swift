@@ -55,6 +55,9 @@ class Album {
         let fileManager = NSFileManager.defaultManager()
         let contents = fileManager.contentsOfDirectoryAtPath(path, error: nil) as! [String]
         for item in contents {
+            if startsWith(item, ".") {
+                continue
+            }
             var filePath = path + "/" + item
             filePathArray.append(filePath)
         }

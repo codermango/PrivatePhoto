@@ -12,6 +12,7 @@ import UIKit
 class Privatephoto {
     var albumArray: [Album] = []
     
+
     init () {
         // 首先新建Albums文件夹，如果存在就跳过
         createAlbumsFolder()
@@ -19,12 +20,18 @@ class Privatephoto {
         let albumNamePathArray = sortedFileOrFolderPathsByCreationDate(albumsDirectory)
         for albumNamePath in albumNamePathArray {
             var albumName = getNameOfPath(albumNamePath)
+            if startsWith(albumName, ".") {
+                continue
+            }
             var photosPath = sortedFileOrFolderPathsByCreationDate(albumNamePath) // 升序的Array
             
             var photoArray: [Photo] = []
             for photoPath in photosPath {
                 var image = UIImage(contentsOfFile: photoPath)
                 var name = getNameOfPath(photoPath)
+                if startsWith(name, ".") {
+                    continue
+                }
                 var photo = Photo(name: name, image: image!, isSelected: false)
                 photoArray.append(photo)
             }

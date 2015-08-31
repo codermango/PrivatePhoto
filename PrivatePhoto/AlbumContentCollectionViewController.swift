@@ -27,6 +27,7 @@ class AlbumContentCollectionViewController: UICollectionViewController, UIImageP
         
         if self.selectEnabled { // 为选择界面，则切换回正常界面
             self.selectEnabled = false
+            self.navigationItem.hidesBackButton = false
             toolbar = createToolBarByStatus("normal")
             self.view.addSubview(toolbar)
             self.navigationItem.rightBarButtonItem?.title = "选择"
@@ -40,6 +41,7 @@ class AlbumContentCollectionViewController: UICollectionViewController, UIImageP
             items.map({$0.enabled = false})
             self.view.addSubview(toolbar)
             self.navigationItem.rightBarButtonItem?.title = "取消"
+            self.navigationItem.hidesBackButton = true
         }
     
     }
