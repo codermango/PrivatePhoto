@@ -14,12 +14,12 @@ let reuseIdentifier = "PhotoCell"
 class AlbumContentCollectionViewController: UICollectionViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     var album: Album!
-//    var selectedPhotoIndexArray: [Int] = []
     var selectEnabled = false
     var pageViewController: UIPageViewController!
     var toolbar: UIToolbar = UIToolbar(frame: CGRectMake(0, UIScreen.mainScreen().bounds.size.height - 44, UIScreen.mainScreen().bounds.size.width, 44))
     
     var selectedIndexPathArray: [NSIndexPath] = []
+
 
 
     
@@ -84,6 +84,7 @@ class AlbumContentCollectionViewController: UICollectionViewController, UIImageP
                 let destinationViewController = nav.topViewController as! PhotoPageViewController
                 destinationViewController.photoIndex = indexPaths[0].row
                 destinationViewController.album = album
+                destinationViewController.previousController = self
             }
         }
     }

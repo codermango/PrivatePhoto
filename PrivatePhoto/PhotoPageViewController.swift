@@ -15,12 +15,14 @@ class PhotoPageViewController: UIPageViewController, UIPageViewControllerDataSou
     var navigationBarHidden = false
     var toolbarHidden = false
     var bgColor = UIColor.whiteColor()
+    var previousController: AlbumContentCollectionViewController!
     
     @IBAction func deletePhoto(sender: AnyObject) {
         // 先获取要删除的照片，分别从privatePhoto和文件夹中将其删除
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.ActionSheet)
         let deleteAction = UIAlertAction(title: "删除照片", style: UIAlertActionStyle.Default) { (action: UIAlertAction!) -> Void in
             self.album.deletePhotoByIndex(self.photoIndex)
+            self.previousController.collectionView?.deleteItemsAtIndexPaths([NSIndexPath(forRow: self.photoIndex, inSection: 0)])
             self.dismissViewControllerAnimated(true, completion: nil)
         }
         let cancelAction = UIAlertAction(title: "取消", style: UIAlertActionStyle.Cancel, handler: nil)
