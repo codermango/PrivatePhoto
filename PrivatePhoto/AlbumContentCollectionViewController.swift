@@ -108,6 +108,7 @@ class AlbumContentCollectionViewController: UICollectionViewController, UIImageP
 
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! AlbumContentCollectionViewCell
+        cell.imageView.alpha = 1.0
         cell.imageView.image = album.photoArray[indexPath.row].photoImage
         if contains(self.selectedIndexPathArray, indexPath) {
             cell.imageView.alpha = 0.3
@@ -158,7 +159,6 @@ class AlbumContentCollectionViewController: UICollectionViewController, UIImageP
     // 自定义
     
     func createToolBarByStatus(status: String) -> UIToolbar {
-//        let toolbar = UIToolbar(frame: CGRectMake(0, UIScreen.mainScreen().bounds.size.height - 44, self.view.frame.width, 44))
         toolbar.items = []
         let flexibleSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FlexibleSpace, target: nil, action: nil)
         if status == "normal" {
@@ -182,7 +182,7 @@ class AlbumContentCollectionViewController: UICollectionViewController, UIImageP
     }
     
     func deletePhotos() {
-//        self.selectedPhotoIndexArray.sort({$0 > $1}) // 排序是为了删除时不会产生索引错误
+        self.selectedIndexPathArray.sort({$0.row > $1.row}) // 排序是为了删除时不会产生索引错误
         let numOfDeletePhotos = self.selectedIndexPathArray.count
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.ActionSheet)
         let cancelActioin = UIAlertAction(title: "取消", style: UIAlertActionStyle.Cancel, handler: nil)
