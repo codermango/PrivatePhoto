@@ -138,10 +138,10 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="T7A-F6-mlK" firstAttribute="leading" secondItem="5Tp-Ud-kCP" secondAttribute="leading" id="SQE-nq-BXj"/>
-                            <constraint firstItem="T7A-F6-mlK" firstAttribute="bottom" secondItem="Rxo-Qb-fwJ" secondAttribute="bottom" id="X5Q-1L-WG3"/>
-                            <constraint firstAttribute="trailing" secondItem="T7A-F6-mlK" secondAttribute="trailing" id="efn-CA-43n"/>
-                            <constraint firstItem="T7A-F6-mlK" firstAttribute="top" secondItem="5Tp-Ud-kCP" secondAttribute="top" id="et6-gL-kGg"/>
+                            <constraint firstAttribute="centerY" secondItem="T7A-F6-mlK" secondAttribute="centerY" id="88a-Gc-f9Y"/>
+                            <constraint firstItem="T7A-F6-mlK" firstAttribute="bottom" secondItem="Rxo-Qb-fwJ" secondAttribute="bottom" id="QXC-yc-eRA"/>
+                            <constraint firstItem="T7A-F6-mlK" firstAttribute="leading" secondItem="5Tp-Ud-kCP" secondAttribute="leading" id="ce1-ns-wmb"/>
+                            <constraint firstAttribute="centerX" secondItem="T7A-F6-mlK" secondAttribute="centerX" id="cj1-yM-GE2"/>
                         </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
