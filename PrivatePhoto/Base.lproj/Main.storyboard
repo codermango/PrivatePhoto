@@ -128,25 +128,51 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="T7A-F6-mlK">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MnD-2k-zDT">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                <gestureRecognizers/>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="pM0-hc-jo8" appends="YES" id="Uqi-It-7KP"/>
-                                </connections>
-                            </imageView>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="idV-c2-jYq" userLabel="contentView">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                        <subviews>
+                                            <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="T7A-F6-mlK">
+                                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                                <gestureRecognizers/>
+                                                <connections>
+                                                    <outletCollection property="gestureRecognizers" destination="pM0-hc-jo8" appends="YES" id="Uqi-It-7KP"/>
+                                                </connections>
+                                            </imageView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="T7A-F6-mlK" secondAttribute="bottom" id="NNw-pL-s5c"/>
+                                            <constraint firstItem="T7A-F6-mlK" firstAttribute="leading" secondItem="idV-c2-jYq" secondAttribute="leading" id="qDY-IS-nxa"/>
+                                            <constraint firstAttribute="trailing" secondItem="T7A-F6-mlK" secondAttribute="trailing" id="v3X-NX-PdG"/>
+                                            <constraint firstItem="T7A-F6-mlK" firstAttribute="top" secondItem="idV-c2-jYq" secondAttribute="top" id="x5F-rg-Ojd"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="idV-c2-jYq" firstAttribute="top" secondItem="MnD-2k-zDT" secondAttribute="top" id="PaV-Zi-ALr"/>
+                                    <constraint firstAttribute="trailing" secondItem="idV-c2-jYq" secondAttribute="trailing" id="VE5-40-2GH"/>
+                                    <constraint firstAttribute="bottom" secondItem="idV-c2-jYq" secondAttribute="bottom" id="VJg-x4-daD"/>
+                                    <constraint firstItem="idV-c2-jYq" firstAttribute="leading" secondItem="MnD-2k-zDT" secondAttribute="leading" id="VlT-cK-DQt"/>
+                                </constraints>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="centerY" secondItem="T7A-F6-mlK" secondAttribute="centerY" id="88a-Gc-f9Y"/>
-                            <constraint firstItem="T7A-F6-mlK" firstAttribute="bottom" secondItem="Rxo-Qb-fwJ" secondAttribute="bottom" id="QXC-yc-eRA"/>
-                            <constraint firstItem="T7A-F6-mlK" firstAttribute="leading" secondItem="5Tp-Ud-kCP" secondAttribute="leading" id="ce1-ns-wmb"/>
-                            <constraint firstAttribute="centerX" secondItem="T7A-F6-mlK" secondAttribute="centerX" id="cj1-yM-GE2"/>
+                            <constraint firstItem="MnD-2k-zDT" firstAttribute="leading" secondItem="5Tp-Ud-kCP" secondAttribute="leading" id="6T9-25-3x5"/>
+                            <constraint firstItem="idV-c2-jYq" firstAttribute="height" secondItem="5Tp-Ud-kCP" secondAttribute="height" id="HeY-xJ-O1a"/>
+                            <constraint firstAttribute="trailing" secondItem="MnD-2k-zDT" secondAttribute="trailing" id="I2c-qj-stM"/>
+                            <constraint firstItem="idV-c2-jYq" firstAttribute="width" secondItem="5Tp-Ud-kCP" secondAttribute="width" id="IWK-3M-7Pc"/>
+                            <constraint firstItem="Rxo-Qb-fwJ" firstAttribute="top" secondItem="MnD-2k-zDT" secondAttribute="bottom" id="Jby-Yn-NOK"/>
+                            <constraint firstItem="MnD-2k-zDT" firstAttribute="top" secondItem="5Tp-Ud-kCP" secondAttribute="top" id="TU3-RX-czG"/>
                         </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <connections>
                         <outlet property="photoImageView" destination="T7A-F6-mlK" id="rMB-ww-7ut"/>
+                        <outlet property="scrollView" destination="MnD-2k-zDT" id="msb-FU-hrE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="96F-pG-vU3" userLabel="First Responder" sceneMemberID="firstResponder"/>

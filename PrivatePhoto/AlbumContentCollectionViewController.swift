@@ -62,7 +62,7 @@ class AlbumContentCollectionViewController: UICollectionViewController, UIImageP
         self.collectionView!.registerClass(UICollectionViewCell.self, forCellWithReuseIdentifier: "Cell")
 
         // Do any additional setup after loading the view.
-
+        self.collectionView?.alwaysBounceVertical = true
         self.navigationItem.title = album.albumName
         toolbar = createToolBarByStatus("normal")
         self.view.addSubview(toolbar)
