@@ -31,6 +31,16 @@ class PhotoPageViewController: UIPageViewController, UIPageViewControllerDataSou
         self.presentViewController(alertController, animated: true, completion: nil)
     }
     
+    @IBAction func showActions(sender: AnyObject) {
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.ActionSheet)
+        let cancelActioin = UIAlertAction(title: "取消", style: UIAlertActionStyle.Cancel, handler: nil)
+        let saveAction = UIAlertAction(title: "保存图片", style: UIAlertActionStyle.Default) { (action: UIAlertAction!) -> Void in
+            self.album.savePhotoToSystemAlbumByIndex([self.photoIndex])
+        }
+        alertController.addAction(saveAction)
+        alertController.addAction(cancelActioin)
+        self.presentViewController(alertController, animated: true, completion: nil)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

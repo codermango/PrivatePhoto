@@ -171,7 +171,8 @@ class AlbumContentCollectionViewController: UICollectionViewController, UIImageP
             toolbar.setItems([flexibleSpace, addPhotoItem, flexibleSpace], animated: true)
         } else if status == "select" {
             let deletePhotoItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Trash, target: self, action: "deletePhotos")
-            toolbar.setItems([flexibleSpace, deletePhotoItem], animated: true)
+            let actionItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Action, target: self, action: "showActions")
+            toolbar.setItems([actionItem, flexibleSpace, deletePhotoItem], animated: true)
         }
         return toolbar
     }
@@ -209,6 +210,18 @@ class AlbumContentCollectionViewController: UICollectionViewController, UIImageP
     }
     
     
+    func showActions() {
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.ActionSheet)
+        let cancelActioin = UIAlertAction(title: "取消", style: UIAlertActionStyle.Cancel, handler: nil)
+        let saveAction = UIAlertAction(title: "保存图片", style: UIAlertActionStyle.Default) { (action: UIAlertAction!) -> Void in
+            self.album.savePhotoToSystemAlbumByIndex(self.selectedIndexPathArray.map({$0.row}))
+            self.selectedIndexPathArray = []
+            self.collectionView?.reloadData()
+        }
+        alertController.addAction(saveAction)
+        alertController.addAction(cancelActioin)
+        self.presentViewController(alertController, animated: true, completion: nil)
+    }
     
 }
 

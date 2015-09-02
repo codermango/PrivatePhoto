@@ -47,6 +47,13 @@ class Album {
         }
     }
     
+    func savePhotoToSystemAlbumByIndex(indexArray: [Int]) {
+        for index in indexArray {
+            var image = photoArray[index].photoImage
+            UIImageWriteToSavedPhotosAlbum(image, self, nil, nil)
+        }
+    }
+    
     
     
     // 取出文件夹中所有文件路径，按创建日期升序放到Array中返回，返回的是完整路径
