@@ -17,6 +17,7 @@ class LaunchViewController: UIViewController {
     
     
     @IBAction func enterProgram(sender: AnyObject) {
+        let setting = Setting()
         let input = firstNumberTextField.text + secondNumberTextField.text + thirdNumberTextField.text + forthNumberTextField.text
         if input == "1234" {
             self.performSegueWithIdentifier("toHome", sender: self)

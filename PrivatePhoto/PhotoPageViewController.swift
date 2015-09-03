@@ -47,6 +47,7 @@ class PhotoPageViewController: UIPageViewController, UIPageViewControllerDataSou
 
         // Do any additional setup after loading the view.
         self.automaticallyAdjustsScrollViewInsets = false;
+
         // 尝试开始使用UIPageViewController
         var currentVC = viewControllerAtIndex(photoIndex) as UIViewController
         var viewControllers = [currentVC]
