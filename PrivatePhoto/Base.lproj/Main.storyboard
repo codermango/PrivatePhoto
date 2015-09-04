@@ -8,7 +8,7 @@
         <!--相册-->
         <scene sceneID="dKy-Qz-3HY">
             <objects>
-                <tableViewController id="paY-nA-ryB" customClass="HomeTableViewController" customModule="PrivatePhoto" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="HomeTableViewController" id="paY-nA-ryB" customClass="HomeTableViewController" customModule="PrivatePhoto" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="80" sectionHeaderHeight="22" sectionFooterHeight="22" id="d59-Al-Slb">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -384,7 +384,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="a9u-rW-ezX">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="J9X-Oy-pUh" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="Home" automaticallyAdjustsScrollViewInsets="NO" id="J9X-Oy-pUh" sceneMemberID="viewController">
                     <toolbarItems/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="5l2-Nb-trE">

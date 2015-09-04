@@ -18,8 +18,11 @@ class LaunchViewController: UIViewController {
     
     @IBAction func enterProgram(sender: AnyObject) {
         let setting = Setting()
+        let password = setting.getLaunchPassword()
+        
+        
         let input = firstNumberTextField.text + secondNumberTextField.text + thirdNumberTextField.text + forthNumberTextField.text
-        if input == "1234" {
+        if input == password {
             self.performSegueWithIdentifier("toHome", sender: self)
         } else {
             let alertController = UIAlertController(title: "", message: "密码错误", preferredStyle: UIAlertControllerStyle.Alert)
@@ -27,13 +30,23 @@ class LaunchViewController: UIViewController {
             alertController.addAction(okAction)
             self.presentViewController(alertController, animated: true, completion: nil)
         }
+
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        let setting = Setting()
+        let password = setting.getLaunchPassword()
+        
+        if password == "" { // 没设密码，则直接到home
+            var vc = self.storyboard?.instantiateViewControllerWithIdentifier("HomeTableViewController") as! HomeTableViewController
+            self.presentViewController(vc, animated: true, completion: nil)
+        }
     }
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
