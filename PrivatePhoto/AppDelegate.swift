@@ -49,7 +49,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func getViewController() -> UIViewController {
         let setting = Setting()
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        if setting.launchPassword == nil {
+        if !setting.isPasswordSet() {
             let vc = storyboard.instantiateViewControllerWithIdentifier("HomeTabStorybard") as! UITabBarController
             return vc
         } else {
