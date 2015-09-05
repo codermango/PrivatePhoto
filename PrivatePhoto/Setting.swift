@@ -10,25 +10,21 @@ import Foundation
 
 class Setting {
     
-    init () {
-        // 读取plist文件获取登陆密码
-        // 检查setting.plist是否存在，如果不存在则创建
-        let settingPath = NSHomeDirectory().stringByAppendingPathComponent("Library/Preferences/setting.plist")
-        let fileManager = NSFileManager.defaultManager()
-        if !fileManager.fileExistsAtPath(settingPath) {
-            if let bundlePath = NSBundle.mainBundle().pathForResource("setting", ofType: "plist") {
-                fileManager.copyItemAtPath(bundlePath, toPath: settingPath, error: nil)
-                var data = NSMutableDictionary(dictionary: ["launchPassword": ""])
-                data.writeToFile(settingPath, atomically: true)
-            }
+    var launchPassword: String!
+    
+    init() {
+        if let password = NSUserDefaults.standardUserDefaults().valueForKey("launchPassword") as? String {
+            launchPassword = password
         }
-        
     }
     
-    func getLaunchPassword() -> String {
-        let settingPath = NSHomeDirectory().stringByAppendingPathComponent("Library/Preferences/setting.plist")
-        let fileManager = NSFileManager.defaultManager()
-        var data = NSMutableDictionary(contentsOfFile: settingPath)
-        return data?.valueForKey("launchPassword") as! String
+    
+    func createPassword(password: String) {
+        NSUserDefaults.standardUserDefaults().setObject(password, forKey: "launchPassword")
     }
+    
+    func modifyPassword(newPassword: String) {
+        NSUserDefaults.standardUserDefaults().setValue(newPassword, forKey: "launchPassword")
+    }
+    
 }

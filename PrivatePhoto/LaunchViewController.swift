@@ -18,7 +18,7 @@ class LaunchViewController: UIViewController {
     
     @IBAction func enterProgram(sender: AnyObject) {
         let setting = Setting()
-        let password = setting.getLaunchPassword()
+        let password = setting.launchPassword
         
         
         let input = firstNumberTextField.text + secondNumberTextField.text + thirdNumberTextField.text + forthNumberTextField.text
