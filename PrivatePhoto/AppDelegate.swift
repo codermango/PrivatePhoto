@@ -15,7 +15,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
+        self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
+        let vc = getViewController()
+        self.window?.rootViewController = vc
+        self.window?.makeKeyAndVisible()
         return true
     }
 
@@ -41,6 +44,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
+    // 自定义
+    
+    func getViewController() -> UIViewController {
+        let setting = Setting()
+        let password = setting.getLaunchPassword()
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        
+        if password == "" { // 没设密码，则直接到home
+            let vc = storyboard.instantiateViewControllerWithIdentifier("HomeTabStorybard") as! UITabBarController
+            return vc
+        } else {
+            let vc = storyboard.instantiateViewControllerWithIdentifier("LaunchStoryboard") as! LaunchViewController
+            return vc
+        }
+    }
+    
 
 }
 

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="UOa-8z-jJO">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -192,7 +192,7 @@
         <!--相册-->
         <scene sceneID="Kke-ZA-aRG">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="tkW-nZ-Fhl" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="HomeStoryboard" automaticallyAdjustsScrollViewInsets="NO" id="tkW-nZ-Fhl" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="相册" image="photos" id="Z4I-6T-bMv"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
@@ -296,7 +296,7 @@
         <!--Launch View Controller-->
         <scene sceneID="A1t-8L-b8J">
             <objects>
-                <viewController id="UOa-8z-jJO" customClass="LaunchViewController" customModule="PrivatePhoto" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LaunchStoryboard" id="UOa-8z-jJO" customClass="LaunchViewController" customModule="PrivatePhoto" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="hOo-F4-Blo"/>
                         <viewControllerLayoutGuide type="bottom" id="vdd-1O-dX1"/>
@@ -384,7 +384,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="a9u-rW-ezX">
             <objects>
-                <tabBarController storyboardIdentifier="Home" automaticallyAdjustsScrollViewInsets="NO" id="J9X-Oy-pUh" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="HomeTabStorybard" automaticallyAdjustsScrollViewInsets="NO" id="J9X-Oy-pUh" sceneMemberID="viewController">
                     <toolbarItems/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="5l2-Nb-trE">

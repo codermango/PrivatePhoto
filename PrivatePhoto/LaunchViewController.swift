@@ -38,13 +38,7 @@ class LaunchViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         
-        let setting = Setting()
-        let password = setting.getLaunchPassword()
         
-        if password == "" { // 没设密码，则直接到home
-            var vc = self.storyboard?.instantiateViewControllerWithIdentifier("HomeTableViewController") as! HomeTableViewController
-            self.presentViewController(vc, animated: true, completion: nil)
-        }
     }
     
 
