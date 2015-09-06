@@ -350,7 +350,6 @@
         <!--设置-->
         <scene sceneID="HNU-bj-2Qf">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="2GZ-OC-6QM" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="pW5-Su-LtX" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="设置" image="gear" id="ZsA-mJ-IX2"/>
                     <toolbarItems/>
@@ -364,6 +363,7 @@
                         <segue destination="WbW-v1-pgJ" kind="relationship" relationship="rootViewController" id="uoL-Ka-bFJ"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2GZ-OC-6QM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1461" y="-1194"/>
         </scene>
@@ -433,8 +433,7 @@
         <!--设置密码-->
         <scene sceneID="wvC-gd-gZx">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="M6g-ke-Q7X" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController hidesBottomBarWhenPushed="YES" id="DHg-AH-di3" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="DHg-AH-di3" customClass="CreatePasswordViewController" customModule="PrivatePhoto" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="SDZ-yW-ZRr"/>
                         <viewControllerLayoutGuide type="bottom" id="ug1-ww-1M2"/>
@@ -442,10 +441,53 @@
                     <view key="view" contentMode="scaleToFill" id="hdc-LS-d9k">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="1" borderStyle="line" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xQY-Ua-M99">
+                                <rect key="frame" x="24" y="117" width="50" height="50"/>
+                                <color key="textColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="3" borderStyle="line" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tji-Qa-BD1">
+                                <rect key="frame" x="172" y="117" width="50" height="50"/>
+                                <color key="textColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="2" borderStyle="line" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1Ys-BQ-pvo">
+                                <rect key="frame" x="98" y="117" width="50" height="50"/>
+                                <color key="textColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="4" borderStyle="line" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dea-2T-ge0">
+                                <rect key="frame" x="246" y="117" width="50" height="50"/>
+                                <color key="textColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vvW-LU-kRx">
+                                <rect key="frame" x="81" y="202" width="158" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="创建新密码">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="createNewPassword:" destination="DHg-AH-di3" eventType="touchUpInside" id="Jq4-Rw-Ddf"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="设置密码" id="hIf-Xb-DYz"/>
+                    <connections>
+                        <outlet property="firstNumberTextField" destination="xQY-Ua-M99" id="UrZ-hQ-FWh"/>
+                        <outlet property="forthNumberTextField" destination="dea-2T-ge0" id="eZK-vh-e3H"/>
+                        <outlet property="secondNumberTextField" destination="1Ys-BQ-pvo" id="pn1-d6-rI4"/>
+                        <outlet property="thirdNumberTextField" destination="tji-Qa-BD1" id="rH2-IG-P9r"/>
+                    </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="M6g-ke-Q7X" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2451" y="-1622"/>
         </scene>

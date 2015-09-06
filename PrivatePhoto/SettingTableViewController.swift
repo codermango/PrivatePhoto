@@ -30,7 +30,13 @@ class SettingTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        self.performSegueWithIdentifier("toCreatePassword", sender: self)
+        let setting = Setting()
+        if setting.isPasswordSet() {
+            self.performSegueWithIdentifier("toSetNewPassword", sender: self)
+        } else {
+            self.performSegueWithIdentifier("toCreatePassword", sender: self)
+        }
+        
     }
 
 
