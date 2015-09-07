@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LaunchViewController: UIViewController {
+class LaunchViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var firstNumberTextField: UITextField!
     @IBOutlet weak var secondNumberTextField: UITextField!
@@ -32,12 +32,17 @@ class LaunchViewController: UIViewController {
         }
 
     }
+    
+    
+
+
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        
+        setUpTextField()
         
     }
     
@@ -45,6 +50,20 @@ class LaunchViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+
+    
+    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+        if range.location >= 1 {
+            return false
+        } else {
+            return true
+        }
+    }
+    
+    func textFieldDidEndEditing(textField: UITextField) {
+        println("aa")
     }
     
 
@@ -57,5 +76,55 @@ class LaunchViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    
+    // 自定义
+    
+    func setUpTextField() {
+        self.firstNumberTextField.delegate = self
+        self.secondNumberTextField.delegate = self
+        self.thirdNumberTextField.delegate = self
+        self.forthNumberTextField.delegate = self
+        
+        self.firstNumberTextField.keyboardType = UIKeyboardType.NumberPad
+        self.secondNumberTextField.keyboardType = UIKeyboardType.NumberPad
+        self.thirdNumberTextField.keyboardType = UIKeyboardType.NumberPad
+        self.forthNumberTextField.keyboardType = UIKeyboardType.NumberPad
+        
+        self.firstNumberTextField.tintColor = UIColor.clearColor()
+        self.secondNumberTextField.tintColor = UIColor.clearColor()
+        self.thirdNumberTextField.tintColor = UIColor.clearColor()
+        self.forthNumberTextField.tintColor = UIColor.clearColor()
+        
+        self.firstNumberTextField.secureTextEntry = true
+        
+        self.firstNumberTextField.becomeFirstResponder()
+        self.firstNumberTextField.addTarget(self, action: "textChanged:", forControlEvents: UIControlEvents.EditingChanged)
+        self.secondNumberTextField.addTarget(self, action: "textChanged:", forControlEvents: UIControlEvents.EditingChanged)
+        self.thirdNumberTextField.addTarget(self, action: "textChanged:", forControlEvents: UIControlEvents.EditingChanged)
+        self.forthNumberTextField.addTarget(self, action: "textChanged:", forControlEvents: UIControlEvents.EditingChanged)
+    }
+    
+    func textChanged(sender: AnyObject) {
+        if sender.tag == 1 {
+            self.secondNumberTextField.becomeFirstResponder()
+        } else if sender.tag == 2 {
+            self.thirdNumberTextField.becomeFirstResponder()
+        } else if sender.tag == 3 {
+            self.forthNumberTextField.becomeFirstResponder()
+        }
+    }
+    
 
 }
+
+
+
+
+
+
+
+
+
+
+

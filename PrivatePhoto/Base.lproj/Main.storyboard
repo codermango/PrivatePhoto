@@ -252,7 +252,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="1" borderStyle="line" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jrJ-HF-Kdw">
+                            <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="-" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jrJ-HF-Kdw">
                                 <rect key="frame" x="24" y="110" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="50" id="psA-qv-pwR"/>
@@ -261,7 +261,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="32"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="3" borderStyle="line" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LoA-lt-iox">
+                            <textField opaque="NO" clipsSubviews="YES" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="-" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LoA-lt-iox">
                                 <rect key="frame" x="172" y="110" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="50" id="TMF-oc-Vke"/>
@@ -270,7 +270,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="32"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="2" borderStyle="line" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7Iq-2z-yXU">
+                            <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="-" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7Iq-2z-yXU">
                                 <rect key="frame" x="98" y="110" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="50" id="Vuo-GP-I8T"/>
@@ -279,7 +279,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="32"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="4" borderStyle="line" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7OK-ta-dnY">
+                            <textField opaque="NO" clipsSubviews="YES" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="-" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7OK-ta-dnY">
                                 <rect key="frame" x="246" y="110" width="50" height="50"/>
                                 <color key="textColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="32"/>
@@ -299,17 +299,14 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="7Iq-2z-yXU" firstAttribute="leading" secondItem="jrJ-HF-Kdw" secondAttribute="trailing" constant="24" id="3fZ-fj-yBe"/>
                             <constraint firstItem="jrJ-HF-Kdw" firstAttribute="leading" secondItem="Bbc-IW-WJL" secondAttribute="leadingMargin" constant="8" id="5Ta-Fc-bvL"/>
                             <constraint firstItem="7Iq-2z-yXU" firstAttribute="leading" secondItem="jrJ-HF-Kdw" secondAttribute="trailing" constant="24" id="6qv-PV-xdR"/>
                             <constraint firstItem="7OK-ta-dnY" firstAttribute="top" secondItem="hOo-F4-Blo" secondAttribute="bottom" constant="90" id="A3e-ui-aio"/>
                             <constraint firstItem="jrJ-HF-Kdw" firstAttribute="bottom" secondItem="7Iq-2z-yXU" secondAttribute="bottom" id="BuX-fS-wpn"/>
-                            <constraint firstItem="LoA-lt-iox" firstAttribute="leading" secondItem="7Iq-2z-yXU" secondAttribute="trailing" constant="24" id="C9x-cH-vAI"/>
                             <constraint firstItem="7Iq-2z-yXU" firstAttribute="top" secondItem="hOo-F4-Blo" secondAttribute="bottom" constant="90" id="JLF-Gh-H0H"/>
                             <constraint firstItem="LoA-lt-iox" firstAttribute="bottom" secondItem="7Iq-2z-yXU" secondAttribute="bottom" id="Mme-hu-eUx"/>
                             <constraint firstItem="LoA-lt-iox" firstAttribute="bottom" secondItem="7OK-ta-dnY" secondAttribute="bottom" id="S8i-zA-ZsC"/>
                             <constraint firstItem="7OK-ta-dnY" firstAttribute="leading" secondItem="LoA-lt-iox" secondAttribute="trailing" constant="24" id="bm4-HJ-ojn"/>
-                            <constraint firstItem="7OK-ta-dnY" firstAttribute="leading" secondItem="LoA-lt-iox" secondAttribute="trailing" constant="24" id="eLB-tT-P8T"/>
                             <constraint firstItem="LoA-lt-iox" firstAttribute="leading" secondItem="7Iq-2z-yXU" secondAttribute="trailing" constant="24" id="hWS-ln-rK3"/>
                             <constraint firstItem="jrJ-HF-Kdw" firstAttribute="top" secondItem="hOo-F4-Blo" secondAttribute="bottom" constant="90" id="lm7-Fa-gWN"/>
                             <constraint firstItem="vdd-1O-dX1" firstAttribute="top" secondItem="jrJ-HF-Kdw" secondAttribute="bottom" constant="408" id="o50-LQ-LrZ"/>
