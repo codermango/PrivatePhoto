@@ -10,7 +10,7 @@ import Foundation
 
 class Setting {
     
-    var launchPassword = "1234"
+    var launchPassword: String!
     
 
 

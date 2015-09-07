@@ -31,9 +31,8 @@ class SettingTableViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let setting = Setting()
-        if setting.isPasswordSet() {
-            self.performSegueWithIdentifier("toSetNewPassword", sender: self)
-        } else {
+        
+        if indexPath.row == 0 {
             self.performSegueWithIdentifier("toCreatePassword", sender: self)
         }
         

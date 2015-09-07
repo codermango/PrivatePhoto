@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--相册-->
@@ -252,39 +251,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="-" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jrJ-HF-Kdw">
-                                <rect key="frame" x="24" y="110" width="50" height="50"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="50" id="psA-qv-pwR"/>
-                                </constraints>
-                                <color key="textColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="32"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="-" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LoA-lt-iox">
-                                <rect key="frame" x="172" y="110" width="50" height="50"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="50" id="TMF-oc-Vke"/>
-                                </constraints>
-                                <color key="textColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="32"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="-" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7Iq-2z-yXU">
-                                <rect key="frame" x="98" y="110" width="50" height="50"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="50" id="Vuo-GP-I8T"/>
-                                </constraints>
-                                <color key="textColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="32"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="-" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7OK-ta-dnY">
-                                <rect key="frame" x="246" y="110" width="50" height="50"/>
-                                <color key="textColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="32"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ebn-JS-nlX">
                                 <rect key="frame" x="24" y="243" width="272" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="27"/>
@@ -296,29 +262,16 @@
                                     <segue destination="J9X-Oy-pUh" kind="modal" identifier="toHome" modalTransitionStyle="flipHorizontal" id="YFQ-Om-9JR"/>
                                 </connections>
                             </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="----" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GDI-Ek-ptg">
+                                <rect key="frame" x="71" y="94" width="178" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="41"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="jrJ-HF-Kdw" firstAttribute="leading" secondItem="Bbc-IW-WJL" secondAttribute="leadingMargin" constant="8" id="5Ta-Fc-bvL"/>
-                            <constraint firstItem="7Iq-2z-yXU" firstAttribute="leading" secondItem="jrJ-HF-Kdw" secondAttribute="trailing" constant="24" id="6qv-PV-xdR"/>
-                            <constraint firstItem="7OK-ta-dnY" firstAttribute="top" secondItem="hOo-F4-Blo" secondAttribute="bottom" constant="90" id="A3e-ui-aio"/>
-                            <constraint firstItem="jrJ-HF-Kdw" firstAttribute="bottom" secondItem="7Iq-2z-yXU" secondAttribute="bottom" id="BuX-fS-wpn"/>
-                            <constraint firstItem="7Iq-2z-yXU" firstAttribute="top" secondItem="hOo-F4-Blo" secondAttribute="bottom" constant="90" id="JLF-Gh-H0H"/>
-                            <constraint firstItem="LoA-lt-iox" firstAttribute="bottom" secondItem="7Iq-2z-yXU" secondAttribute="bottom" id="Mme-hu-eUx"/>
-                            <constraint firstItem="LoA-lt-iox" firstAttribute="bottom" secondItem="7OK-ta-dnY" secondAttribute="bottom" id="S8i-zA-ZsC"/>
-                            <constraint firstItem="7OK-ta-dnY" firstAttribute="leading" secondItem="LoA-lt-iox" secondAttribute="trailing" constant="24" id="bm4-HJ-ojn"/>
-                            <constraint firstItem="LoA-lt-iox" firstAttribute="leading" secondItem="7Iq-2z-yXU" secondAttribute="trailing" constant="24" id="hWS-ln-rK3"/>
-                            <constraint firstItem="jrJ-HF-Kdw" firstAttribute="top" secondItem="hOo-F4-Blo" secondAttribute="bottom" constant="90" id="lm7-Fa-gWN"/>
-                            <constraint firstItem="vdd-1O-dX1" firstAttribute="top" secondItem="jrJ-HF-Kdw" secondAttribute="bottom" constant="408" id="o50-LQ-LrZ"/>
-                            <constraint firstItem="LoA-lt-iox" firstAttribute="top" secondItem="hOo-F4-Blo" secondAttribute="bottom" constant="90" id="o9K-z7-LXE"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="7OK-ta-dnY" secondAttribute="trailing" constant="8" id="uYL-Gn-5Pa"/>
-                        </constraints>
                     </view>
                     <connections>
-                        <outlet property="firstNumberTextField" destination="jrJ-HF-Kdw" id="bi2-Xg-3KC"/>
-                        <outlet property="forthNumberTextField" destination="7OK-ta-dnY" id="Blp-cA-7jK"/>
-                        <outlet property="secondNumberTextField" destination="7Iq-2z-yXU" id="5xb-Vn-4VQ"/>
-                        <outlet property="thirdNumberTextField" destination="LoA-lt-iox" id="DDd-DT-ET6"/>
+                        <outlet property="passwordTextField" destination="GDI-Ek-ptg" id="oFA-Ix-l0n"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="I1f-Al-DGl" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -439,28 +392,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="1" borderStyle="line" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xQY-Ua-M99">
-                                <rect key="frame" x="24" y="117" width="50" height="50"/>
-                                <color key="textColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="32"/>
-                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="3" borderStyle="line" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tji-Qa-BD1">
-                                <rect key="frame" x="172" y="117" width="50" height="50"/>
-                                <color key="textColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="32"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="2" borderStyle="line" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1Ys-BQ-pvo">
-                                <rect key="frame" x="98" y="117" width="50" height="50"/>
-                                <color key="textColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="32"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="4" borderStyle="line" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dea-2T-ge0">
-                                <rect key="frame" x="246" y="117" width="50" height="50"/>
-                                <color key="textColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="----" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Oq0-xe-RxN">
+                                <rect key="frame" x="71" y="118" width="178" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="41"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vvW-LU-kRx">
@@ -478,10 +412,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="设置密码" id="hIf-Xb-DYz"/>
                     <connections>
-                        <outlet property="firstNumberTextField" destination="xQY-Ua-M99" id="UrZ-hQ-FWh"/>
-                        <outlet property="forthNumberTextField" destination="dea-2T-ge0" id="eZK-vh-e3H"/>
-                        <outlet property="secondNumberTextField" destination="1Ys-BQ-pvo" id="pn1-d6-rI4"/>
-                        <outlet property="thirdNumberTextField" destination="tji-Qa-BD1" id="rH2-IG-P9r"/>
+                        <outlet property="passwordTextField" destination="Oq0-xe-RxN" id="hPU-4g-HNJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="M6g-ke-Q7X" userLabel="First Responder" sceneMemberID="firstResponder"/>
