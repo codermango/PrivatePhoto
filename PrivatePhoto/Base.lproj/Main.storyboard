@@ -354,7 +354,7 @@
                     <navigationItem key="navigationItem" title="设置" id="K8l-c5-oaJ"/>
                     <connections>
                         <segue destination="Xxt-4z-qah" kind="push" identifier="toSetNewPassword" id="h6Y-iW-Moe"/>
-                        <segue destination="DHg-AH-di3" kind="push" identifier="toCreatePassword" id="EA3-qH-xjd"/>
+                        <segue destination="DHg-AH-di3" kind="modal" identifier="toCreatePassword" id="EA3-qH-xjd"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Sxf-LI-q8y" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -26,6 +26,7 @@ class LaunchViewController: UIViewController, UITextFieldDelegate {
             let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Cancel, handler: nil)
             alertController.addAction(okAction)
             self.presentViewController(alertController, animated: true, completion: nil)
+            passwordTextField.text = ""
         }
 
     }
