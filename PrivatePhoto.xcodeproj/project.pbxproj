@@ -23,7 +23,6 @@
 		4D3A146B1B87C968007002B4 /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D3A146A1B87C968007002B4 /* LaunchViewController.swift */; };
 		4D40D9C81B7FDF340061B1D3 /* PhotoPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D40D9C71B7FDF340061B1D3 /* PhotoPageViewController.swift */; };
 		4D66546E1B9BA47E0013C783 /* SettingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D66546D1B9BA47E0013C783 /* SettingTableViewController.swift */; };
-		4D8FBE6E1B8BB9F30060A804 /* CheckmarkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8FBE6D1B8BB9F30060A804 /* CheckmarkView.swift */; };
 		4DA517361B700D3A00C9C99F /* HomeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA517351B700D3A00C9C99F /* HomeTableViewController.swift */; };
 		4DA517381B7014EE00C9C99F /* AlbumTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA517371B7014EE00C9C99F /* AlbumTableViewCell.swift */; };
 /* End PBXBuildFile section */
@@ -59,7 +58,6 @@
 		4D3A146A1B87C968007002B4 /* LaunchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaunchViewController.swift; sourceTree = "<group>"; };
 		4D40D9C71B7FDF340061B1D3 /* PhotoPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoPageViewController.swift; sourceTree = "<group>"; };
 		4D66546D1B9BA47E0013C783 /* SettingTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingTableViewController.swift; sourceTree = "<group>"; };
-		4D8FBE6D1B8BB9F30060A804 /* CheckmarkView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckmarkView.swift; sourceTree = "<group>"; };
 		4DA517351B700D3A00C9C99F /* HomeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeTableViewController.swift; sourceTree = "<group>"; };
 		4DA517371B7014EE00C9C99F /* AlbumTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlbumTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -103,25 +101,11 @@
 		4D05485A1B6EC4630013D031 /* PrivatePhoto */ = {
 			isa = PBXGroup;
 			children = (
-				4D05485D1B6EC4630013D031 /* AppDelegate.swift */,
-				4D0548611B6EC4630013D031 /* Main.storyboard */,
-				4D0548641B6EC4630013D031 /* Images.xcassets */,
-				4D0548661B6EC4630013D031 /* LaunchScreen.xib */,
+				4D253C6A1BA4A3F800AB63C7 /* resources */,
+				4D253C6B1BA4A4B000AB63C7 /* classes */,
+				4D253C691BA4A04E00AB63C7 /* viewcontrollers */,
+				4D253C681BA4A02F00AB63C7 /* views */,
 				4D05485B1B6EC4630013D031 /* Supporting Files */,
-				4DA517351B700D3A00C9C99F /* HomeTableViewController.swift */,
-				4DA517371B7014EE00C9C99F /* AlbumTableViewCell.swift */,
-				4D0852F21B714DBD003876AA /* AlbumContentCollectionViewController.swift */,
-				4D0852F41B714E45003876AA /* AlbumContentCollectionViewCell.swift */,
-				4D3177041B7912A300588AC3 /* PhotoViewController.swift */,
-				4D40D9C71B7FDF340061B1D3 /* PhotoPageViewController.swift */,
-				4D0852F61B715E25003876AA /* Album.swift */,
-				4D0711331B83AA5F00D58424 /* Privatephoto.swift */,
-				4D3A14681B87C8E0007002B4 /* Setting.swift */,
-				4D3A146A1B87C968007002B4 /* LaunchViewController.swift */,
-				4D8FBE6D1B8BB9F30060A804 /* CheckmarkView.swift */,
-				4D317CAE1B91101400FB141F /* Photo.swift */,
-				4D66546D1B9BA47E0013C783 /* SettingTableViewController.swift */,
-				4D0BE31F1B9CD2CC003891C4 /* CreatePasswordViewController.swift */,
 			);
 			path = PrivatePhoto;
 			sourceTree = "<group>";
@@ -149,6 +133,51 @@
 				4D0548721B6EC4630013D031 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		4D253C681BA4A02F00AB63C7 /* views */ = {
+			isa = PBXGroup;
+			children = (
+				4DA517371B7014EE00C9C99F /* AlbumTableViewCell.swift */,
+				4D0852F41B714E45003876AA /* AlbumContentCollectionViewCell.swift */,
+			);
+			name = views;
+			sourceTree = "<group>";
+		};
+		4D253C691BA4A04E00AB63C7 /* viewcontrollers */ = {
+			isa = PBXGroup;
+			children = (
+				4D3A146A1B87C968007002B4 /* LaunchViewController.swift */,
+				4DA517351B700D3A00C9C99F /* HomeTableViewController.swift */,
+				4D0852F21B714DBD003876AA /* AlbumContentCollectionViewController.swift */,
+				4D3177041B7912A300588AC3 /* PhotoViewController.swift */,
+				4D40D9C71B7FDF340061B1D3 /* PhotoPageViewController.swift */,
+				4D66546D1B9BA47E0013C783 /* SettingTableViewController.swift */,
+				4D0BE31F1B9CD2CC003891C4 /* CreatePasswordViewController.swift */,
+			);
+			name = viewcontrollers;
+			sourceTree = "<group>";
+		};
+		4D253C6A1BA4A3F800AB63C7 /* resources */ = {
+			isa = PBXGroup;
+			children = (
+				4D05485D1B6EC4630013D031 /* AppDelegate.swift */,
+				4D0548611B6EC4630013D031 /* Main.storyboard */,
+				4D0548641B6EC4630013D031 /* Images.xcassets */,
+				4D0548661B6EC4630013D031 /* LaunchScreen.xib */,
+			);
+			name = resources;
+			sourceTree = "<group>";
+		};
+		4D253C6B1BA4A4B000AB63C7 /* classes */ = {
+			isa = PBXGroup;
+			children = (
+				4D0852F61B715E25003876AA /* Album.swift */,
+				4D0711331B83AA5F00D58424 /* Privatephoto.swift */,
+				4D3A14681B87C8E0007002B4 /* Setting.swift */,
+				4D317CAE1B91101400FB141F /* Photo.swift */,
+			);
+			name = classes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -264,7 +293,6 @@
 				4D0852F31B714DBD003876AA /* AlbumContentCollectionViewController.swift in Sources */,
 				4D3A146B1B87C968007002B4 /* LaunchViewController.swift in Sources */,
 				4D40D9C81B7FDF340061B1D3 /* PhotoPageViewController.swift in Sources */,
-				4D8FBE6E1B8BB9F30060A804 /* CheckmarkView.swift in Sources */,
 				4D0852F71B715E25003876AA /* Album.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
