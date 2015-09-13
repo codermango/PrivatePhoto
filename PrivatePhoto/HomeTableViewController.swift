@@ -69,6 +69,10 @@ class HomeTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = self.tableView.dequeueReusableCellWithIdentifier("AlbumCell", forIndexPath: indexPath) as! AlbumTableViewCell
+        cell.albumImageView1.image = privatePhoto.albumArray[indexPath.row].photoArray[0].photoImage
+        cell.albumImageView2.image = privatePhoto.albumArray[indexPath.row].photoArray[1].photoImage
+        cell.albumImageView3.image = privatePhoto.albumArray[indexPath.row].photoArray[2].photoImage
+
         cell.albumNameLabel.text = privatePhoto.albumArray[indexPath.row].albumName
         cell.albumPhotoNumberLabel.text = String(privatePhoto.albumArray[indexPath.row].photoArray.count)
         return cell

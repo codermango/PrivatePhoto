@@ -101,10 +101,10 @@
 		4D05485A1B6EC4630013D031 /* PrivatePhoto */ = {
 			isa = PBXGroup;
 			children = (
-				4D253C6A1BA4A3F800AB63C7 /* resources */,
-				4D253C6B1BA4A4B000AB63C7 /* classes */,
-				4D253C691BA4A04E00AB63C7 /* viewcontrollers */,
-				4D253C681BA4A02F00AB63C7 /* views */,
+				4D253C6A1BA4A3F800AB63C7 /* Resources */,
+				4D253C6B1BA4A4B000AB63C7 /* Classes */,
+				4D253C691BA4A04E00AB63C7 /* ViewControllers */,
+				4D253C681BA4A02F00AB63C7 /* Views */,
 				4D05485B1B6EC4630013D031 /* Supporting Files */,
 			);
 			path = PrivatePhoto;
@@ -135,16 +135,16 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		4D253C681BA4A02F00AB63C7 /* views */ = {
+		4D253C681BA4A02F00AB63C7 /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				4DA517371B7014EE00C9C99F /* AlbumTableViewCell.swift */,
 				4D0852F41B714E45003876AA /* AlbumContentCollectionViewCell.swift */,
 			);
-			name = views;
+			name = Views;
 			sourceTree = "<group>";
 		};
-		4D253C691BA4A04E00AB63C7 /* viewcontrollers */ = {
+		4D253C691BA4A04E00AB63C7 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
 				4D3A146A1B87C968007002B4 /* LaunchViewController.swift */,
@@ -155,10 +155,10 @@
 				4D66546D1B9BA47E0013C783 /* SettingTableViewController.swift */,
 				4D0BE31F1B9CD2CC003891C4 /* CreatePasswordViewController.swift */,
 			);
-			name = viewcontrollers;
+			name = ViewControllers;
 			sourceTree = "<group>";
 		};
-		4D253C6A1BA4A3F800AB63C7 /* resources */ = {
+		4D253C6A1BA4A3F800AB63C7 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
 				4D05485D1B6EC4630013D031 /* AppDelegate.swift */,
@@ -166,10 +166,10 @@
 				4D0548641B6EC4630013D031 /* Images.xcassets */,
 				4D0548661B6EC4630013D031 /* LaunchScreen.xib */,
 			);
-			name = resources;
+			name = Resources;
 			sourceTree = "<group>";
 		};
-		4D253C6B1BA4A4B000AB63C7 /* classes */ = {
+		4D253C6B1BA4A4B000AB63C7 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
 				4D0852F61B715E25003876AA /* Album.swift */,
@@ -177,7 +177,7 @@
 				4D3A14681B87C8E0007002B4 /* Setting.swift */,
 				4D317CAE1B91101400FB141F /* Photo.swift */,
 			);
-			name = classes;
+			name = Classes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

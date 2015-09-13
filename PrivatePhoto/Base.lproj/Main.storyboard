@@ -13,22 +13,34 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="AlbumCell" rowHeight="80" id="2pF-c1-Nmw" customClass="AlbumTableViewCell" customModule="PrivatePhoto" customModuleProvider="target">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="AlbumCell" rowHeight="86" id="2pF-c1-Nmw" customClass="AlbumTableViewCell" customModule="PrivatePhoto" customModuleProvider="target">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2pF-c1-Nmw" id="7WL-5y-LN0">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="sample" translatesAutoresizingMaskIntoConstraints="NO" id="QHE-zA-jaA">
-                                            <rect key="frame" x="5" y="5" width="70" height="70"/>
-                                        </imageView>
+                                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="01d-Ja-8KD">
+                                            <rect key="frame" x="16" y="7" width="68" height="72"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QHE-zA-jaA">
+                                                    <rect key="frame" x="4" y="0.0" width="60" height="60"/>
+                                                </imageView>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="54O-PW-SjR">
+                                                    <rect key="frame" x="2" y="2" width="64" height="64"/>
+                                                </imageView>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SZ6-5O-uLH">
+                                                    <rect key="frame" x="0.0" y="4" width="68" height="68"/>
+                                                </imageView>
+                                            </subviews>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </view>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Instagram" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gRS-Eb-IPn">
-                                            <rect key="frame" x="83" y="13" width="183" height="24"/>
+                                            <rect key="frame" x="96" y="13" width="183" height="24"/>
                                             <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="1024" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NzF-ls-6tt">
-                                            <rect key="frame" x="83" y="38" width="183" height="17"/>
+                                            <rect key="frame" x="97" y="38" width="183" height="17"/>
                                             <fontDescription key="fontDescription" name="AvenirNextCondensed-Regular" family="Avenir Next Condensed" pointSize="12"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
@@ -36,7 +48,9 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="albumImageView" destination="QHE-zA-jaA" id="dS8-ra-Neq"/>
+                                    <outlet property="albumImageView1" destination="SZ6-5O-uLH" id="FSP-Pk-dnw"/>
+                                    <outlet property="albumImageView2" destination="54O-PW-SjR" id="v4S-wQ-5ff"/>
+                                    <outlet property="albumImageView3" destination="QHE-zA-jaA" id="w1y-18-qLB"/>
                                     <outlet property="albumNameLabel" destination="gRS-Eb-IPn" id="UAM-JD-E0t"/>
                                     <outlet property="albumPhotoNumberLabel" destination="NzF-ls-6tt" id="eMc-vt-Edr"/>
                                     <segue destination="sC6-EF-xBB" kind="push" identifier="toAlbumContent" id="OOv-nE-0Fg"/>

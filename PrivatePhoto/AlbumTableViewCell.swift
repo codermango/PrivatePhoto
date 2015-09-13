@@ -10,7 +10,9 @@ import UIKit
 
 class AlbumTableViewCell: UITableViewCell {
     
-    @IBOutlet weak var albumImageView: UIImageView!
+    @IBOutlet weak var albumImageView1: UIImageView!
+    @IBOutlet weak var albumImageView2: UIImageView!
+    @IBOutlet weak var albumImageView3: UIImageView!
     @IBOutlet weak var albumNameLabel: UILabel!
     @IBOutlet weak var albumPhotoNumberLabel: UILabel!
 
