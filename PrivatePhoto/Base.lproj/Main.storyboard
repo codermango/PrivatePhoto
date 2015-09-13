@@ -368,7 +368,7 @@
                     <navigationItem key="navigationItem" title="设置" id="K8l-c5-oaJ"/>
                     <connections>
                         <segue destination="Xxt-4z-qah" kind="push" identifier="toSetNewPassword" id="h6Y-iW-Moe"/>
-                        <segue destination="DHg-AH-di3" kind="modal" identifier="toCreatePassword" id="EA3-qH-xjd"/>
+                        <segue destination="j5l-xV-8Vs" kind="modal" identifier="toCreatePassword" id="EA3-qH-xjd"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Sxf-LI-q8y" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -424,14 +424,21 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="设置密码" id="hIf-Xb-DYz"/>
+                    <navigationItem key="navigationItem" title="设置密码" id="hIf-Xb-DYz">
+                        <barButtonItem key="rightBarButtonItem" title="取消" id="fl5-mJ-nXI">
+                            <connections>
+                                <segue destination="p1g-uv-jiT" kind="unwind" unwindAction="backToSettingTableViewController:" id="UKM-Kp-zX7"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="passwordTextField" destination="Oq0-xe-RxN" id="hPU-4g-HNJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="M6g-ke-Q7X" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="p1g-uv-jiT" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2451" y="-1622"/>
+            <point key="canvasLocation" x="2983" y="-1622"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Ndl-d7-BoG">
@@ -450,6 +457,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="V5l-ZN-wb2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2864" y="-2510"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="LHV-tZ-xO9">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="j5l-xV-8Vs" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="JOV-iP-DRJ">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="DHg-AH-di3" kind="relationship" relationship="rootViewController" id="hbS-ME-Jax"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XzT-QX-4t6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2451" y="-1622"/>
         </scene>
     </scenes>
     <resources>
