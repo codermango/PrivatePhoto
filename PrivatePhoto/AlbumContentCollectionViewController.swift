@@ -62,6 +62,7 @@ class AlbumContentCollectionViewController: UICollectionViewController, UIImageP
         self.collectionView!.registerClass(UICollectionViewCell.self, forCellWithReuseIdentifier: "Cell")
 
         // Do any additional setup after loading the view.
+        
         toolbar = createToolBarByStatus("normal")
         self.collectionView?.alwaysBounceVertical = true
         
@@ -148,6 +149,11 @@ class AlbumContentCollectionViewController: UICollectionViewController, UIImageP
         }
     }
     
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+        let width = (UIScreen.mainScreen().bounds.width-15)/4
+        return CGSizeMake(width, width)
+    }
     
     
     // MARK: UIImagePickerControllerDelegate

@@ -265,8 +265,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ebn-JS-nlX">
-                                <rect key="frame" x="24" y="243" width="272" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ebn-JS-nlX">
+                                <rect key="frame" x="24" y="239" width="272" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="XDs-hM-sgF"/>
+                                    <constraint firstAttribute="width" constant="272" id="aBK-YY-N0U"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="27"/>
                                 <state key="normal" title="进入相册">
                                     <color key="titleColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -276,13 +280,23 @@
                                     <segue destination="J9X-Oy-pUh" kind="modal" identifier="toHome" modalTransitionStyle="flipHorizontal" id="YFQ-Om-9JR"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="----" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GDI-Ek-ptg">
-                                <rect key="frame" x="71" y="94" width="178" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="----" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GDI-Ek-ptg">
+                                <rect key="frame" x="71" y="84" width="178" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="s5m-D6-uuG"/>
+                                    <constraint firstAttribute="width" constant="178" id="yXw-uc-bBf"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="41"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerY" secondItem="ebn-JS-nlX" secondAttribute="centerY" constant="30" id="ZIS-0n-aXf"/>
+                            <constraint firstItem="GDI-Ek-ptg" firstAttribute="top" secondItem="hOo-F4-Blo" secondAttribute="bottom" constant="64" id="gfG-mj-gfq"/>
+                            <constraint firstAttribute="centerX" secondItem="ebn-JS-nlX" secondAttribute="centerX" id="kRs-ES-63p"/>
+                            <constraint firstAttribute="centerX" secondItem="GDI-Ek-ptg" secondAttribute="centerX" id="vqf-Ce-8KT"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="passwordTextField" destination="GDI-Ek-ptg" id="oFA-Ix-l0n"/>
@@ -406,13 +420,21 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="----" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Oq0-xe-RxN">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="----" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Oq0-xe-RxN">
                                 <rect key="frame" x="71" y="118" width="178" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="178" id="1xy-Dz-qm3"/>
+                                    <constraint firstAttribute="height" constant="30" id="jm8-ZI-6nI"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="41"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vvW-LU-kRx">
-                                <rect key="frame" x="81" y="202" width="158" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vvW-LU-kRx">
+                                <rect key="frame" x="81" y="239" width="158" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="7fK-J4-iIy"/>
+                                    <constraint firstAttribute="width" constant="158" id="Blg-RD-buE"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="创建新密码">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -423,6 +445,12 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerY" secondItem="vvW-LU-kRx" secondAttribute="centerY" constant="30" id="8aL-Sg-YYb"/>
+                            <constraint firstAttribute="centerX" secondItem="Oq0-xe-RxN" secondAttribute="centerX" id="AOd-0g-zs3"/>
+                            <constraint firstAttribute="centerX" secondItem="vvW-LU-kRx" secondAttribute="centerX" id="ofk-0p-kxe"/>
+                            <constraint firstItem="Oq0-xe-RxN" firstAttribute="top" secondItem="SDZ-yW-ZRr" secondAttribute="bottom" constant="54" id="pwJ-xH-J1B"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="设置密码" id="hIf-Xb-DYz">
                         <barButtonItem key="rightBarButtonItem" title="取消" id="fl5-mJ-nXI">
