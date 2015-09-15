@@ -240,7 +240,7 @@
                         </barButtonItem>
                     </toolbarItems>
                     <navigationItem key="navigationItem" id="2hc-5S-w9v">
-                        <barButtonItem key="leftBarButtonItem" systemItem="stop" id="Phu-q9-vhy">
+                        <barButtonItem key="leftBarButtonItem" title="取消" id="Phu-q9-vhy">
                             <connections>
                                 <segue destination="BPv-zi-bp2" kind="unwind" unwindAction="backToAlbumContentCollectionView:" id="MZW-1L-cTT"/>
                             </connections>
