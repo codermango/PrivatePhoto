@@ -21,6 +21,7 @@ class LaunchViewController: UIViewController, UITextFieldDelegate {
         let input = passwordTextField.text
         if input == password {
             self.performSegueWithIdentifier("toHome", sender: self)
+
         } else {
             let alertController = UIAlertController(title: "", message: "密码错误", preferredStyle: UIAlertControllerStyle.Alert)
             let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Cancel, handler: nil)
@@ -31,6 +32,9 @@ class LaunchViewController: UIViewController, UITextFieldDelegate {
 
     }
     
+    override func viewDidAppear(animated: Bool) {
+        println("ddddddd")
+    }
 
 
     override func viewDidLoad() {
