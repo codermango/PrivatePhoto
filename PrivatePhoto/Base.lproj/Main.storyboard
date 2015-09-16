@@ -89,15 +89,15 @@
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PhotoCell" id="Dhb-bP-sax" customClass="AlbumContentCollectionViewCell" customModule="PrivatePhoto" customModuleProvider="target">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" reuseIdentifier="PhotoCell" id="Dhb-bP-sax" customClass="AlbumContentCollectionViewCell" customModule="PrivatePhoto" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="77" height="77"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="sample" translatesAutoresizingMaskIntoConstraints="NO" id="qP1-G2-JO7">
-                                            <rect key="frame" x="0.0" y="0.0" width="77" height="77"/>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qP1-G2-JO7">
+                                            <rect key="frame" x="0.0" y="0.0" width="90" height="90"/>
                                             <gestureRecognizers/>
                                         </imageView>
                                     </subviews>
@@ -129,6 +129,10 @@
                         </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="albumCollectionView" destination="W1Z-BC-klb" id="vys-82-ll5"/>
+                        <outlet property="collectionView" destination="W1Z-BC-klb" id="rgp-s7-huk"/>
+                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gjo-kP-YCE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -508,7 +512,6 @@
     <resources>
         <image name="gear" width="26" height="26"/>
         <image name="photos" width="22" height="24"/>
-        <image name="sample" width="256" height="256"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

@@ -11,7 +11,7 @@ import UIKit
 let reuseIdentifier = "PhotoCell"
 
 
-class AlbumContentCollectionViewController: UICollectionViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class AlbumContentCollectionViewController: UICollectionViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UICollectionViewDelegateFlowLayout {
     
     var album: Album!
     var selectEnabled = false
@@ -21,6 +21,7 @@ class AlbumContentCollectionViewController: UICollectionViewController, UIImageP
     var selectedIndexPathArray: [NSIndexPath] = []
 
 
+    @IBOutlet var albumCollectionView: UICollectionView!
 
     
     @IBAction func clickSelect(sender: AnyObject) {
@@ -62,9 +63,17 @@ class AlbumContentCollectionViewController: UICollectionViewController, UIImageP
         self.collectionView!.registerClass(UICollectionViewCell.self, forCellWithReuseIdentifier: "Cell")
 
         // Do any additional setup after loading the view.
+        let layout: UICollectionViewFlowLayout! = self.albumCollectionView.collectionViewLayout as! UICollectionViewFlowLayout
+        let availableWidthForCells: CGFloat = CGRectGetWidth(self.albumCollectionView.frame) - layout.sectionInset.left - layout.sectionInset.right - layout.minimumInteritemSpacing * 3
+        let cellWidth = availableWidthForCells / 4
+        layout.itemSize = CGSizeMake(cellWidth, cellWidth)
+
+        
         
         toolbar = createToolBarByStatus("normal")
         self.collectionView?.alwaysBounceVertical = true
+        
+        
         
         self.navigationItem.title = album.albumName
         
@@ -114,6 +123,9 @@ class AlbumContentCollectionViewController: UICollectionViewController, UIImageP
 
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! AlbumContentCollectionViewCell
+        cell.imageView.bounds.size = (self.albumCollectionView.collectionViewLayout as! UICollectionViewFlowLayout).itemSize
+
+        cell.imageView.contentMode = UIViewContentMode.ScaleToFill
         cell.imageView.alpha = 1.0
         cell.imageView.image = album.photoArray[indexPath.row].photoImage
         if contains(self.selectedIndexPathArray, indexPath) {
@@ -150,10 +162,6 @@ class AlbumContentCollectionViewController: UICollectionViewController, UIImageP
     }
     
     
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        let width = (UIScreen.mainScreen().bounds.width-15)/4
-        return CGSizeMake(width, width)
-    }
     
     
     // MARK: UIImagePickerControllerDelegate
