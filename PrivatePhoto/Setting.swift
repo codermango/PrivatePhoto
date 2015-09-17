@@ -15,7 +15,7 @@ class Setting {
 
 
     func isPasswordSet() -> Bool {
-        if let password = NSUserDefaults.standardUserDefaults().valueForKey("launchPassword") as? String {
+        if let _ = NSUserDefaults.standardUserDefaults().valueForKey("launchPassword") as? String {
             return true
         }
         return false

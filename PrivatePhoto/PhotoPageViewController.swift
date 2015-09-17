@@ -20,7 +20,7 @@ class PhotoPageViewController: UIPageViewController, UIPageViewControllerDataSou
     @IBAction func deletePhoto(sender: AnyObject) {
         // 先获取要删除的照片，分别从privatePhoto和文件夹中将其删除
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.ActionSheet)
-        let deleteAction = UIAlertAction(title: "删除照片", style: UIAlertActionStyle.Default) { (action: UIAlertAction!) -> Void in
+        let deleteAction = UIAlertAction(title: "删除照片", style: UIAlertActionStyle.Default) { (action: UIAlertAction) -> Void in
             self.album.deletePhotoByIndex(self.photoIndex)
             self.previousController.collectionView?.deleteItemsAtIndexPaths([NSIndexPath(forRow: self.photoIndex, inSection: 0)])
             self.dismissViewControllerAnimated(true, completion: nil)
@@ -34,7 +34,7 @@ class PhotoPageViewController: UIPageViewController, UIPageViewControllerDataSou
     @IBAction func showActions(sender: AnyObject) {
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.ActionSheet)
         let cancelActioin = UIAlertAction(title: "取消", style: UIAlertActionStyle.Cancel, handler: nil)
-        let saveAction = UIAlertAction(title: "保存图片", style: UIAlertActionStyle.Default) { (action: UIAlertAction!) -> Void in
+        let saveAction = UIAlertAction(title: "保存图片", style: UIAlertActionStyle.Default) { (action: UIAlertAction) -> Void in
             self.album.savePhotoToSystemAlbumByIndex([self.photoIndex])
         }
         alertController.addAction(saveAction)
@@ -49,8 +49,8 @@ class PhotoPageViewController: UIPageViewController, UIPageViewControllerDataSou
         self.automaticallyAdjustsScrollViewInsets = false;
 
         // 尝试开始使用UIPageViewController
-        var currentVC = viewControllerAtIndex(photoIndex) as UIViewController
-        var viewControllers = [currentVC]
+        let currentVC = viewControllerAtIndex(photoIndex) as UIViewController
+        let viewControllers = [currentVC]
         self.dataSource = self
         self.setViewControllers(viewControllers, direction: UIPageViewControllerNavigationDirection.Forward, animated: true, completion: nil)
         self.didMoveToParentViewController(self)
@@ -66,7 +66,7 @@ class PhotoPageViewController: UIPageViewController, UIPageViewControllerDataSou
     // MARK: UIPageViewControllerDataSource
     
     func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {
-        var vc = viewController as! PhotoViewController
+        let vc = viewController as! PhotoViewController
         self.photoIndex = vc.photoIndex
         self.navigationBarHidden = vc.navigationBarHidden
         self.toolbarHidden = vc.toolbarHidden
@@ -79,7 +79,7 @@ class PhotoPageViewController: UIPageViewController, UIPageViewControllerDataSou
     }
     
     func pageViewController(pageViewController: UIPageViewController, viewControllerAfterViewController viewController: UIViewController) -> UIViewController? {
-        var vc = viewController as! PhotoViewController
+        let vc = viewController as! PhotoViewController
         self.photoIndex = vc.photoIndex
         self.navigationBarHidden = vc.navigationBarHidden
         self.toolbarHidden = vc.toolbarHidden
@@ -108,7 +108,7 @@ class PhotoPageViewController: UIPageViewController, UIPageViewControllerDataSou
     
     
     func viewControllerAtIndex(index: Int) -> PhotoViewController {
-        var vc = self.storyboard?.instantiateViewControllerWithIdentifier("PhotoViewController") as! PhotoViewController
+        let vc = self.storyboard?.instantiateViewControllerWithIdentifier("PhotoViewController") as! PhotoViewController
         vc.photoImage = self.album.photoArray[index].photoImage
         vc.photoIndex = index
         vc.toolbarHidden = self.toolbarHidden

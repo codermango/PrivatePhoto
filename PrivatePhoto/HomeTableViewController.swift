@@ -20,12 +20,12 @@ class HomeTableViewController: UITableViewController {
         }
         
         let cancelAction = UIAlertAction(title: "取消", style: UIAlertActionStyle.Cancel, handler: nil)
-        let saveAction = UIAlertAction(title: "保存", style: UIAlertActionStyle.Default) { (action: UIAlertAction!) -> Void in
+        let saveAction = UIAlertAction(title: "保存", style: UIAlertActionStyle.Default) { (action: UIAlertAction) -> Void in
             // 点击保存之后新建一个相册，并存到albumArray中
-            let newAlbumNameTextField = addAlbumAlertController.textFields?.first as! UITextField
+            let newAlbumNameTextField = addAlbumAlertController.textFields?.first as UITextField!
             let newAlbumName = newAlbumNameTextField.text
             
-            self.privatePhoto.createAlbumWithName(newAlbumName)
+            self.privatePhoto.createAlbumWithName(newAlbumName!)
             self.tableView.reloadData()
         }
         addAlbumAlertController.addAction(cancelAction)
@@ -94,7 +94,7 @@ class HomeTableViewController: UITableViewController {
         if editingStyle == .Delete {
             // 弹出对话框询问是否删除
             let confirmAlertController = UIAlertController(title: "", message: "删除相册后相册内所有照片将要被删除！", preferredStyle: UIAlertControllerStyle.Alert)
-            let okAction = UIAlertAction(title: "确定", style: UIAlertActionStyle.Default, handler: { (action: UIAlertAction!) -> Void in
+            let okAction = UIAlertAction(title: "确定", style: UIAlertActionStyle.Default, handler: { (action: UIAlertAction) -> Void in
                 self.privatePhoto.deleteAlbumByIndex(indexPath.row)
                 tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
             })
@@ -130,7 +130,7 @@ class HomeTableViewController: UITableViewController {
         // Get the new view controller using [segue destinationViewController].
         // Pass the selected object to the new view controller.
         if segue.identifier == "toAlbumContent" {
-            if let indexPath = self.tableView.indexPathForSelectedRow() {
+            if let indexPath = self.tableView.indexPathForSelectedRow {
                 let destinationViewController = segue.destinationViewController as! AlbumContentCollectionViewController
                 // 获取点击的相册中所有照片，存入albumArray中对应的album
                 let tappedAlbum = privatePhoto.albumArray[indexPath.row]

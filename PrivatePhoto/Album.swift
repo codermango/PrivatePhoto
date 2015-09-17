@@ -28,28 +28,33 @@ class Album {
         let photo = Photo(name: photoName, image: image, isSelected: false)
         photoArray.append(photo) // 把图片加入到当前的相册Array中，接下来存到手机中
         
-        let photoPath = NSHomeDirectory().stringByAppendingPathComponent("Documents/Albums/\(albumName)/\(photoName).png")
+//        let photoPath = NSHomeDirectory().stringByAppendingPathComponent("Documents/Albums/\(albumName)/\(photoName).png")
+        let photoPath = NSHomeDirectory() + "/Documents/Albums/" + albumName + "/" + photoName + ".png"
+
         let pngData = UIImagePNGRepresentation(image)
-        if !pngData.writeToFile(photoPath, atomically: true) {
-            println("新增图片保存失败！")
+        if !pngData!.writeToFile(photoPath, atomically: true) {
+            print("新增图片保存失败！")
         }
 
     }
     
     func deletePhotoByIndex(index: Int) {
         photoArray.removeAtIndex(index)
-        let albumPath = NSHomeDirectory().stringByAppendingPathComponent("Documents/Albums/\(albumName)")
+//        let albumPath = NSHomeDirectory().stringByAppendingPathComponent("Documents/Albums/\(albumName)")
+        let albumPath = NSHomeDirectory() + "/Documents/Albums/" + albumName
         let sortedPhotoPath = sortedFileOrFolderPathsByCreationDate(albumPath)
         let deletePhotoPath = sortedPhotoPath[index]
         let fileManager = NSFileManager.defaultManager()
-        if !fileManager.removeItemAtPath(deletePhotoPath, error: nil) {
-            println("删除照片失败")
+        do {
+            try fileManager.removeItemAtPath(deletePhotoPath)
+        } catch _ {
+            print("删除照片失败")
         }
     }
     
     func savePhotoToSystemAlbumByIndex(indexArray: [Int]) {
         for index in indexArray {
-            var image = photoArray[index].photoImage
+            let image = photoArray[index].photoImage
             UIImageWriteToSavedPhotosAlbum(image, self, nil, nil)
         }
     }
@@ -60,21 +65,21 @@ class Album {
     private func sortedFileOrFolderPathsByCreationDate(path: String) -> [String] {
         var filePathArray: [String] = []
         let fileManager = NSFileManager.defaultManager()
-        let contents = fileManager.contentsOfDirectoryAtPath(path, error: nil) as! [String]
+        let contents = (try! fileManager.contentsOfDirectoryAtPath(path)) 
         for item in contents {
-            if startsWith(item, ".") {
+            if item.characters.startsWith(".".characters) {
                 continue
             }
-            var filePath = path + "/" + item
+            let filePath = path + "/" + item
             filePathArray.append(filePath)
         }
         
         // 排序 升序
-        var sortedFilesArray = filePathArray.sorted { (file1: String, file2: String) -> Bool in
-            var attr1 = fileManager.attributesOfItemAtPath(file1, error: nil)!
-            var attr2 = fileManager.attributesOfItemAtPath(file2, error: nil)!
-            var date1 = attr1[NSFileCreationDate]! as! NSDate
-            var date2 = attr2[NSFileCreationDate]! as! NSDate
+        let sortedFilesArray = filePathArray.sort { (file1: String, file2: String) -> Bool in
+            var attr1 = try! fileManager.attributesOfItemAtPath(file1)
+            var attr2 = try! fileManager.attributesOfItemAtPath(file2)
+            let date1 = attr1[NSFileCreationDate]! as! NSDate
+            let date2 = attr2[NSFileCreationDate]! as! NSDate
             if date1.timeIntervalSinceDate(date2) < 0 {
                 return true
             } else {

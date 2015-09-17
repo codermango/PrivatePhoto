@@ -38,7 +38,7 @@ class AlbumContentCollectionViewController: UICollectionViewController, UIImageP
         } else {
             self.selectEnabled = true
             toolbar = createToolBarByStatus("select")
-            let items = toolbar.items as! [UIBarButtonItem]
+            let items = toolbar.items! as [UIBarButtonItem]
             items.map({$0.enabled = false})
             self.view.addSubview(toolbar)
             self.navigationItem.rightBarButtonItem?.title = "取消"
@@ -101,7 +101,7 @@ class AlbumContentCollectionViewController: UICollectionViewController, UIImageP
         }
     }
     
-    override func shouldPerformSegueWithIdentifier(identifier: String?, sender: AnyObject?) -> Bool {
+    override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject?) -> Bool {
         if selectEnabled {
             return false
         } else {
@@ -123,12 +123,10 @@ class AlbumContentCollectionViewController: UICollectionViewController, UIImageP
 
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! AlbumContentCollectionViewCell
-        cell.imageView.bounds.size = (self.albumCollectionView.collectionViewLayout as! UICollectionViewFlowLayout).itemSize
 
-        cell.imageView.contentMode = UIViewContentMode.ScaleToFill
         cell.imageView.alpha = 1.0
         cell.imageView.image = album.photoArray[indexPath.row].photoImage
-        if contains(self.selectedIndexPathArray, indexPath) {
+        if self.selectedIndexPathArray.contains(indexPath) {
             cell.imageView.alpha = 0.3
         }
         return cell
@@ -141,8 +139,8 @@ class AlbumContentCollectionViewController: UICollectionViewController, UIImageP
         if selectEnabled {
             let selectedCell = collectionView.cellForItemAtIndexPath(indexPath) as! AlbumContentCollectionViewCell
             // 如果点击的cell在selectedPhotoIndex中，则删除掉，切变成未选择状态
-            if contains(self.selectedIndexPathArray, indexPath) {
-                let index = find(self.selectedIndexPathArray, indexPath)
+            if self.selectedIndexPathArray.contains(indexPath) {
+                let index = self.selectedIndexPathArray.indexOf(indexPath)
                 self.selectedIndexPathArray.removeAtIndex(index!)
                 selectedCell.imageView.alpha = 1.0
             } else {
@@ -150,14 +148,14 @@ class AlbumContentCollectionViewController: UICollectionViewController, UIImageP
                 selectedCell.imageView.alpha = 0.3
             }
             
-            let items = toolbar.items as! [UIBarButtonItem]
+            let items = toolbar.items! as [UIBarButtonItem]
             if self.selectedIndexPathArray.isEmpty {
                 items.map({$0.enabled = false})
             } else {
                 items.map({$0.enabled = true})
             }
 
-            println(self.selectedIndexPathArray)
+            print(self.selectedIndexPathArray)
         }
     }
     
@@ -166,7 +164,7 @@ class AlbumContentCollectionViewController: UICollectionViewController, UIImageP
     
     // MARK: UIImagePickerControllerDelegate
     
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         let image = info[UIImagePickerControllerOriginalImage]! as! UIImage
         album.addPhotoByImage(image)
         picker.dismissViewControllerAnimated(true, completion: nil)
@@ -202,18 +200,18 @@ class AlbumContentCollectionViewController: UICollectionViewController, UIImageP
     }
     
     func deletePhotos() {
-        self.selectedIndexPathArray.sort({$0.row > $1.row}) // 排序是为了删除时不会产生索引错误
+        self.selectedIndexPathArray.sortInPlace({$0.row > $1.row}) // 排序是为了删除时不会产生索引错误
         let numOfDeletePhotos = self.selectedIndexPathArray.count
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.ActionSheet)
         let cancelActioin = UIAlertAction(title: "取消", style: UIAlertActionStyle.Cancel, handler: nil)
-        let deleteAction = UIAlertAction(title: "删除\(numOfDeletePhotos)张图片", style: UIAlertActionStyle.Destructive) { (action: UIAlertAction!) -> Void in
+        let deleteAction = UIAlertAction(title: "删除\(numOfDeletePhotos)张图片", style: UIAlertActionStyle.Destructive) { (action: UIAlertAction) -> Void in
             for indexPath in self.selectedIndexPathArray {
                 self.album.deletePhotoByIndex(indexPath.row)
             }
             self.collectionView?.deleteItemsAtIndexPaths(self.selectedIndexPathArray)
             
             self.selectedIndexPathArray = []
-            let items = self.toolbar.items as! [UIBarButtonItem]
+            let items = self.toolbar.items! as [UIBarButtonItem]
             items.map({$0.enabled = false})
             
         }
@@ -227,7 +225,7 @@ class AlbumContentCollectionViewController: UICollectionViewController, UIImageP
     func showActions() {
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.ActionSheet)
         let cancelActioin = UIAlertAction(title: "取消", style: UIAlertActionStyle.Cancel, handler: nil)
-        let saveAction = UIAlertAction(title: "保存图片", style: UIAlertActionStyle.Default) { (action: UIAlertAction!) -> Void in
+        let saveAction = UIAlertAction(title: "保存图片", style: UIAlertActionStyle.Default) { (action: UIAlertAction) -> Void in
             self.album.savePhotoToSystemAlbumByIndex(self.selectedIndexPathArray.map({$0.row}))
             self.selectedIndexPathArray = []
             self.collectionView?.reloadData()

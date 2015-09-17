@@ -16,7 +16,7 @@ class CreatePasswordViewController: UIViewController, UITextFieldDelegate {
     @IBAction func createNewPassword(sender: AnyObject) {
         let setting = Setting()
         let newPassword = passwordTextField.text
-        setting.createPassword(newPassword)
+        setting.createPassword(newPassword!)
         passwordTextField.resignFirstResponder()
         self.dismissViewControllerAnimated(true, completion: nil)
     }

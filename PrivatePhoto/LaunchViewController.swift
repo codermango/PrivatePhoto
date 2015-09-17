@@ -33,7 +33,7 @@ class LaunchViewController: UIViewController, UITextFieldDelegate {
     }
     
     override func viewDidAppear(animated: Bool) {
-        println("ddddddd")
+        print("ddddddd")
     }
 
 
