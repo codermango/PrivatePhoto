@@ -96,14 +96,19 @@
                                     <rect key="frame" x="0.0" y="0.0" width="77" height="77"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qP1-G2-JO7">
-                                            <rect key="frame" x="0.0" y="0.0" width="90" height="90"/>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qP1-G2-JO7">
+                                            <rect key="frame" x="0.0" y="0.0" width="77" height="77"/>
                                             <gestureRecognizers/>
                                         </imageView>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
-                                <size key="customSize" width="77" height="77"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="qP1-G2-JO7" secondAttribute="bottom" id="BZv-7O-SA0"/>
+                                    <constraint firstAttribute="trailing" secondItem="qP1-G2-JO7" secondAttribute="trailing" id="YdD-K9-wPj"/>
+                                    <constraint firstItem="qP1-G2-JO7" firstAttribute="top" secondItem="Dhb-bP-sax" secondAttribute="top" id="iob-4p-Wro"/>
+                                    <constraint firstItem="qP1-G2-JO7" firstAttribute="leading" secondItem="Dhb-bP-sax" secondAttribute="leading" id="p8i-Sg-sJ8"/>
+                                </constraints>
                                 <connections>
                                     <outlet property="imageView" destination="qP1-G2-JO7" id="fOt-yA-Seu"/>
                                     <segue destination="2E2-XJ-Cbt" kind="modal" identifier="toPhotoPage" id="zZD-Cl-zlr"/>
