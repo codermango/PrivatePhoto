@@ -39,7 +39,9 @@ class AlbumContentCollectionViewController: UICollectionViewController, UIImageP
             self.selectEnabled = true
             toolbar = createToolBarByStatus("select")
             let items = toolbar.items! as [UIBarButtonItem]
-            items.map({$0.enabled = false})
+            for item in items {
+                item.enabled = false
+            }
             self.view.addSubview(toolbar)
             self.navigationItem.rightBarButtonItem?.title = "取消"
             self.navigationItem.hidesBackButton = true
@@ -150,9 +152,13 @@ class AlbumContentCollectionViewController: UICollectionViewController, UIImageP
             
             let items = toolbar.items! as [UIBarButtonItem]
             if self.selectedIndexPathArray.isEmpty {
-                items.map({$0.enabled = false})
+                for item in items {
+                    item.enabled = false
+                }
             } else {
-                items.map({$0.enabled = true})
+                for item in items {
+                    item.enabled = true
+                }
             }
 
             print(self.selectedIndexPathArray)
@@ -212,7 +218,9 @@ class AlbumContentCollectionViewController: UICollectionViewController, UIImageP
             
             self.selectedIndexPathArray = []
             let items = self.toolbar.items! as [UIBarButtonItem]
-            items.map({$0.enabled = false})
+            for item in items {
+                item.enabled = false
+            }
             
         }
         
